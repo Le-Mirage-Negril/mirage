@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import Footer from "@/components/layout/Footer";
+import { cn } from "@/lib/utils";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,6 +15,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,17 +30,21 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn("min-h-screen bg-teal-50 font-sans antialiased", inter.variable)}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
-          <main className="min-h-screen mx-auto bg-white">
+          <div className="flex flex-col min-h-screen ">
             <Header />
-            {children}
-          </main>
+            <main className="flex-grow container mx-auto py-8">{children}</main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
