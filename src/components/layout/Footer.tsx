@@ -2,16 +2,29 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className=" border-t border-gray-200  mt-12">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="flex flex-col items-center mb-6 md:mb-0">
+          <div className="flex flex-col items-center mb-6 md:mb-0 space-y-2">
             <Image src="/logo.png" alt="Le Mirage Negril" width={100} height={100} />
-            <p>Mirage Resort Lighthouse Road P.O. Box 33 Negril, Jamaica W.I</p>
+            <div className="mt-4 text-center space-y-2">
+              <p className="text-sm text-gray-600 flex items-center gap-2">
+                <Mail /> <a href="mailto:mirage02@cwjamaica.com">mirage02@cwjamaica.com</a>
+              </p>
+              <p className="text-sm text-gray-600 flex items-center gap-2">
+                <Phone /> <a href="tel:+1-876-957-0386">+1 876-957-0386</a>
+              </p>
+              <p className="text-sm text-gray-600 flex items-center gap-2">
+                Whatsapp: (876) 379-1505
+              </p>
+            </div>
+            <p className="text-sm text-gray-600">
+              Mirage Resort Lighthouse Road P.O. Box 33 Negril, Jamaica W.I
+            </p>
           </div>
 
           <div className="flex flex-col md:flex-row gap-6 md:gap-12">
@@ -103,7 +116,7 @@ const Footer = () => {
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             <a
-              href="https://twitter.com"
+              href="https://www.facebook.com/mirage.negril/"
               className="text-gray-400 hover:text-amber-500"
               target="_blank"
               rel="noopener noreferrer"
@@ -112,7 +125,7 @@ const Footer = () => {
               <Facebook />
             </a>
             <a
-              href="https://github.com"
+              href="https://www.instagram.com/lemirageresort"
               className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
               target="_blank"
               rel="noopener noreferrer"
