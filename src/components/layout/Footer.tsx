@@ -11,20 +11,6 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col items-center mb-6 md:mb-0 space-y-2">
             <Image src="/logo.png" alt="Le Mirage Negril" width={100} height={100} />
-            <div className="mt-4 text-center space-y-2">
-              <p className="text-sm text-gray-600 flex items-center gap-2">
-                <Mail /> <a href="mailto:mirage02@cwjamaica.com">mirage02@cwjamaica.com</a>
-              </p>
-              <p className="text-sm text-gray-600 flex items-center gap-2">
-                <Phone /> <a href="tel:+1-876-957-0386">+1 876-957-0386</a>
-              </p>
-              <p className="text-sm text-gray-600 flex items-center gap-2">
-                Whatsapp: (876) 379-1505
-              </p>
-            </div>
-            <p className="text-sm text-gray-600">
-              Mirage Resort Lighthouse Road P.O. Box 33 Negril, Jamaica W.I
-            </p>
           </div>
 
           <div className="flex flex-col md:flex-row gap-6 md:gap-12">
@@ -34,18 +20,12 @@ const Footer = () => {
               </h3>
               <ul className="mt-4 space-y-2">
                 <li>
-                  <Link
-                    href="/rooms"
-                    className="text-gray-700  hover:text-amber-600 dark:hover:text-amber-400"
-                  >
+                  <Link href="/rooms" className="text-gray-700  hover:text-amber-600 ">
                     Rooms
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/weddings"
-                    className="text-gray-600  hover:text-amber-600 dark:hover:text-amber-400"
-                  >
+                  <Link href="/weddings" className="text-gray-600  hover:text-amber-600 ">
                     Weddings
                   </Link>
                 </li>
@@ -60,7 +40,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="http://negrilchamber.org/"
-                    className="text-gray-600  hover:text-amber-600 dark:hover:text-amber-400"
+                    className="text-gray-600  hover:text-amber-600 "
                   >
                     Negril Chamber of Commerce
                   </a>
@@ -68,7 +48,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="https://visitjamaica.com/"
-                    className="text-gray-600  hover:text-amber-600 dark:hover:text-amber-400"
+                    className="text-gray-600  hover:text-amber-600 "
                   >
                     Jamaica Tourist Board
                   </a>
@@ -76,7 +56,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="https://charelainn.com/"
-                    className="text-gray-600  hover:text-amber-600 dark:hover:text-amber-400"
+                    className="text-gray-600  hover:text-amber-600 "
                   >
                     Charela Inn
                   </a>
@@ -84,28 +64,25 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div>
+            <div className="flex flex-col">
               <h3 className="text-sm font-semibold text-gray-800  uppercase tracking-wider">
-                Legal
+                Contact
               </h3>
-              <ul className="mt-4 space-y-2">
-                <li>
-                  <Link
-                    href="/privacy"
-                    className="text-gray-600  hover:text-amber-600 dark:hover:text-amber-400"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/terms"
-                    className="text-gray-600  hover:text-amber-600 dark:hover:text-amber-400"
-                  >
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
+              <div className="mt-4 text-center space-y-2 mb-4">
+                <p className="text-sm text-gray-600 flex items-center gap-2">
+                  <Mail /> <a href="mailto:mirage02@cwjamaica.com">mirage02@cwjamaica.com</a>
+                </p>
+                <p className="text-sm text-gray-600 flex items-center gap-2">
+                  <Phone /> <a href="tel:+1-876-957-0386">+1 876-957-0386</a> |{" "}
+                  <span>Whatsapp: (876) 379-1505</span>
+                </p>
+              </div>
+              <div>
+                <p className="font-bold text-gray-600 text-sm">ADDRESS</p>
+                <p className="text-sm text-gray-600 pt-3">
+                  Mirage Resort, Lighthouse Road <br /> P.O. Box 33 Negril, Jamaica W.I
+                </p>
+              </div>
             </div>
           </div>
         </div>
