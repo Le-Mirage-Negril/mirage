@@ -14,7 +14,7 @@ import TestimonialCard from "@/components/features/TestimonialCard";
 export default function Home() {
   return (
     <LightTheme>
-      <div className="mx-auto w-screen  bg-white space-y-10">
+      <div className="mx-auto w-screen  bg-white">
         <section className="relative h-screen flex items-center overflow-hidden">
           <Hero />
           <div className="container mx-auto px-4 z-20 text-center">
@@ -58,7 +58,7 @@ export default function Home() {
               {/* Text Column */}
               <div className="md:col-span-5 space-y-6 order-2 md:order-1 mt-10 px-2 md:px-0">
                 <AnimatedSection direction="left" delay={0.2}>
-                  <h3 className="text-2xl font-semibold text-cyan-800">Discover Tranquility</h3>
+                  <h3 className="text-2xl font-semibold text-cyan-950">Discover Tranquility</h3>
                 </AnimatedSection>
 
                 <AnimatedSection direction="left" delay={0.3}>
@@ -79,7 +79,7 @@ export default function Home() {
                 <AnimatedSection direction="left" delay={0.5}>
                   <Button
                     variant="outline"
-                    className="mt-4 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white border-2"
+                    className="mt-4 border-cyan-900 text-cyan-900 hover:bg-cyan-900 hover:text-white border-2"
                   >
                     Explore Our Amenities
                   </Button>
@@ -140,7 +140,7 @@ export default function Home() {
         <section className="py-24 ">
           <div className="container mx-auto px-4">
             <AnimatedSection>
-              <h2 className="text-cyan-50 text-3xl md:text-4xl font-bold text-center mb-16">
+              <h2 className="text-cyan-950 text-3xl md:text-4xl font-bold font-serif text-center mb-16">
                 Luxurious Accommodations
               </h2>
             </AnimatedSection>
@@ -158,7 +158,7 @@ export default function Home() {
         <section className="py-24 bg-cyan-950 text-white">
           <div className="container mx-auto px-4">
             <AnimatedSection>
-              <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 font-serif">
                 Exceptional Amenities
               </h2>
             </AnimatedSection>
@@ -177,7 +177,7 @@ export default function Home() {
         <section className="py-24 bg-amber-50">
           <div className="container mx-auto px-4">
             <AnimatedSection>
-              <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 font-serif text-cyan-900">
                 Guest Experiences
               </h2>
             </AnimatedSection>
@@ -192,7 +192,7 @@ export default function Home() {
           </div>
         </section>
         {/* END Testimonials */}
-        <section className="relative py-24 bg-stone-900 overflow-hidden">
+        <section className="relative py-24 overflow-hidden">
           <ParallaxSection speed={0.2} className="absolute inset-0 opacity-20">
             <div
               className="w-full h-full bg-cover bg-center"
@@ -202,13 +202,13 @@ export default function Home() {
 
           <div className="container mx-auto px-4 relative z-10 text-center">
             <AnimatedSection>
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="font-serif text-3xl md:text-5xl font-bold text-cyan-950 mb-6">
                 Reserve Your Perfect Getaway
               </h2>
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-cyan-950/80 mb-8 max-w-2xl mx-auto">
                 Book directly with us for the best rates and exclusive perks
               </p>
             </AnimatedSection>
@@ -216,7 +216,7 @@ export default function Home() {
             <AnimatedSection delay={0.4}>
               <Button
                 size="lg"
-                className="bg-amber-400 hover:bg-amber-500 text-white px-8 py-6 text-lg"
+                className="bg-cyan-900 hover:bg-cyan-950 text-white px-8 py-6 text-lg"
               >
                 Book Now
               </Button>
