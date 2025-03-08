@@ -44,7 +44,8 @@ const menuLinks = [
 
 function DrawerNavigation() {
   const pathname = usePathname();
-  const [activeItem, setActiveItem] = useState(null);
+  //   eslint-disable-next-line
+  const [activeItem, setActiveItem] = useState<Record<string, any> | null>(null);
 
   return (
     <header className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-cyan-950/10">
