@@ -17,7 +17,7 @@ const menuLinks = [
   },
   {
     name: "Reservations",
-    href: "/book",
+    href: "/reservations",
   },
 ];
 

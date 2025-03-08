@@ -6,7 +6,7 @@ import ParallaxSection from "../animations/ParallaxSection";
 
 function Hero() {
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 z-0 bg-cyan-950">
       <ParallaxSection speed={-0.2} className="w-full h-full">
         <Image
           src="/pool-1.jpg"

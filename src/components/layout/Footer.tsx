@@ -40,7 +40,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/book" className="hover:text-amber-500 transition-colors">
+                <a href="/reservations" className="hover:text-amber-500 transition-colors">
                   Book a Room
                 </a>
               </li>
