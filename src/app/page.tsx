@@ -1,61 +1,229 @@
-import AnimatedSection from "@/components/AnimatedSection";
+import AmenityCard from "@/components/features/AmenityCard";
+import AnimatedSection from "@/components/animations/AnimatedSection";
+import ParallaxSection from "@/components/animations/ParallaxSection";
+import StaggeredGroup from "@/components/animations/StaggeredGroup";
 import Hero from "@/components/layout/Hero";
+import LightTheme from "@/components/providers/LightTheme";
+import Room from "@/components/rooms/Room";
+import { Button } from "@/components/ui/button";
+
+import { amenities, rooms, testimonials } from "@/lib/data";
 import Image from "next/image";
+import TestimonialCard from "@/components/features/TestimonialCard";
 
 export default function Home() {
   return (
-    <>
-      <div className="mx-auto bg-cyan-950 divide-y-8 divide-cyan-600 space-y-10">
-        <Hero />
-        <section className="container mx-auto md:py-40 py-10 px-4 md:px-2 ">
-          <AnimatedSection>
-            <div className="flex flex-col md:flex-row gap-4 justify-center items-center space-y-4">
-              <div className="flex flex-col justify-center items-center space-y-4">
-                <h2 className="text-4xl font-serif leading-4">Relax. Jump. Hedonism.</h2>
-                <p className="text-md text-center">
-                  Mirage Resort is a small private property, Clothing Optional, Adults Only Resort.{" "}
-                </p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pb-40">
-                <Image
-                  src="/swim-2.jpg"
-                  alt="Hotel Lobby"
-                  className="w-full rounded-lg  shadow-lg max-h-[600px] object-cover"
-                  width={300}
-                  height={500}
-                />
-                <Image
-                  src="/swim-4.jpg"
-                  alt="Hotel Lobby"
-                  className="w-full rounded-lg shadow-lg max-h-[600px] object-cover translate-y-16"
-                  width={300}
-                  height={500}
-                />
-                <Image
-                  src="/swim-3.jpg"
-                  alt="Hotel Lobby"
-                  className="w-full rounded-lg shadow-lg max-h-[600px] object-cover translate-y-32"
-                  width={300}
-                  height={500}
-                />
-              </div>
-            </div>
-          </AnimatedSection>
-        </section>
-        {/* romance */}
-      </div>
-      <section className=" mx-auto ">
-        <AnimatedSection>
-          <div className="bg-[url(/swimming.jpg)] bg-cover bg-center bg-no-repeat h-[600px] max-height-full  flex flex-col justify-center items-center space-y-4 brightness-90">
-            <div className="flex flex-col justify-center items-center space-y-4 py-40 brightness-100">
-              <h2 className="text-4xl font-serif leading-4 ">Romance.</h2>
-              <p className="text-center text-md">
-                independence, quietude and the utmost privacy - great for nature lovers!
+    <LightTheme>
+      <div className="mx-auto w-screen  bg-white space-y-10">
+        <section className="relative h-screen flex items-center overflow-hidden">
+          <Hero />
+          <div className="container mx-auto px-4 z-20 text-center">
+            <AnimatedSection delay={0.2}>
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 font-serif">
+                Le Mirage
+              </h1>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <h1 className="text-5xl md:text-7xl font-semibold text-white mb-4">
+                Luxury Redefined
+              </h1>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.4}>
+              <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+                Experience the perfect blend of comfort, elegance, and exceptional service
               </p>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.6} direction="up">
+              <Button
+                size="lg"
+                className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-6 text-lg"
+              >
+                Book Your Stay
+              </Button>
+            </AnimatedSection>
+          </div>
+        </section>
+        {/* NEW */}
+        <section className="py-24 bg-amber-50">
+          <div className="container mx-auto px-4">
+            <AnimatedSection direction="up" delay={0.1}>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-center text-cyan-900 mb-16">
+                Relax. Jump. Hedonism.
+              </h2>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              {/* Text Column */}
+              <div className="md:col-span-5 space-y-6 order-2 md:order-1 mt-10 px-2 md:px-0">
+                <AnimatedSection direction="left" delay={0.2}>
+                  <h3 className="text-2xl font-semibold text-cyan-800">Discover Tranquility</h3>
+                </AnimatedSection>
+
+                <AnimatedSection direction="left" delay={0.3}>
+                  <p className="text-cyan-700">
+                    Founded in 1995, our resort has been a beacon of luxury and comfort for over two
+                    decades. Our pristine swimming pool is designed for both relaxation and
+                    recreation, offering a refreshing escape from the ordinary.
+                  </p>
+                </AnimatedSection>
+                <AnimatedSection direction="left" delay={0.4}>
+                  <p className="text-cyan-700">
+                    Each of our three distinctive pool areas provides a unique atmosphere, from the
+                    family-friendly lagoon to our adults-only infinity edge masterpiece overlooking
+                    the coastline.
+                  </p>
+                </AnimatedSection>
+
+                <AnimatedSection direction="left" delay={0.5}>
+                  <Button
+                    variant="outline"
+                    className="mt-4 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white border-2"
+                  >
+                    Explore Our Amenities
+                  </Button>
+                </AnimatedSection>
+              </div>
+
+              {/* Images Column - Creative Layout */}
+              <div className="md:col-span-7 order-1 md:order-2 grid grid-cols-12 grid-rows-6 gap-3 h-[600px]">
+                {/* Larger main image */}
+                <AnimatedSection direction="right" delay={0.1} className="col-span-8 row-span-6">
+                  <ParallaxSection speed={0.2} className="h-full w-full">
+                    <div className="overflow-hidden rounded-lg h-full shadow-lg">
+                      <Image
+                        src="/swim-4.jpg"
+                        alt="Luxury Resort Swimming Pool"
+                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        width={500}
+                        height={500}
+                      />
+                    </div>
+                  </ParallaxSection>
+                </AnimatedSection>
+
+                {/* Top right image */}
+                <AnimatedSection direction="down" delay={0.3} className="col-span-4 row-span-3">
+                  <ParallaxSection speed={0.4} className="h-full w-full">
+                    <div className="overflow-hidden rounded-lg h-full shadow-lg">
+                      <Image
+                        src="/swim-2.jpg"
+                        alt="Infinity Pool View"
+                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        width={300}
+                        height={300}
+                      />
+                    </div>
+                  </ParallaxSection>
+                </AnimatedSection>
+
+                {/* Bottom right image */}
+                <AnimatedSection direction="up" delay={0.5} className="col-span-4 row-span-3">
+                  <ParallaxSection speed={-0.3} className="h-full w-full">
+                    <div className="overflow-hidden rounded-lg h-full shadow-lg">
+                      <Image
+                        src="/swim-3.jpg"
+                        alt="Poolside Lounging Area"
+                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        width={300}
+                        height={300}
+                      />
+                    </div>
+                  </ParallaxSection>
+                </AnimatedSection>
+              </div>
             </div>
           </div>
-        </AnimatedSection>
-      </section>
-    </>
+        </section>
+        {/* Room Showcase */}
+        <section className="py-24 ">
+          <div className="container mx-auto px-4">
+            <AnimatedSection>
+              <h2 className="text-cyan-50 text-3xl md:text-4xl font-bold text-center mb-16">
+                Luxurious Accommodations
+              </h2>
+            </AnimatedSection>
+
+            <StaggeredGroup>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {rooms.map((room, index) => (
+                  <Room key={index} room={room} />
+                ))}
+              </div>
+            </StaggeredGroup>
+          </div>
+        </section>
+        {/* Amenities */}
+        <section className="py-24 bg-cyan-950 text-white">
+          <div className="container mx-auto px-4">
+            <AnimatedSection>
+              <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+                Exceptional Amenities
+              </h2>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {amenities.map((feature, index) => (
+                <AnimatedSection key={feature.id} direction="scale" delay={index * 0.1}>
+                  <AmenityCard amenity={feature} />
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-24 bg-amber-50">
+          <div className="container mx-auto px-4">
+            <AnimatedSection>
+              <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+                Guest Experiences
+              </h2>
+            </AnimatedSection>
+
+            <StaggeredGroup>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {testimonials.map((testimonial, index) => (
+                  <TestimonialCard key={index} testimonial={testimonial} />
+                ))}
+              </div>
+            </StaggeredGroup>
+          </div>
+        </section>
+        {/* END Testimonials */}
+        <section className="relative py-24 bg-stone-900 overflow-hidden">
+          <ParallaxSection speed={0.2} className="absolute inset-0 opacity-20">
+            <div
+              className="w-full h-full bg-cover bg-center"
+              style={{ backgroundImage: "url('/hotel-cta.jpg')" }}
+            />
+          </ParallaxSection>
+
+          <div className="container mx-auto px-4 relative z-10 text-center">
+            <AnimatedSection>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                Reserve Your Perfect Getaway
+              </h2>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.2}>
+              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+                Book directly with us for the best rates and exclusive perks
+              </p>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.4}>
+              <Button
+                size="lg"
+                className="bg-amber-400 hover:bg-amber-500 text-white px-8 py-6 text-lg"
+              >
+                Book Now
+              </Button>
+            </AnimatedSection>
+          </div>
+        </section>
+      </div>
+    </LightTheme>
   );
 }
