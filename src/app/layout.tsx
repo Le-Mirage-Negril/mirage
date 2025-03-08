@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
+
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
-import DrawerNavigation from "@/components/layout/DrawNavigation";
-import MegaMenuNavigation from "@/components/layout/MegaMenuNavigation";
+
 import TransparentHoverMenu from "@/components/layout/TransparentHoverMenu";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
