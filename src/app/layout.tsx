@@ -5,6 +5,9 @@ import Header from "@/components/layout/Header";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
+import DrawerNavigation from "@/components/layout/DrawNavigation";
+import MegaMenuNavigation from "@/components/layout/MegaMenuNavigation";
+import TransparentHoverMenu from "@/components/layout/TransparentHoverMenu";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -32,7 +35,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex flex-col min-h-screen ">
-            <Header />
+            {/* <Header /> */}
+            {/* <DrawerNavigation /> */}
+            <TransparentHoverMenu />
             <main className="flex-grow mx-auto ">{children}</main>
             <Footer />
           </div>
