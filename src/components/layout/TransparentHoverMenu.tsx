@@ -29,7 +29,7 @@ const menuLinks: Record<string, string>[] = [
 function TransparentHoverMenu() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState(null);
+  const [activeItem, setActiveItem] = useState<Record<string, string> | null>(null);
   const [scrolled, setScrolled] = useState(false);
 
   // Handle scroll to change header appearance

@@ -50,10 +50,10 @@ const menuLinks = [
 
 function MegaMenuNavigation() {
   const pathname = usePathname();
-  const [openMenu, setOpenMenu] = useState(null);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleMenuHover = (menuName) => {
+  const handleMenuHover = (menuName: string) => {
     setOpenMenu(menuName);
   };
 
