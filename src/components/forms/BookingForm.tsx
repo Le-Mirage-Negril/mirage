@@ -7,6 +7,7 @@ import { Input } from "../ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { getRooms } from "@/lib/actions/room.actions";
 import { Room } from "@/types";
+import { useParams } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string(),
@@ -20,8 +21,8 @@ const formSchema = z.object({
 
 function BookingForm() {
   // TODO: get room query param
-  const urlParams = new URLSearchParams(window.location.search);
-  const room = urlParams.get("room");
+  const urlParams = useParams();
+  const room = urlParams.room;
   console.log(room);
   const [rooms, setRooms] = React.useState([]);
   React.useEffect(() => {
