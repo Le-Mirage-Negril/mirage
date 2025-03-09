@@ -50,8 +50,8 @@ model Booking {
   name           String
   email          String
   phone          String
-  checkIn        DateTime
-  checkOut       DateTime
+  checkIn        String
+  checkOut       String
   createdAt      DateTime @default(now())
   roomId         Int
   numberOfGuests Int

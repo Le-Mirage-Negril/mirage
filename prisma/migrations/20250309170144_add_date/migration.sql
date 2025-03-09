@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Booking" ALTER COLUMN "checkIn" SET DATA TYPE TEXT,
+ALTER COLUMN "checkOut" SET DATA TYPE TEXT;

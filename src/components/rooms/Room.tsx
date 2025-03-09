@@ -29,7 +29,7 @@ function Room({ room, buttonHref = "/rooms", buttonTitle = "View Detail" }: Room
         <CardDescription>{room.description}</CardDescription>
       </CardHeader>
       <CardFooter className="flex justify-between items-center">
-        <span className="text-lg font-semibold text-amber-500">{room.price} \ night</span>
+        <span className="text-lg font-semibold text-amber-500">${room.price} \ night</span>
         <Link href={buttonHref}>
           <Button
             size="sm"
