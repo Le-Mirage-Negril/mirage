@@ -31,6 +31,13 @@ function BookingForm() {
     }
     getAllRooms();
   }, []);
+
+  React.useEffect(() => {
+    if (room) {
+      form.setValue("room", Number(room));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [room]);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -89,40 +96,25 @@ function BookingForm() {
                 </FormItem>
               )}
             />
-            {room && (
-              <FormField
-                control={form.control}
-                name="room"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Room</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Room" {...field} value={room} />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-            )}
-            {!room && (
-              <FormField
-                control={form.control}
-                name="room"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Room</FormLabel>
-                    <FormControl>
-                      <select {...field} className="w-full rounded-lg border border-gray-300">
-                        {rooms?.map((room: Room) => (
-                          <option key={room.id} value={room.id}>
-                            {room.name}
-                          </option>
-                        ))}
-                      </select>
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-            )}
+
+            <FormField
+              control={form.control}
+              name="room"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Room</FormLabel>
+                  <FormControl>
+                    <select {...field} className="w-full rounded-lg border border-gray-300">
+                      {rooms?.map((room: Room) => (
+                        <option key={room.id} value={room.id}>
+                          {room.name}
+                        </option>
+                      ))}
+                    </select>
+                  </FormControl>
+                </FormItem>
+              )}
+            />
 
             <FormField
               control={form.control}
