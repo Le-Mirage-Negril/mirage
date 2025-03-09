@@ -6,7 +6,7 @@ import { ArrowBigDownDash } from "lucide-react";
 
 import React from "react";
 
-function page() {
+function ReservationPage() {
   return (
     <div className="mx-auto w-screen bg-cyan-950">
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -29,4 +29,4 @@ function page() {
   );
 }
 
-export default page;
+export default ReservationPage;
