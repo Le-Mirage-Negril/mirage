@@ -12,8 +12,8 @@ const formSchema = z.object({
   name: z.string(),
   email: z.string().email(),
   phone: z.string(),
-  checkIn: z.date(),
-  checkOut: z.date(),
+  checkIn: z.string(),
+  checkOut: z.string(),
   room: z.number(),
   numberOfGuests: z.number(),
 });
@@ -131,12 +131,7 @@ function BookingForm() {
                 <FormItem>
                   <FormLabel>Check In</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="Check In"
-                      {...field}
-                      type="date"
-                      value={field.value.toISOString().split("T")[0]}
-                    />
+                    <Input placeholder="Check In" {...field} type="date" />
                   </FormControl>
                 </FormItem>
               )}
@@ -148,12 +143,7 @@ function BookingForm() {
                 <FormItem>
                   <FormLabel>Check Out</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="Check Out"
-                      {...field}
-                      type="date"
-                      value={field.value.toISOString().split("T")[0]}
-                    />
+                    <Input placeholder="Check Out" {...field} type="date" />
                   </FormControl>
                 </FormItem>
               )}
