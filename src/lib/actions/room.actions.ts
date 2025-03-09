@@ -12,3 +12,13 @@ export const getFeaturedRooms = async () => {
   await prisma.$disconnect();
   return convertPrismaObject(rooms);
 };
+
+export const getRooms = async () => {
+  const rooms = await prisma.room.findMany({
+    orderBy: {
+      id: "asc",
+    },
+  });
+  await prisma.$disconnect();
+  return convertPrismaObject(rooms);
+};

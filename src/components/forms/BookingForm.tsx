@@ -5,6 +5,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { getRooms } from "@/lib/actions/room.actions";
+import { Room } from "@/types";
 
 const formSchema = z.object({
   name: z.string(),
@@ -18,6 +20,17 @@ const formSchema = z.object({
 
 function BookingForm() {
   // TODO: get room query param
+  const urlParams = new URLSearchParams(window.location.search);
+  const room = urlParams.get("room");
+  console.log(room);
+  const [rooms, setRooms] = React.useState([]);
+  React.useEffect(() => {
+    async function getAllRooms() {
+      const allRooms = await getRooms();
+      setRooms(allRooms);
+    }
+    getAllRooms();
+  }, []);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -76,7 +89,40 @@ function BookingForm() {
                 </FormItem>
               )}
             />
-            {/* <Input {...form.register("room")} placeholder="Room" /> */}
+            {room && (
+              <FormField
+                control={form.control}
+                name="room"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Room</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Room" {...field} value={room} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            )}
+            {!room && (
+              <FormField
+                control={form.control}
+                name="room"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Room</FormLabel>
+                    <FormControl>
+                      <select {...field} className="w-full rounded-lg border border-gray-300">
+                        {rooms?.map((room: Room) => (
+                          <option key={room.id} value={room.id}>
+                            {room.name}
+                          </option>
+                        ))}
+                      </select>
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            )}
 
             <FormField
               control={form.control}
