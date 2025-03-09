@@ -1,9 +1,13 @@
 interface Room {
   id: number | string;
-  title: string;
-  description: string;
-  image: string;
-  price: string;
+  name: string;
+  description?: string | null;
+  images: string[];
+  price?: number | null;
+  winterRate?: number;
+  summerRate?: number;
+  type?: string;
+  floor?: string;
   isFeatured: boolean;
 }
 interface Amenity {

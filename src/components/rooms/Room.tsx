@@ -21,15 +21,15 @@ function Room({ room, key, buttonHref = "/rooms", buttonTitle = "View Detail" }:
     >
       <div className="h-80 overflow-hidden">
         <Image
-          src={room.image}
-          alt={`Le Mirage - ${room.title}`}
+          src={room.images?.[0]}
+          alt={`Le Mirage - ${room.name}`}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale:110"
           width={500}
           height={500}
         />
       </div>
       <CardHeader>
-        <CardTitle>{room.title}</CardTitle>
+        <CardTitle>{room.name}</CardTitle>
         <CardDescription>{room.description}</CardDescription>
       </CardHeader>
       <CardFooter className="flex justify-between items-center">

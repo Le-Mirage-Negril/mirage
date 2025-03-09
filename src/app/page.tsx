@@ -7,12 +7,15 @@ import LightTheme from "@/components/providers/LightTheme";
 import Room from "@/components/rooms/Room";
 import { Button } from "@/components/ui/button";
 
-import { amenities, rooms, testimonials } from "@/lib/data";
+import { amenities, testimonials } from "@/lib/data";
 import Image from "next/image";
 import TestimonialCard from "@/components/features/TestimonialCard";
 import Link from "next/link";
+import { getFeaturedRooms } from "@/lib/actions/room.actions";
+import type { Room as RoomType } from "@/types";
 
-export default function Home() {
+export default async function Home() {
+  const rooms = await getFeaturedRooms();
   return (
     <LightTheme>
       <div className="mx-auto w-screen  bg-white">
@@ -150,7 +153,7 @@ export default function Home() {
 
             <StaggeredGroup>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {rooms.map((room, index) => (
+                {rooms.map((room: RoomType, index: number) => (
                   <Room key={index} room={room} />
                 ))}
               </div>
