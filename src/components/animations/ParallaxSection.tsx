@@ -1,4 +1,5 @@
 "use client";
+
 import { ReactNode, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 

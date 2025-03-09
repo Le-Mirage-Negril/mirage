@@ -4,8 +4,6 @@ import Hero from "@/components/layout/Hero";
 import { Button } from "@/components/ui/button";
 import { ArrowBigDownDash } from "lucide-react";
 
-import React from "react";
-
 function ReservationPage() {
   return (
     <div className="mx-auto w-screen bg-cyan-950">
