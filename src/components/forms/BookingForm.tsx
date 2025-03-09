@@ -17,7 +17,7 @@ const formSchema = z.object({
 });
 
 function BookingForm() {
-  // get room query param
+  // TODO: get room query param
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
