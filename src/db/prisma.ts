@@ -19,17 +19,20 @@ export const prisma = new PrismaClient({ adapter }).$extends({
   result: {
     room: {
       winterRate: {
-        compute(room) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        compute(room: any) {
           return room?.winterRate?.toString();
         },
       },
       summerRate: {
-        compute(room) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        compute(room: any) {
           return room?.summerRate?.toString();
         },
       },
       price: {
-        compute(room) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        compute(room: any) {
           return room?.price?.toString();
         },
       },
