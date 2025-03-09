@@ -1,4 +1,3 @@
-"use client";
 import ParallaxSection from "@/components/animations/ParallaxSection";
 import BookingForm from "@/components/forms/BookingForm";
 import Hero from "@/components/layout/Hero";
