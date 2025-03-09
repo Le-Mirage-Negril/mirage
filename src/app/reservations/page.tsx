@@ -1,13 +1,13 @@
-import ParallaxSection from "@/components/animations/ParallaxSection";
+// import ParallaxSection from "@/components/animations/ParallaxSection";
 import BookingForm from "@/components/forms/BookingForm";
-import Hero from "@/components/layout/Hero";
-import { Button } from "@/components/ui/button";
-import { ArrowBigDownDash } from "lucide-react";
+// import Hero from "@/components/layout/Hero";
+// import { Button } from "@/components/ui/button";
+// import { ArrowBigDownDash } from "lucide-react";
 
 function ReservationPage() {
   return (
     <div className="mx-auto w-screen bg-cyan-950">
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <Hero image="/room-2.jpg" />
         <ParallaxSection speed={-0.2}>
           <h1 className="text-4xl text-center text-white pb-20 font-serif">Reservations</h1>
@@ -19,7 +19,7 @@ function ReservationPage() {
             </Button>
           </div>
         </ParallaxSection>
-      </section>
+      </section> */}
       <section className="py-24 px-4" id="booking-form">
         <BookingForm />
       </section>
