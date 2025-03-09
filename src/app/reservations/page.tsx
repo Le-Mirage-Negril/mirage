@@ -8,6 +8,7 @@ function page() {
       <ParallaxSection speed={-0.2} className="w-full h-full">
         <div className="flex justify-center items-center h-screen">page</div>
       </ParallaxSection>
+      {/* form with room, dates, get num guests and name email */}
     </div>
   );
 }

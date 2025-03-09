@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { amenities, rooms, testimonials } from "@/lib/data";
 import Image from "next/image";
 import TestimonialCard from "@/components/features/TestimonialCard";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -36,12 +37,14 @@ export default function Home() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.6} direction="up">
-              <Button
-                size="lg"
-                className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-6 text-lg"
-              >
-                Book Your Stay
-              </Button>
+              <Link href="/reservations">
+                <Button
+                  size="lg"
+                  className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-6 text-lg"
+                >
+                  Book Your Stay
+                </Button>
+              </Link>
             </AnimatedSection>
           </div>
         </section>
@@ -214,12 +217,14 @@ export default function Home() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.4}>
-              <Button
-                size="lg"
-                className="bg-cyan-900 hover:bg-cyan-950 text-white px-8 py-6 text-lg"
-              >
-                Book Now
-              </Button>
+              <Link href="/reservations">
+                <Button
+                  size="lg"
+                  className="bg-cyan-900 hover:bg-cyan-950 text-white px-8 py-6 text-lg"
+                >
+                  Book Now
+                </Button>
+              </Link>
             </AnimatedSection>
           </div>
         </section>

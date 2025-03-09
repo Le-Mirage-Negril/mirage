@@ -125,15 +125,17 @@ function TransparentHoverMenu() {
         </div>
 
         <div className="hidden md:flex items-center space-x-4 flex-1 justify-end">
-          <Button
-            className={
-              scrolled
-                ? "bg-amber-500 hover:bg-amber-600 text-white"
-                : "bg-white hover:bg-white/90 text-cyan-950"
-            }
-          >
-            Book Now
-          </Button>
+          <Link href="/reservations">
+            <Button
+              className={
+                scrolled
+                  ? "bg-amber-500 hover:bg-amber-600 text-white"
+                  : "bg-white hover:bg-white/90 text-cyan-950"
+              }
+            >
+              Book Now
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile menu button */}
@@ -214,9 +216,11 @@ function TransparentHoverMenu() {
                 </div>
 
                 <div className="p-6 border-t">
-                  <Button className="w-full bg-amber-500 hover:bg-amber-600 text-white">
-                    Book Now
-                  </Button>
+                  <Link href="/reservations">
+                    <Button className="w-full bg-amber-500 hover:bg-amber-600 text-white">
+                      Book Now
+                    </Button>
+                  </Link>
                 </div>
               </motion.div>
             </motion.div>

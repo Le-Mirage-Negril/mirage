@@ -57,9 +57,11 @@ function DrawerNavigation() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white font-medium">
-            Book Now
-          </Button>
+          <Link href="/reservations">
+            <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white font-medium">
+              Book Now
+            </Button>
+          </Link>
 
           <Sheet>
             <SheetTrigger asChild>
@@ -114,9 +116,11 @@ function DrawerNavigation() {
                   </div>
 
                   <div className="mt-auto pt-10">
-                    <Button className="w-full bg-amber-500 hover:bg-amber-600 text-white mt-10">
-                      Book Your Stay
-                    </Button>
+                    <Link href="/reservations">
+                      <Button className="w-full bg-amber-500 hover:bg-amber-600 text-white mt-10">
+                        Book Your Stay
+                      </Button>
+                    </Link>
                   </div>
                 </div>
 
