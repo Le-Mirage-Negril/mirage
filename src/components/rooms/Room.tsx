@@ -7,18 +7,14 @@ import Link from "next/link";
 
 interface RoomProps {
   room: Room;
-  key: number | string;
   buttonTitle?: string;
   buttonHref?: string;
   buttonVariant?: "primary" | "secondary" | "outline";
 }
 
-function Room({ room, key, buttonHref = "/rooms", buttonTitle = "View Detail" }: RoomProps) {
+function Room({ room, buttonHref = "/rooms", buttonTitle = "View Detail" }: RoomProps) {
   return (
-    <Card
-      key={key}
-      className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 pt-0"
-    >
+    <Card className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 pt-0">
       <div className="h-80 overflow-hidden">
         <Image
           src={room.images?.[0]}

@@ -17,7 +17,7 @@ const sampleData = {
       winterRate: 150.0,
       price: 199.99,
       type: "single",
-      images: ["https://via.placeholder.com/150"],
+      images: ["/room-2.jpg"],
       floor: "First",
       isFeatured: true,
     },
@@ -30,7 +30,7 @@ const sampleData = {
       price: 299.99,
       isFeatured: true,
       floor: "Second",
-      images: ["https://via.placeholder.com/150"],
+      images: ["/room-2.jpg"],
     },
     {
       name: "Room 3",

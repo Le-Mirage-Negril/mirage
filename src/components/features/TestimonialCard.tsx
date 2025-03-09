@@ -4,12 +4,11 @@ import { Testimonial } from "@/types";
 
 interface TestimonialProps {
   testimonial: Testimonial;
-  key: number | string;
 }
 
-function TestimonialCard({ testimonial, key }: TestimonialProps) {
+function TestimonialCard({ testimonial }: TestimonialProps) {
   return (
-    <Card key={key} className="bg-white shadow-md">
+    <Card className="bg-white shadow-md">
       <CardHeader>
         <div className="text-amber-500 text-2xl mb-2">★★★★★</div>
       </CardHeader>
