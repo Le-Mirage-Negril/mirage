@@ -183,7 +183,7 @@ function TransparentHoverMenu() {
                   </button>
                 </div>
 
-                <div className="p-6 space-y-1">
+                <div className="p-6 space-y-1 bg-white">
                   {menuLinks.map((link) => (
                     <div key={link.href} className="relative overflow-hidden rounded-lg mb-4">
                       <Link
@@ -215,7 +215,7 @@ function TransparentHoverMenu() {
                   ))}
                 </div>
 
-                <div className="p-6 border-t">
+                <div className="p-6 border-t bg-white">
                   <Link href="/reservations">
                     <Button className="w-full bg-amber-500 hover:bg-amber-600 text-white">
                       Book Now
