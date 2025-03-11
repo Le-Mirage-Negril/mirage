@@ -7,7 +7,7 @@ import { Input } from "../ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { getRooms } from "@/lib/actions/room.actions";
 import { Room } from "@/types";
-import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string(),
@@ -21,9 +21,10 @@ const formSchema = z.object({
 
 function BookingForm() {
   // TODO: get room query param
-  const urlParams = useParams();
-  const room = urlParams.room;
-  console.log(room);
+  const searchParams = useSearchParams();
+  const room = searchParams.get("room");
+
+  console.log(room, searchParams);
   const [rooms, setRooms] = React.useState([]);
   React.useEffect(() => {
     async function getAllRooms() {
@@ -33,12 +34,6 @@ function BookingForm() {
     getAllRooms();
   }, []);
 
-  React.useEffect(() => {
-    if (room) {
-      form.setValue("room", Number(room));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [room]);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -51,6 +46,14 @@ function BookingForm() {
       numberOfGuests: 1,
     },
   });
+  React.useEffect(() => {
+    if (room) {
+      console.log("room #", room);
+      form.setValue("room", Number(room));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [room]);
+
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
   };
@@ -100,6 +103,7 @@ function BookingForm() {
 
             <FormField
               control={form.control}
+              // defaultValue={room ? Number(room) : 0}
               name="room"
               render={({ field }) => (
                 <FormItem>

@@ -154,7 +154,7 @@ export default async function Home() {
             <StaggeredGroup>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {rooms?.map((room: RoomType, index: number) => (
-                  <Room key={index} room={room} />
+                  <Room key={index} room={room} buttonHref={`/rooms`} />
                 ))}
               </div>
             </StaggeredGroup>

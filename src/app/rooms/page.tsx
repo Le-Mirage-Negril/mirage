@@ -23,7 +23,12 @@ function Page() {
         <StaggeredGroup>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 z-50">
             {rooms.map((room, index) => (
-              <Room key={index} room={room} buttonHref="/reservations" buttonTitle="Select" />
+              <Room
+                key={index}
+                room={room}
+                buttonHref={`/reservations?room=${room.id}#booking-form`}
+                buttonTitle="Select"
+              />
             ))}
           </div>
         </StaggeredGroup>
