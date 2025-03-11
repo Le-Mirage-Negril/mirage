@@ -22,7 +22,7 @@ const formSchema = z.object({
 function BookingForm() {
   // TODO: get room query param
   const searchParams = useSearchParams();
-  const room = searchParams.get("room");
+  const room = Number(searchParams.get("room") || "0");
 
   console.log(room, searchParams);
   const [rooms, setRooms] = React.useState([]);
@@ -42,17 +42,10 @@ function BookingForm() {
       phone: "",
       checkIn: "",
       checkOut: "",
-      room: 0,
+      room: room,
       numberOfGuests: 1,
     },
   });
-  React.useEffect(() => {
-    if (room) {
-      console.log("room #", room);
-      form.setValue("room", Number(room));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [room]);
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);

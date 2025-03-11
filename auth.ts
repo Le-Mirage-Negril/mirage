@@ -5,6 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 import { compareSync } from "bcrypt-ts-edge";
 import { prisma } from "@/db/prisma";
+import { cookies } from "next/headers";
 
 const config = {
   pages: {
@@ -52,9 +53,23 @@ const config = {
       session.user.id = token.sub;
       if (trigger === "update") {
         session.user.name = user.name;
+        session.user.isAdmin = user.isAdmin;
       }
+      console.log(session, token);
       return session;
     },
+    async jwt({ token, user, trigger, session }: any) {
+      if (user) {
+        token.isAdmin = user?.isAdmin;
+      }
+      console.log(session, token);
+      return token;
+    },
+    // authorized({ request, auth }: any) {
+    //   // check for session cookie
+    //   if (!request.cookies.get("session")) {
+    //   }
+    // },
   },
 } satisfies NextAuthConfig;
 
