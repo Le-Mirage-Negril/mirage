@@ -1,7 +1,8 @@
 import AnimatedSection from "@/components/animations/AnimatedSection";
 
 import Hero from "@/components/layout/Hero";
-import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ImageCarousel } from "@/components/ui/image-carousel";
 
 import React from "react";
 
@@ -16,9 +17,9 @@ function page() {
           </AnimatedSection>
         </div>
       </section>
-      <div className="bg-white">
-        <section className="container py-10 mx-auto space-y-8">
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
+      <div className="bg-white px-4">
+        <section className="container py-8 mx-auto space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-4 flex flex-col items-center">
               <AnimatedSection>
                 <h2 className="text-2xl text-cyan-950 font-serif">LE MIRAGE Weddings</h2>
@@ -36,39 +37,43 @@ function page() {
                   dreams a reality.
                 </p>
               </AnimatedSection>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Card className="p-4">
+                  <CardHeader>
+                    <CardTitle className="text-2xl text-cyan-950 font-serif">
+                      Things to know
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="list-decimal list-inside">
+                      <li> Wedding guests are offered a 30% discounts on Room Rates.</li>
+                      <li>Venue Access from as early as 8:00 am until reception is over.</li>
+                      <li>Free WiFi.</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+                <Card className="p-4">
+                  <CardHeader>
+                    <CardTitle className="text-2xl text-cyan-950 font-serif">Prices</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="list-decimal list-inside">
+                      <ol>10-20 persons US$110.00</ol>
+                      <ol>21-40 persons US$250.00</ol>
+                      <ol>41-80 persons US $350.00</ol>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
 
             <div>
-              {/* image slider */}
-              <Image
-                src="/weddings-hero1.jpg"
-                height={500}
-                width={400}
-                className="object-cover w-full"
-                alt="Wedding Image"
-              />
+              <AnimatedSection delay={0.1}>
+                <ImageCarousel images={["/weddings-hero1.jpg"]} alt={`Le Mirage Weddings`} />
+              </AnimatedSection>
             </div>
           </div>
           {/* things */}
-          <div className="grid grid-cols md:grid-cols-2 gap-4">
-            <div className="space-y-4">
-              <h2 className="text-2xl text-cyan-950 font-serif">Things to know</h2>
-              <ul className="list-decimal list-inside">
-                <li> Wedding guests are offered a 30% discounts on Room Rates.</li>
-                <li>Venue Access from as early as 8:00 am until reception is over.</li>
-                <li>Free WiFi.</li>
-              </ul>
-            </div>
-            {/* prices */}
-            <div className="space-y-4">
-              <h2 className="text-2xl text-cyan-950 font-serif">Prices</h2>
-              <ul className="list-decimal list-inside">
-                <ol>10 – 20 persons US$110.00</ol>
-                <ol>21- 40 persons US$250.00</ol>
-                <ol>41-80 persons US $350.00</ol>
-              </ul>
-            </div>
-          </div>
         </section>
       </div>
     </div>
