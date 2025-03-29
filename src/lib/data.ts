@@ -30,21 +30,22 @@ const rooms: Room[] = [
 const amenities: Amenity[] = [
   {
     id: 1,
-    title: "Spa & Wellness",
-    description: "Relax and rejuvenate with our premium spa services",
-    icon: "🧖‍♀️",
+    title: "“Infinity Swimming Pool",
+    description: "Relax by our outdoor pool with a cocktail in hand",
+    icon: "🏖️",
   },
   {
     id: 2,
     title: "Fine Dining",
-    description: "Experience culinary excellence at our restaurants",
+    description:
+      "Our restaurant, Cafe Au Lait is open and ready for your breakfast and lunch desires!",
     icon: "🍽️",
   },
   {
     id: 3,
-    title: "Infinity Pool",
-    description: "Enjoy our rooftop pool with panoramic city views",
-    icon: "🏊‍♂️",
+    title: "Wi-Fi",
+    description: "Stay connected with complimentary high-speed internet",
+    icon: "📶",
   },
   {
     id: 4,

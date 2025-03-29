@@ -1,0 +1,71 @@
+import React from "react";
+import { ImageCarousel } from "../ui/image-carousel";
+import AnimatedSection from "../animations/AnimatedSection";
+import { Button } from "../ui/button";
+import Link from "next/link";
+
+interface RoomSectionProps {
+  id: number;
+  floor: string;
+  description: string;
+  images: string[];
+  rates: {
+    double: number;
+    single: number;
+  };
+  season: {
+    start: string;
+    end: string;
+  };
+}
+
+function RoomSection({ floor, description, images, rates, season, id }: RoomSectionProps) {
+  return (
+    <div className="grid md:grid-cols-2 gap-8 py-12">
+      {/* Room Description - Order changes on mobile */}
+      <div className="order-2 md:order-1 space-y-6">
+        <AnimatedSection>
+          <h2 className="text-3xl font-serif text-cyan-950">{floor}</h2>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.2}>
+          <p className="text-gray-600 leading-relaxed">{description}</p>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.3}>
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-cyan-950">
+              Summer Rates - {season.start} to {season.end}
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-amber-50 p-4 rounded-lg">
+                <p className="text-amber-700 font-medium">Double Rate</p>
+                <p className="text-2xl font-bold text-amber-600">${rates.double}</p>
+              </div>
+              <div className="bg-amber-50 p-4 rounded-lg">
+                <p className="text-amber-700 font-medium">Single Rate</p>
+                <p className="text-2xl font-bold text-amber-600">${rates.single}</p>
+              </div>
+            </div>
+            <div className="pt-4">
+              <Link href={`/reservations?room=${id}`}>
+                <Button className="w-full bg-amber-500 hover:bg-amber-600 text-white">
+                  Select Room
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </AnimatedSection>
+      </div>
+
+      {/* Room Images - Order changes on mobile */}
+      <div className="order-1 md:order-2">
+        <AnimatedSection delay={0.1}>
+          <ImageCarousel images={images} alt={`${floor} Room`} />
+        </AnimatedSection>
+      </div>
+    </div>
+  );
+}
+
+export default RoomSection;

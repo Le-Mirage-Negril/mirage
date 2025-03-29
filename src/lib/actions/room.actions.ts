@@ -14,6 +14,7 @@ export const getFeaturedRooms = async () => {
 };
 
 export const getRooms = async () => {
+  // get from django api
   const rooms = await prisma.room.findMany({
     orderBy: {
       id: "asc",

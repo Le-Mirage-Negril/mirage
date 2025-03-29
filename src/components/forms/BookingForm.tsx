@@ -5,9 +5,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
-import { getRooms } from "@/lib/actions/room.actions";
+
 import { Room } from "@/types";
 import { useSearchParams } from "next/navigation";
+import { roomData } from "@/app/rooms/page";
 
 const formSchema = z.object({
   name: z.string(),
@@ -15,24 +16,22 @@ const formSchema = z.object({
   phone: z.string(),
   checkIn: z.string(),
   checkOut: z.string(),
-  room: z.number(),
+  room: z.string(),
   numberOfGuests: z.number(),
 });
 
 function BookingForm() {
-  // TODO: get room query param
   const searchParams = useSearchParams();
-  const room = Number(searchParams.get("room") || "0");
+  const roomId = searchParams.get("room") || "0";
 
-  console.log(room, searchParams);
-  const [rooms, setRooms] = React.useState([]);
-  React.useEffect(() => {
-    async function getAllRooms() {
-      const allRooms = await getRooms();
-      setRooms(allRooms);
-    }
-    getAllRooms();
-  }, []);
+  // const [rooms, setRooms] = React.useState<Room[]>([]);
+  // React.useEffect(() => {
+  //   async function getAllRooms() {
+  //     const allRooms = await getRooms();
+  //     setRooms(allRooms);
+  //   }
+  //   getAllRooms();
+  // }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -42,125 +41,145 @@ function BookingForm() {
       phone: "",
       checkIn: "",
       checkOut: "",
-      room: room,
+      room: roomId,
       numberOfGuests: 1,
     },
   });
 
+  // Update room value when roomId changes
+  React.useEffect(() => {
+    if (roomId) {
+      form.setValue("room", roomId);
+    }
+  }, [roomId, form]);
+
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
   };
+  console.log(form.formState.errors);
+
   return (
-    <div className=" px-4 py-8 w-full max-w-xl mx-auto rounded-lg shadow-md bg-cyan-50">
-      <Form {...form}>
-        <h2 className="text-2xl text-center mb-6">Book a Room</h2>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="grid md:grid-cols-2 md:gap-4 gap-2 mb-4">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Full Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Full Name" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Email" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6 max-w-2xl mx-auto bg-amber-50 p-6 rounded-lg"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Your name" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Phone Number</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Phone Number" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="Your email" type="email" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              // defaultValue={room ? Number(room) : 0}
-              name="room"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Room</FormLabel>
-                  <FormControl>
-                    <select {...field} className="w-full rounded-lg border border-gray-300">
-                      {rooms?.map((room: Room) => (
-                        <option key={room.id} value={room.id}>
-                          {room.name}
-                        </option>
-                      ))}
-                    </select>
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone</FormLabel>
+                <FormControl>
+                  <Input placeholder="Your phone number" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              name="checkIn"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Check In</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Check In" {...field} type="date" />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="checkOut"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Check Out</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Check Out" {...field} type="date" />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name="room"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Room</FormLabel>
+                <FormControl>
+                  <select
+                    {...field}
+                    className="w-full rounded-lg border border-gray-300 p-2 text-black"
+                    value={field.value}
+                    // onChange={(e) => {
+                    //   field.onChange(e);
+                    //   form.setValue("room", Number(e.target.value));
+                    // }}
+                  >
+                    <option value="">Select a room</option>
+                    {roomData?.map((room: Room) => (
+                      <option key={room.id} value={room.id}>
+                        {room.floor}
+                      </option>
+                    ))}
+                  </select>
+                </FormControl>
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              name="numberOfGuests"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Guests</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Guests" {...field} type="number" />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-          </div>
-          <button
-            type="submit"
-            className="bg-cyan-900 text-white text-lg font-semibold py-2 px-4 rounded-lg w-full"
-          >
-            Book Now
-          </button>
-        </form>
-      </Form>
-    </div>
+          <FormField
+            control={form.control}
+            name="checkIn"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Check In</FormLabel>
+                <FormControl>
+                  <Input placeholder="Check In" {...field} type="date" />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="checkOut"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Check Out</FormLabel>
+                <FormControl>
+                  <Input placeholder="Check Out" {...field} type="date" />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="numberOfGuests"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Guests</FormLabel>
+                <FormControl>
+                  <Input placeholder="Number of guests" {...field} type="number" min={1} max={2} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-amber-500 text-white py-2 px-4 rounded-lg hover:bg-amber-600 transition-colors"
+        >
+          Submit Booking
+        </button>
+      </form>
+    </Form>
   );
 }
 

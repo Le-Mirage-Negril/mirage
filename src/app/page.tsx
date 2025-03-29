@@ -24,7 +24,7 @@ export default async function Home() {
           <div className="container mx-auto px-4 z-20 text-center">
             <AnimatedSection delay={0.2}>
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 font-serif">
-                Le Mirage
+                WELCOME TO LE MIRAGE
               </h1>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
@@ -69,16 +69,29 @@ export default async function Home() {
 
                 <AnimatedSection direction="left" delay={0.3}>
                   <p className="text-cyan-700">
-                    Founded in 1995, our resort has been a beacon of luxury and comfort for over two
-                    decades. Our pristine swimming pool is designed for both relaxation and
-                    recreation, offering a refreshing escape from the ordinary.
+                    Mirage Resort is a small private property, Clothing Optional, Adults Only
+                    Resort. Situated on the West End cliffs along the rugged coastline of Negril.
+                    With twelve large rooms facing the Caribbean Sea, the Resort offers an intimate
+                    experience - independence, quietude and the utmost privacy - great for nature
+                    lovers! The cliffside location offers swimming and snorkeling on the pristine
+                    coral reef. You can also swim in our gorgeous “Infinity Swimming Pool” or just
+                    relax under the shady almond tree by the pool.
                   </p>
                 </AnimatedSection>
                 <AnimatedSection direction="left" delay={0.4}>
                   <p className="text-cyan-700">
-                    Each of our three distinctive pool areas provides a unique atmosphere, from the
-                    family-friendly lagoon to our adults-only infinity edge masterpiece overlooking
-                    the coastline.
+                    Mirage Resort is a genuine retreat from the pressures of life, yet within ten
+                    minutes walk of the Rick&apos;s Café and numerous bars, restaurants &
+                    attractions.
+                  </p>
+                </AnimatedSection>
+                <AnimatedSection>
+                  {" "}
+                  <p className="text-cyan-700">
+                    Guests at Mirage Resort are also welcome to spend a day on Negril&apos;s
+                    sparkling 7 - mile beach at our sister property, the Charela Inn Hotel.
+                    Swimming/sunbathing. We offer quietude, privacy and discreet service is always
+                    near at hand when needed.
                   </p>
                 </AnimatedSection>
 
@@ -145,11 +158,20 @@ export default async function Home() {
         {/* Room Showcase */}
         <section className="py-24 ">
           <div className="container mx-auto px-4">
-            <AnimatedSection>
-              <h2 className="text-cyan-950 text-3xl md:text-4xl font-bold font-serif text-center mb-16">
-                Luxurious Accommodations
-              </h2>
-            </AnimatedSection>
+            <div className="mb-8 space-y-6">
+              <AnimatedSection>
+                <h2 className="text-cyan-950 text-3xl md:text-4xl font-bold font-serif text-center ">
+                  Luxurious Accommodations
+                </h2>
+              </AnimatedSection>
+              <AnimatedSection>
+                <p className="text-center">
+                  {" "}
+                  With only 12 rooms there is no over crowding, there Is ample space as we cater
+                  only for our own guest.
+                </p>
+              </AnimatedSection>
+            </div>
 
             <StaggeredGroup>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
