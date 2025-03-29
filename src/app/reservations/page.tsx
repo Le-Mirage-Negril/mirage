@@ -26,6 +26,7 @@ function ReservationPage() {
         </div>
       </section>
       <section className="py-24 px-4" id="booking-form">
+        <h2 className="text-4xl font-bold text-center text-white mb-8">Book a Room</h2>
         <BookingForm />
       </section>
     </div>

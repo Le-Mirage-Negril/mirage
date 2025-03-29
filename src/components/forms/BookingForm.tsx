@@ -8,7 +8,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 
 import { Room } from "@/types";
 import { useSearchParams } from "next/navigation";
-import { roomData } from "@/app/rooms/page";
+import { roomData } from "@/lib/data";
+
 
 const formSchema = z.object({
   name: z.string(),

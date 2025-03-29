@@ -1,60 +1,9 @@
-"use client";
-
 import AnimatedSection from "@/components/animations/AnimatedSection";
 import StaggeredGroup from "@/components/animations/StaggeredGroup";
 import Hero from "@/components/layout/Hero";
 import RoomSection from "@/components/rooms/RoomSection";
+import { roomData } from "@/lib/data";
 import React from "react";
-
-const currentYear = new Date().getFullYear();
-
-const roomData = [
-  {
-    floor: "First Floor",
-    id: 1,
-    description:
-      "Our first floor is steps away from the infinity pool, these four spacious rooms feature wide windows and glass doors that will allow you to see all of nature from the comfort of the bedroom. Whether it is to just sit on your balcony and enjoy a drink in the shade or grab a lounge chair and bask in the sunshine before diving into the pool.",
-    images: ["/room-1.jpg", "/room-2.jpg", "/room-1.jpg"],
-    rates: {
-      double: 100,
-      single: 80,
-    },
-    season: {
-      start: `April 15th, ${currentYear}`,
-      end: `December 14th, ${currentYear + 1}`,
-    },
-  },
-  {
-    floor: "Second Floor",
-    id: 2,
-    description:
-      "Our second floor offers a scenic view of the pristine blue waters of the Caribbean Sea. These rooms are slightly more spacious than those on the ground floor and also boast more upgraded bathrooms, two of these rooms also feature a wrap around balcony.",
-    images: ["/room-2.jpg", "/room-1.jpg", "/room-1.jpg"],
-    rates: {
-      double: 120,
-      single: 100,
-    },
-    season: {
-      start: `April 15th, ${currentYear}`,
-      end: `December 14th, ${currentYear + 1}`,
-    },
-  },
-  {
-    floor: "Third Floor",
-    id: 3,
-    description:
-      "Our third floor has a panoramic view of the Caribbean Sea and the infinity pool, these rooms are extra large, tastefully furnished. Sunsets and sunrise views from the balcony of these rooms are exquisite and a great way to open and close the day.",
-    images: ["/room-2.jpg", "/room-1.jpg", "/room-2.jpg"],
-    rates: {
-      double: 140,
-      single: 120,
-    },
-    season: {
-      start: `April 15th, ${currentYear}`,
-      end: `December 14th, ${currentYear + 1}`,
-    },
-  },
-];
 
 function Page() {
   return (
@@ -102,7 +51,5 @@ function Page() {
     </div>
   );
 }
-
-export { roomData };
 
 export default Page;
