@@ -6,6 +6,7 @@ import { roomData } from "@/lib/data";
 import React from "react";
 
 function Page() {
+  console.log(roomData);
   return (
     <div className="mx-auto w-screen bg-white">
       <Hero image="/room-1.jpg" />
@@ -31,7 +32,7 @@ function Page() {
         </AnimatedSection>
 
         <StaggeredGroup>
-          <div className="space-y-12">
+          <div className="md:space-y-12 space-y-4">
             {roomData.map((room, index) => (
               <RoomSection key={index} {...room} />
             ))}

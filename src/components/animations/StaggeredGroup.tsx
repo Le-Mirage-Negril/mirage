@@ -1,27 +1,28 @@
 "use client";
 import { useInView, motion } from "framer-motion";
-import { ReactNode, useRef } from "react";
+import React, { ReactNode, useRef } from "react";
 
 const StaggeredGroup = ({ children }: { children: ReactNode }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 }); // Reduced threshold
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1, // Reduced stagger time
+        delayChildren: 0.1, // Added small delay
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 10, opacity: 0 }, // Reduced y movement
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.4, ease: "easeOut" }, // Smoother transition
     },
   };
 
@@ -33,15 +34,11 @@ const StaggeredGroup = ({ children }: { children: ReactNode }) => {
       variants={containerVariants}
       className="w-full"
     >
-      {Array.isArray(children) ? (
-        children.map((child, index) => (
-          <motion.div key={index} variants={itemVariants}>
-            {child}
-          </motion.div>
-        ))
-      ) : (
-        <motion.div variants={itemVariants}>{children}</motion.div>
-      )}
+      {React.Children.map(children, (child, index) => (
+        <motion.div key={index} variants={itemVariants}>
+          {child}
+        </motion.div>
+      ))}
     </motion.div>
   );
 };

@@ -21,9 +21,14 @@ interface RoomSectionProps {
 
 function RoomSection({ floor, description, images, rates, season, id }: RoomSectionProps) {
   return (
-    <div className="grid md:grid-cols-2 gap-8 py-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-4 py-12">
+      <div className="md:order-2">
+        <AnimatedSection delay={0.1}>
+          <ImageCarousel images={images} alt={`${floor} Room`} />
+        </AnimatedSection>
+      </div>
       {/* Room Description - Order changes on mobile */}
-      <div className="order-2 md:order-1 space-y-6">
+      <div className="md:order-1 space-y-6">
         <AnimatedSection>
           <h2 className="text-3xl font-serif text-cyan-950">{floor}</h2>
         </AnimatedSection>
@@ -59,11 +64,6 @@ function RoomSection({ floor, description, images, rates, season, id }: RoomSect
       </div>
 
       {/* Room Images - Order changes on mobile */}
-      <div className="order-1 md:order-2">
-        <AnimatedSection delay={0.1}>
-          <ImageCarousel images={images} alt={`${floor} Room`} />
-        </AnimatedSection>
-      </div>
     </div>
   );
 }
