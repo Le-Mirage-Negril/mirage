@@ -21,7 +21,7 @@ interface RoomSectionProps {
 
 function RoomSection({ floor, description, images, rates, season, id }: RoomSectionProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-4 py-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-4 py-7">
       <div className="md:order-2">
         <AnimatedSection delay={0.1}>
           <ImageCarousel images={images} alt={`${floor} Room`} />

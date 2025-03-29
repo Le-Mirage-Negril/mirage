@@ -32,7 +32,7 @@ function Page() {
         </AnimatedSection>
 
         <StaggeredGroup>
-          <div className="md:space-y-12 space-y-4">
+          <div className="md:space-y-12">
             {roomData.map((room, index) => (
               <RoomSection key={index} {...room} />
             ))}
