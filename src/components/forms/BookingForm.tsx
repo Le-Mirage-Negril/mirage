@@ -25,14 +25,7 @@ function BookingForm() {
   const searchParams = useSearchParams();
   const roomId = searchParams.get("room") || "0";
 
-  // const [rooms, setRooms] = React.useState<Room[]>([]);
-  // React.useEffect(() => {
-  //   async function getAllRooms() {
-  //     const allRooms = await getRooms();
-  //     setRooms(allRooms);
-  //   }
-  //   getAllRooms();
-  // }, []);
+
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -116,10 +109,6 @@ function BookingForm() {
                     {...field}
                     className="w-full rounded-lg border border-gray-300 p-2 text-black"
                     value={field.value}
-                    // onChange={(e) => {
-                    //   field.onChange(e);
-                    //   form.setValue("room", Number(e.target.value));
-                    // }}
                   >
                     <option value="">Select a room</option>
                     {roomData?.map((room: Room) => (

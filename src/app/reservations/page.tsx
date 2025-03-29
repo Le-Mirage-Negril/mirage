@@ -1,9 +1,9 @@
 import AnimatedSection from "@/components/animations/AnimatedSection";
-
 import BookingForm from "@/components/forms/BookingForm";
 import Hero from "@/components/layout/Hero";
 import { Button } from "@/components/ui/button";
 import { ArrowBigDownDash } from "lucide-react";
+import { Suspense } from "react";
 
 function ReservationPage() {
   return (
@@ -27,7 +27,9 @@ function ReservationPage() {
       </section>
       <section className="py-24 px-4" id="booking-form">
         <h2 className="text-4xl font-bold text-center text-white mb-8">Book a Room</h2>
-        <BookingForm />
+        <Suspense fallback={<div className="text-white text-center">Loading booking form...</div>}>
+          <BookingForm />
+        </Suspense>
       </section>
     </div>
   );
