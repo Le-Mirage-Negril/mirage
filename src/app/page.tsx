@@ -51,19 +51,20 @@ export default async function Home() {
           </div>
         </section>
         {/* NEW */}
-        <section className="py-24 bg-amber-50">
-          <div className="container mx-auto px-4">
+        <section className="py-12 bg-amber-50">
+          <div className="container mx-auto px-4 ">
             <AnimatedSection direction="up" delay={0.1}>
-              <Typography variant="h2">Relax. Jump. Hedonism.</Typography>
+              <Typography variant="h2" className="pb-10">
+                Relax. Jump. Hedonism.
+              </Typography>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center ">
               {/* Text Column */}
-              <div className="md:col-span-5 space-y-6 order-2 md:order-1 mt-10 px-2 md:px-0">
+              <div className="md:col-span-5 space-y-3 order-2 md:order-1 px-2 md:px-0 pt-10">
                 <AnimatedSection direction="left" delay={0.2}>
-                  <h3 className="text-2xl font-semibold text-cyan-950">Discover Tranquility</h3>
+                  <Typography variant="h3">Discover Tranquility</Typography>
                 </AnimatedSection>
-
                 <AnimatedSection direction="left" delay={0.3}>
                   <p className="text-cyan-700">
                     Mirage Resort is a small private property, Clothing Optional, Adults Only
@@ -83,7 +84,6 @@ export default async function Home() {
                   </p>
                 </AnimatedSection>
                 <AnimatedSection>
-                  {" "}
                   <p className="text-cyan-700">
                     Guests at Mirage Resort are also welcome to spend a day on Negril&apos;s
                     sparkling 7 - mile beach at our sister property, the Charela Inn Hotel.
@@ -91,11 +91,10 @@ export default async function Home() {
                     near at hand when needed.
                   </p>
                 </AnimatedSection>
-
                 <AnimatedSection direction="left" delay={0.5}>
                   <Button
                     variant="outline"
-                    className="mt-4 border-cyan-900 text-cyan-900 hover:bg-cyan-900 hover:text-white border-2"
+                    className="mt-6 border-cyan-700 text-cyan-700 hover:bg-cyan-700 hover:text-white border-2 px-8 py-3 rounded-lg font-medium transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-1"
                   >
                     Explore Our Amenities
                   </Button>
@@ -153,17 +152,14 @@ export default async function Home() {
           </div>
         </section>
         {/* Room Showcase */}
-        <section className="py-24 ">
+        <section className="py-12">
           <div className="container mx-auto px-4">
-            <div className="mb-8 space-y-6">
+            <div className="space-y-3">
               <AnimatedSection>
-                <h2 className="text-cyan-950 text-3xl md:text-4xl font-bold font-serif text-center ">
-                  Luxurious Accommodations
-                </h2>
+                <Typography variant="h2">Luxurious Accommodations</Typography>
               </AnimatedSection>
               <AnimatedSection>
-                <p className="text-center">
-                  {" "}
+                <p className="text-center pb-8">
                   With only 12 rooms there is no over crowding, there Is ample space as we cater
                   only for our own guest.
                 </p>
@@ -180,12 +176,12 @@ export default async function Home() {
           </div>
         </section>
         {/* Amenities */}
-        <section className="py-24 bg-cyan-950 text-white">
-          <div className="container mx-auto px-4">
+        <section className="py-12 bg-cyan-950 text-white">
+          <div className="container mx-auto px-4 space-y-3">
             <AnimatedSection>
-              <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 font-serif">
+              <Typography variant="h2" className="text-white">
                 Exceptional Amenities
-              </h2>
+              </Typography>
             </AnimatedSection>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -199,12 +195,10 @@ export default async function Home() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-24 bg-amber-50">
-          <div className="container mx-auto px-4">
+        <section className="py-12 bg-amber-50">
+          <div className="container mx-auto px-4 space-y-3">
             <AnimatedSection>
-              <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 font-serif text-cyan-900">
-                Guest Experiences
-              </h2>
+              <Typography variant="h2">Guest Experiences</Typography>
             </AnimatedSection>
 
             <StaggeredGroup>
@@ -217,7 +211,7 @@ export default async function Home() {
           </div>
         </section>
         {/* END Testimonials */}
-        <section className="relative py-24 overflow-hidden">
+        <section className="relative py-12 overflow-hidden">
           <ParallaxSection speed={0.2} className="absolute inset-0 opacity-20">
             <div
               className="w-full h-full bg-cover bg-center"
@@ -227,9 +221,7 @@ export default async function Home() {
 
           <div className="container mx-auto px-4 relative z-10 text-center">
             <AnimatedSection>
-              <h2 className="font-serif text-3xl md:text-5xl font-bold text-cyan-950 mb-6">
-                Reserve Your Perfect Getaway
-              </h2>
+              <Typography variant="h2">Reserve Your Perfect Getaway</Typography>
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>

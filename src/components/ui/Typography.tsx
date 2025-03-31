@@ -21,7 +21,7 @@ const Typography = (props: Props) => {
       return (
         <h2
           className={cn(
-            "font-serif text-4xl md:text-5xl font-bold text-center text-cyan-900 mb-16",
+            "font-serif text-4xl md:text-5xl font-bold text-center text-cyan-900 pb-5",
             className
           )}
         >
@@ -32,7 +32,7 @@ const Typography = (props: Props) => {
       return (
         <h3
           className={cn(
-            "font-serif text-2xl md:text-3xl font-bold text-center text-cyan-900 mb-16",
+            "font-serif text-2xl md:text-3xl font-bold text-center text-cyan-900 mb-4",
             className
           )}
         >
