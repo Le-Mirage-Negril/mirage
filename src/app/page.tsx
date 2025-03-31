@@ -13,6 +13,7 @@ import TestimonialCard from "@/components/features/TestimonialCard";
 import Link from "next/link";
 import { getFeaturedRooms } from "@/lib/actions/room.actions";
 import type { Room as RoomType } from "@/types";
+import Typography from "@/components/ui/Typography";
 
 export default async function Home() {
   const rooms = await getFeaturedRooms();
@@ -23,14 +24,12 @@ export default async function Home() {
           <Hero />
           <div className="container mx-auto px-4 z-20 text-center">
             <AnimatedSection delay={0.2}>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 font-serif">
-                WELCOME TO LE MIRAGE
-              </h1>
+              <Typography variant="h1">WELCOME TO LE MIRAGE</Typography>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
-              <h1 className="text-5xl md:text-7xl font-semibold text-white mb-4">
+              <Typography variant="h2" className=" text-white mb-4">
                 Luxury Redefined
-              </h1>
+              </Typography>
             </AnimatedSection>
 
             <AnimatedSection delay={0.4}>
@@ -55,9 +54,7 @@ export default async function Home() {
         <section className="py-24 bg-amber-50">
           <div className="container mx-auto px-4">
             <AnimatedSection direction="up" delay={0.1}>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-center text-cyan-900 mb-16">
-                Relax. Jump. Hedonism.
-              </h2>
+              <Typography variant="h2">Relax. Jump. Hedonism.</Typography>
             </AnimatedSection>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">

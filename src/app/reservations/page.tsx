@@ -1,7 +1,9 @@
 import AnimatedSection from "@/components/animations/AnimatedSection";
 import BookingForm from "@/components/forms/BookingForm";
 import Hero from "@/components/layout/Hero";
+import PageWrapper from "@/components/layout/PageWrapper";
 import { Button } from "@/components/ui/button";
+import Typography from "@/components/ui/Typography";
 import { ArrowBigDownDash } from "lucide-react";
 import { Suspense } from "react";
 
@@ -12,9 +14,7 @@ function ReservationPage() {
       <section className="relative h-screen flex items-center overflow-hidden">
         <div className="container mx-auto px-4 z-20 text-center">
           <AnimatedSection delay={0.2}>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 font-serif">
-              Reservations
-            </h1>
+            <Typography variant="h1">Reservations</Typography>
           </AnimatedSection>
           <div className="text-center">
             <Button className="text-white bg-amber-500" asChild>
@@ -25,12 +25,18 @@ function ReservationPage() {
           </div>
         </div>
       </section>
-      <section className="py-24 px-4" id="booking-form">
-        <h2 className="text-4xl font-bold text-center text-white mb-8">Book a Room</h2>
-        <Suspense fallback={<div className="text-white text-center">Loading booking form...</div>}>
-          <BookingForm />
-        </Suspense>
-      </section>
+      <PageWrapper className="bg-cyan-950">
+        <section id="booking-form">
+          <Typography variant="h2" className="text-center text-white mb-12">
+            Book a Room
+          </Typography>
+          <Suspense
+            fallback={<div className="text-white text-center">Loading booking form...</div>}
+          >
+            <BookingForm />
+          </Suspense>
+        </section>
+      </PageWrapper>
     </div>
   );
 }

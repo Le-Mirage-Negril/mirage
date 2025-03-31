@@ -29,7 +29,7 @@ function RoomSection({ floor, description, images, rates, season, id }: RoomSect
         </AnimatedSection>
       </div>
       {/* Room Description - Order changes on mobile */}
-      <div className="md:order-1 space-y-6">
+      <div className="md:order-1 space-y-6 p-6 flex flex-col justify-center items-center">
         <AnimatedSection>
           <h2 className="text-3xl font-serif text-cyan-950">{floor}</h2>
         </AnimatedSection>
