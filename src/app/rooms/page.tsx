@@ -22,7 +22,7 @@ async function Page() {
         </div>
       </section>
 
-      <PageWrapper className="pt-7">
+      <PageWrapper className="pt-7 pb-10">
         <section className="container mx-auto">
           <AnimatedSection delay={0.4} className="space-y-4 pb-4">
             <Typography variant="h2" className="mb-8">
@@ -45,10 +45,10 @@ async function Page() {
             </div>
           </StaggeredGroup>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5">
             {" "}
             <AnimatedSection delay={0.5} className="flex">
-              <div className="bg-amber-50 p-6 rounded-lg max-w-3xl mx-auto my-8 shadow-md">
+              <div className="bg-amber-50 p-6 rounded-lg max-w-3xl mx-auto my-1 shadow-md">
                 <h3 className="text-lg font-bold text-cyan-900 mb-3">Additional Information</h3>
                 <p className="text-gray-700">
                   There is an additional 10% service charge & 10% Gov. tax and room tax of US$1.00
