@@ -7,6 +7,7 @@ import { Input } from "../ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
+import Typography from "../ui/Typography";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -32,7 +33,10 @@ function ContactForm() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-2xl mx-auto container py-5">
+      <Typography variant="h2" className="text-center mb-6 text-gray-700">
+        Contact Us
+      </Typography>
       <p className="text-center mb-6 text-gray-700">
         Feel free to contact us at any time. We are here to provide you with more information and
         answer any questions you may have about our resort

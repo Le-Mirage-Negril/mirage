@@ -1,5 +1,6 @@
 import AnimatedSection from "@/components/animations/AnimatedSection";
 import StaggeredGroup from "@/components/animations/StaggeredGroup";
+import ContactForm from "@/components/forms/ContactForm";
 import Hero from "@/components/layout/Hero";
 import PageWrapper from "@/components/layout/PageWrapper";
 import RoomSection from "@/components/rooms/RoomSection";
@@ -79,7 +80,7 @@ async function Page() {
             </AnimatedSection>
           </div>
           <AnimatedSection delay={0.6}>
-            <div className="w-full max-w-3xl mx-auto pb-20 bg-gradient-to-r from-cyan-50 to-amber-50 p-6 rounded-lg shadow-md">
+            <div className="w-full max-w-3xl mx-auto pb-20 bg-gradient-to-r from-cyan-50 to-amber-50 p-6 md:my-10 rounded-lg shadow-md">
               <h3 className="text-xl font-bold text-cyan-900 mb-4 text-center">Room Amenities</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                 <div className="flex items-center gap-2">
@@ -199,6 +200,7 @@ async function Page() {
               </div>
             </div>
           </AnimatedSection>
+          <ContactForm />
         </section>
       </PageWrapper>
     </div>
