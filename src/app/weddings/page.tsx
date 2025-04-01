@@ -96,7 +96,7 @@ function page() {
               <AnimatedSection delay={0.1}>
                 <ImageCarousel
                   images={[
-                    "/weddings.jpg",
+                    "/wedding.jpg",
                     "/weddings-hero1.jpg",
                     "/weddings-hero2.jpg",
                     "/weddings-hero3.jpg",
