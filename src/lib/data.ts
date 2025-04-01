@@ -36,9 +36,8 @@ const amenities: Amenity[] = [
   },
   {
     id: 2,
-    title: "Fine Dining",
-    description:
-      "Our restaurant, Cafe Au Lait is open and ready for your breakfast and lunch desires!",
+    title: "Complementary Continental Breakfast",
+    description: "We offer a complimentary continental breakfast.",
     icon: "🍽️",
   },
   {

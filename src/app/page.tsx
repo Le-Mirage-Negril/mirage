@@ -186,7 +186,7 @@ export default async function Home() {
           </div>
         </section>
         {/* Amenities */}
-        <section className="py-12 bg-cyan-950 text-white">
+        <section className="py-12 bg-cyan-950 text-white" id="amenities">
           <div className="container mx-auto px-4 space-y-3">
             <AnimatedSection>
               <Typography variant="h2" className="text-white">
