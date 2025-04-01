@@ -14,6 +14,7 @@ import Link from "next/link";
 import { getFeaturedRooms } from "@/lib/actions/room.actions";
 import type { Room as RoomType } from "@/types";
 import Typography from "@/components/ui/Typography";
+import { ArrowDown } from "lucide-react";
 
 export default async function Home() {
   const rooms = await getFeaturedRooms();
@@ -24,10 +25,15 @@ export default async function Home() {
           <Hero />
           <div className="container mx-auto px-4 z-20 text-center">
             <AnimatedSection delay={0.2}>
-              <Typography variant="h1">WELCOME TO LE MIRAGE</Typography>
+              <Typography variant="h3" className="text-white">
+                WELCOME TO
+              </Typography>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
-              <Typography variant="h2" className=" text-white mb-4">
+              <Typography variant="h1">LE MIRAGE</Typography>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <Typography variant="h3" className=" text-white mb-4">
                 Luxury Redefined
               </Typography>
             </AnimatedSection>
@@ -93,10 +99,14 @@ export default async function Home() {
                 </AnimatedSection>
                 <AnimatedSection direction="left" delay={0.5}>
                   <Button
-                    variant="outline"
+                    asChild
+                    variant="link"
                     className="mt-6 border-cyan-700 text-cyan-700 hover:bg-cyan-700 hover:text-white border-2 px-8 py-3 rounded-lg font-medium transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-1"
                   >
-                    Explore Our Amenities
+                    <a href="#amenities">
+                      <ArrowDown className="w-4 h-4" />
+                      Explore Our Amenities
+                    </a>
                   </Button>
                 </AnimatedSection>
               </div>

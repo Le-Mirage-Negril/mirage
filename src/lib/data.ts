@@ -1,6 +1,6 @@
-import { Amenity, Room, Testimonial } from "@/types";
+import { Amenity, Room, Season, Testimonial } from "@/types";
 
-const rooms: Room[] = [
+const rooms: Partial<Room>[] = [
   {
     id: 1,
     name: "Deluxe Suite",
@@ -84,48 +84,96 @@ const currentYear = new Date().getFullYear();
 const roomData = [
   {
     floor: "First Floor",
+    name: "First Floor Room",
     id: 1,
     description:
       "Our first floor is steps away from the infinity pool, these four spacious rooms feature wide windows and glass doors that will allow you to see all of nature from the comfort of the bedroom. Whether it is to just sit on your balcony and enjoy a drink in the shade or grab a lounge chair and bask in the sunshine before diving into the pool.",
     images: ["/room-1.jpg", "/room-2.jpg", "/room-1.jpg"],
     rates: {
-      double: 100,
-      single: 80,
+      double: {
+        winter: 150,
+        summer: 100,
+      },
+      single: {
+        winter: 120,
+        summer: 80,
+      },
     },
     season: {
-      start: `April 15th, ${currentYear}`,
-      end: `December 14th, ${currentYear + 1}`,
+      summer: {
+        start: `April 15th, ${currentYear}`,
+        end: `December 14th, ${currentYear + 1}`,
+      },
+      winter: {
+        start: `December 15th, ${currentYear}`,
+        end: `April 14th, ${currentYear + 1}`,
+      },
     },
+    winterRate: 100,
+    summerRate: 120,
+    currentSeason: "" as Season,
   },
   {
     floor: "Second Floor",
+    name: "Second Floor Room",
     id: 2,
     description:
       "Our second floor offers a scenic view of the pristine blue waters of the Caribbean Sea. These rooms are slightly more spacious than those on the ground floor and also boast more upgraded bathrooms, two of these rooms also feature a wrap around balcony.",
     images: ["/room-2.jpg", "/room-1.jpg", "/room-1.jpg"],
     rates: {
-      double: 120,
-      single: 100,
+      double: {
+        winter: 180,
+        summer: 120,
+      },
+      single: {
+        winter: 140,
+        summer: 90,
+      },
     },
     season: {
-      start: `April 15th, ${currentYear}`,
-      end: `December 14th, ${currentYear + 1}`,
+      summer: {
+        start: `April 15th, ${currentYear}`,
+        end: `December 14th, ${currentYear + 1}`,
+      },
+      winter: {
+        start: `December 15th, ${currentYear}`,
+        end: `April 14th, ${currentYear + 1}`,
+      },
     },
+    winterRate: 100,
+    summerRate: 120,
+    currentSeason: "" as Season,
   },
   {
     floor: "Third Floor",
+    name: "Third Floor Room",
     id: 3,
     description:
       "Our third floor has a panoramic view of the Caribbean Sea and the infinity pool, these rooms are extra large, tastefully furnished. Sunsets and sunrise views from the balcony of these rooms are exquisite and a great way to open and close the day.",
     images: ["/room-2.jpg", "/room-1.jpg", "/room-2.jpg"],
     rates: {
-      double: 140,
-      single: 120,
+      double: {
+        winter: 200,
+        summer: 130,
+      },
+      single: {
+        winter: 180,
+        summer: 120,
+      },
     },
     season: {
-      start: `April 15th, ${currentYear}`,
-      end: `December 14th, ${currentYear + 1}`,
+      summer: {
+        start: `April 15th, ${currentYear}`,
+        end: `December 14th, ${currentYear + 1}`,
+      },
+      winter: {
+        start: `December 15th, ${currentYear}`,
+        end: `April 14th, ${currentYear + 1}`,
+      },
     },
+    winterRate: 100,
+    summerRate: 120,
+    currentSeason: "" as Season,
   },
 ];
 

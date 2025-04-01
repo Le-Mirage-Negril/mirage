@@ -3,23 +3,9 @@ import { ImageCarousel } from "../ui/image-carousel";
 import AnimatedSection from "../animations/AnimatedSection";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { Room } from "@/types";
 
-interface RoomSectionProps {
-  id: number;
-  floor: string;
-  description: string;
-  images: string[];
-  rates: {
-    double: number;
-    single: number;
-  };
-  season: {
-    start: string;
-    end: string;
-  };
-}
-
-function RoomSection({ floor, description, images, rates, season, id }: RoomSectionProps) {
+function RoomSection({ floor, description, images, rates, season, id, currentSeason }: Room) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-4 py-7">
       {/* implement share feature */}
@@ -41,16 +27,28 @@ function RoomSection({ floor, description, images, rates, season, id }: RoomSect
         <AnimatedSection delay={0.3}>
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-cyan-950">
-              Summer Rates - {season.start} to {season.end}
+              Current Season: {currentSeason === "summer" ? "Summer" : "Winter"} Rates
             </h3>
+            <div className="text-sm text-gray-600 mb-2">
+              <p>
+                Summer Rates ({season?.summer.start} to {season?.summer.end}): Double $
+                {rates?.double.summer} / Single ${rates?.single.summer}
+              </p>
+              <p>
+                Winter Rates ({season?.winter.start} to {season?.winter.end}): Double $
+                {rates?.double.winter} / Single ${rates?.single.winter}
+              </p>
+            </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-amber-50 p-4 rounded-lg">
                 <p className="text-amber-700 font-medium">Double Rate</p>
-                <p className="text-2xl font-bold text-amber-600">${rates.double}</p>
+
+                <p className="text-2xl font-bold text-amber-600">${rates?.double[currentSeason]}</p>
               </div>
               <div className="bg-amber-50 p-4 rounded-lg">
                 <p className="text-amber-700 font-medium">Single Rate</p>
-                <p className="text-2xl font-bold text-amber-600">${rates.single}</p>
+
+                <p className="text-2xl font-bold text-amber-600">${rates?.single[currentSeason]}</p>
               </div>
             </div>
             <div className="pt-4">

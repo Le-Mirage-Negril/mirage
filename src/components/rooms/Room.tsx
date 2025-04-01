@@ -4,6 +4,7 @@ import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import Typography from "../ui/Typography";
 
 interface RoomProps {
   room: Room;
@@ -26,7 +27,9 @@ function Room({ room, buttonHref = "/rooms", buttonTitle = "View Detail" }: Room
         />
       </div>
       <CardHeader>
-        <CardTitle>{room.name}</CardTitle>
+        <CardTitle>
+          <Typography variant="h3">{room.name}</Typography>
+        </CardTitle>
         <CardDescription>{room.description}</CardDescription>
       </CardHeader>
       <CardFooter className="flex justify-between items-center">

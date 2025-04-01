@@ -1,3 +1,4 @@
+type Season = "summer" | "winter";
 interface Room {
   id: number | string;
   name?: string;
@@ -9,23 +10,32 @@ interface Room {
   type?: string;
   floor?: string;
   rates?: {
-    double: number;
-    single: number;
+    double: {
+      winter: number;
+      summer: number;
+    };
+    single: {
+      winter: number;
+      summer: number;
+    };
   };
   season?: {
-    start: string;
-    end: string;
+    summer: {
+      start: string;
+      end: string;
+    };
+    winter: {
+      start: string;
+      end: string;
+    };
   };
+  currentSeason: Season;
   isFeatured?: boolean;
   roomNumber?: number;
   roomType?: string;
   roomSize?: number;
   bedType?: string;
   amenities?: string[];
-  isAvailable?: boolean;
-  isBooked?: boolean;
-  isCleaned?: boolean;
-  isMaintenance?: boolean;
 }
 interface Amenity {
   id: number | string;
@@ -41,4 +51,4 @@ interface Testimonial {
   testimonial: string;
 }
 
-export type { Room, Amenity, Testimonial };
+export type { Room, Amenity, Testimonial, Season };

@@ -4,11 +4,13 @@ import Hero from "@/components/layout/Hero";
 import PageWrapper from "@/components/layout/PageWrapper";
 import RoomSection from "@/components/rooms/RoomSection";
 import Typography from "@/components/ui/Typography";
-import { roomData } from "@/lib/data";
+import { getRooms } from "@/lib/actions/room.actions";
+
 import React from "react";
 
-function Page() {
-  console.log(roomData);
+async function Page() {
+  const rooms = await getRooms();
+
   return (
     <div className="mx-auto w-screen bg-white">
       <Hero image="/room-1.jpg" />
@@ -37,7 +39,7 @@ function Page() {
 
           <StaggeredGroup>
             <div className="md:space-y-12">
-              {roomData.map((room, index) => (
+              {rooms.map((room, index) => (
                 <RoomSection key={index} {...room} />
               ))}
             </div>
