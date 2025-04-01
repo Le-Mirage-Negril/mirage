@@ -94,7 +94,17 @@ function page() {
             </div>
             <div>
               <AnimatedSection delay={0.1}>
-                <ImageCarousel images={["/weddings-hero1.jpg"]} alt={`Le Mirage Weddings`} />
+                <ImageCarousel
+                  images={[
+                    "/weddings.jpg",
+                    "/weddings-hero1.jpg",
+                    "/weddings-hero2.jpg",
+                    "/weddings-hero3.jpg",
+                    "/weddings-hero4.jpg",
+                    "/weddings-hero5.jpg",
+                  ]}
+                  alt={`Le Mirage Weddings`}
+                />
               </AnimatedSection>
             </div>
           </div>
