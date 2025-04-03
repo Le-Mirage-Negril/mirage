@@ -114,8 +114,7 @@ const roomData = [
         end: `April 14th, ${currentYear + 1}`,
       },
     },
-    winterRate: 100,
-    summerRate: 120,
+
     currentSeason: "" as Season,
   },
   {
@@ -145,8 +144,7 @@ const roomData = [
         end: `April 14th, ${currentYear + 1}`,
       },
     },
-    winterRate: 100,
-    summerRate: 120,
+
     currentSeason: "" as Season,
   },
   {
@@ -176,8 +174,6 @@ const roomData = [
         end: `April 14th, ${currentYear + 1}`,
       },
     },
-    winterRate: 100,
-    summerRate: 120,
     currentSeason: "" as Season,
   },
 ];
