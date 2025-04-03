@@ -7,9 +7,9 @@ import LightTheme from "@/components/providers/LightTheme";
 import Room from "@/components/rooms/Room";
 import { Button } from "@/components/ui/button";
 
-import { amenities, testimonials } from "@/lib/data";
+import { amenities } from "@/lib/data";
 import Image from "next/image";
-import TestimonialCard from "@/components/features/TestimonialCard";
+
 import Link from "next/link";
 import { getFeaturedRooms } from "@/lib/actions/room.actions";
 import type { Room as RoomType } from "@/types";
@@ -61,7 +61,7 @@ export default async function Home() {
           <div className="container mx-auto px-4 ">
             <AnimatedSection direction="up" delay={0.1}>
               <Typography variant="h2" className="pb-10">
-                Relax. Jump. Hedonism.
+                Breathe, Relax, Unwind.
               </Typography>
             </AnimatedSection>
 
@@ -78,8 +78,7 @@ export default async function Home() {
                     With twelve large rooms facing the Caribbean Sea, the Resort offers an intimate
                     experience - independence, quietude and the utmost privacy - great for nature
                     lovers! The cliffside location offers swimming and snorkeling on the pristine
-                    coral reef. You can also swim in our gorgeous “Infinity Swimming Pool” or just
-                    relax under the shady almond tree by the pool.
+                    coral reef. You can also swim in our gorgeous “Infinity Swimming Pool”.
                   </p>
                 </AnimatedSection>
                 <AnimatedSection direction="left" delay={0.4}>
@@ -170,8 +169,8 @@ export default async function Home() {
               </AnimatedSection>
               <AnimatedSection>
                 <p className="text-center pb-8">
-                  With only 12 rooms there is no over crowding, there Is ample space as we cater
-                  only for our own guest.
+                  With only 12 rooms, there is no overcrowding. There is ample space as we only
+                  cater to our own guests.
                 </p>
               </AnimatedSection>
             </div>
@@ -205,7 +204,7 @@ export default async function Home() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-12 bg-amber-50">
+        {/* <section className="py-12 bg-amber-50">
           <div className="container mx-auto px-4 space-y-3">
             <AnimatedSection>
               <Typography variant="h2">Guest Experiences</Typography>
@@ -219,7 +218,7 @@ export default async function Home() {
               </div>
             </StaggeredGroup>
           </div>
-        </section>
+        </section> */}
         {/* END Testimonials */}
         <section className="relative py-12 overflow-hidden">
           <ParallaxSection speed={0.2} className="absolute inset-0 opacity-20">

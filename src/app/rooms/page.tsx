@@ -47,7 +47,6 @@ async function Page() {
           </StaggeredGroup>
 
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5">
-            {" "}
             <AnimatedSection delay={0.5} className="flex">
               <div className="bg-amber-50 p-6 rounded-lg max-w-3xl mx-auto my-1 shadow-md">
                 <h3 className="text-lg font-bold text-cyan-900 mb-3">Additional Information</h3>
@@ -61,7 +60,7 @@ async function Page() {
                 </p>
               </div>
             </AnimatedSection>
-            <AnimatedSection delay={0.6}>
+            <AnimatedSection delay={0.5} className="flex">
               <div className="bg-cyan-50 p-6 rounded-lg max-w-3xl mx-auto my-8 shadow-md">
                 <h3 className="text-lg font-bold text-cyan-900 mb-3">Guest Privileges</h3>
                 <p className="text-gray-700">
@@ -71,10 +70,8 @@ async function Page() {
                   given for use at the Charela Inn.
                 </p>
                 <p className="text-gray-700 mt-4">
-                  The Cafe Au Lait Restaurant at Le Mirage is open for breakfast which we offer a
-                  complementary continental breakfast for our guests. Cafe Au Lait also offers great
-                  burgers, pizza, a variety of salads and more for lunch! There are several bars and
-                  restaurants within close walking distance to make your stay complete.
+                  We offer a complimentary continental breakfast for our guests. There are several
+                  bars and restaurants within close walking distance to make your stay complete.
                 </p>
               </div>
             </AnimatedSection>

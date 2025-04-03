@@ -48,9 +48,15 @@ const amenities: Amenity[] = [
   },
   {
     id: 4,
-    title: "Concierge",
-    description: "24/7 service to meet all your needs during your stay",
+    title: "Concierge / Front Desk",
+    description: "The front desk is open from 7:30 am to 6:00 pm, there is no 24 hour concierge.",
     icon: "👨‍💼",
+  },
+  {
+    id: 5,
+    title: "Free Parking",
+    description: "We offer free parking for our guests.",
+    icon: "🅿️",
   },
 ];
 
@@ -82,11 +88,11 @@ const currentYear = new Date().getFullYear();
 
 const roomData = [
   {
-    floor: "First Floor",
-    name: "First Floor Room",
+    floor: "Standard Room (Poolside)",
+    name: "Standard Room (Poolside)",
     id: 1,
     description:
-      "Our first floor is steps away from the infinity pool, these four spacious rooms feature wide windows and glass doors that will allow you to see all of nature from the comfort of the bedroom. Whether it is to just sit on your balcony and enjoy a drink in the shade or grab a lounge chair and bask in the sunshine before diving into the pool.",
+      "Our Standard Poolside Rooms on the first floor are steps away from the infinity pool, these four spacious rooms feature wide windows and glass doors that will allow you to see all of nature from the comfort of the bedroom. Whether it is to just sit on your balcony and enjoy a drink in the shade or grab a lounge chair and bask in the sunshine before diving into the pool.",
     images: ["/room-1.jpg", "/room-2.jpg", "/room-1.jpg"],
     rates: {
       double: {
@@ -101,7 +107,7 @@ const roomData = [
     season: {
       summer: {
         start: `April 15th, ${currentYear}`,
-        end: `December 14th, ${currentYear + 1}`,
+        end: `December 14th, ${currentYear}`,
       },
       winter: {
         start: `December 15th, ${currentYear}`,
@@ -113,11 +119,11 @@ const roomData = [
     currentSeason: "" as Season,
   },
   {
-    floor: "Second Floor",
-    name: "Second Floor Room",
+    floor: "King Room (Second Floor)",
+    name: "King Room (Second Floor)",
     id: 2,
     description:
-      "Our second floor offers a scenic view of the pristine blue waters of the Caribbean Sea. These rooms are slightly more spacious than those on the ground floor and also boast more upgraded bathrooms, two of these rooms also feature a wrap around balcony.",
+      "Our King Rooms on the second floor offer a scenic view of the pristine blue waters of the Caribbean Sea. These rooms are slightly more spacious than those on the ground floor and also boast more upgraded bathrooms, two of these rooms also feature a wrap around balcony.",
     images: ["/room-2.jpg", "/room-1.jpg", "/room-1.jpg"],
     rates: {
       double: {
@@ -132,7 +138,7 @@ const roomData = [
     season: {
       summer: {
         start: `April 15th, ${currentYear}`,
-        end: `December 14th, ${currentYear + 1}`,
+        end: `December 14th, ${currentYear}`,
       },
       winter: {
         start: `December 15th, ${currentYear}`,
@@ -144,11 +150,11 @@ const roomData = [
     currentSeason: "" as Season,
   },
   {
-    floor: "Third Floor",
-    name: "Third Floor Room",
+    floor: "Deluxe Room (Third Floor)",
+    name: "Deluxe Room (Third Floor)",
     id: 3,
     description:
-      "Our third floor has a panoramic view of the Caribbean Sea and the infinity pool, these rooms are extra large, tastefully furnished. Sunsets and sunrise views from the balcony of these rooms are exquisite and a great way to open and close the day.",
+      "Our Deluxe Rooms on the third floor offer a panoramic view of the Caribbean Sea and the infinity pool, these rooms are extra large, tastefully furnished. Sunsets and sunrise views from the balcony of these rooms are exquisite and a great way to open and close the day.",
     images: ["/room-2.jpg", "/room-1.jpg", "/room-2.jpg"],
     rates: {
       double: {
@@ -163,7 +169,7 @@ const roomData = [
     season: {
       summer: {
         start: `April 15th, ${currentYear}`,
-        end: `December 14th, ${currentYear + 1}`,
+        end: `December 14th, ${currentYear}`,
       },
       winter: {
         start: `December 15th, ${currentYear}`,
