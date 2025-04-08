@@ -9,7 +9,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { Room } from "@/types";
 import { useSearchParams } from "next/navigation";
 import { roomData } from "@/lib/data";
-
+import emailjs from "@emailjs/browser";
 
 const formSchema = z.object({
   name: z.string(),
@@ -24,8 +24,6 @@ const formSchema = z.object({
 function BookingForm() {
   const searchParams = useSearchParams();
   const roomId = searchParams.get("room") || "0";
-
-
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -49,6 +47,37 @@ function BookingForm() {
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
+    const roomSelected = roomData.find((room: Room) => room.id === parseInt(values.room));
+    console.log(roomSelected);
+    // post request to booking api
+    emailjs
+      .send(
+        "service_4ufw5zb",
+        "template_iq19jfv",
+        {
+          email: values.email,
+          name: values.name,
+          phone: values.phone,
+          checkIn: values.checkIn,
+          checkOut: values.checkOut,
+          room: roomSelected?.name,
+          numberOfGuests: values.numberOfGuests,
+        },
+        "Q3FdJozPBW62sJiSg"
+      )
+      .then(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (result: any) => {
+          console.log("sent email", result);
+          // toast.success("Email sent successfully");
+          form.reset();
+        },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (error: any) => {
+          console.log("faile", error);
+          // toast.error("Email failed to send");
+        }
+      );
   };
   console.log(form.formState.errors);
 
