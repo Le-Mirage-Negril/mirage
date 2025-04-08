@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
 
 import TransparentHoverMenu from "@/components/layout/TransparentHoverMenu";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -38,6 +39,7 @@ export default function RootLayout({
             {/* <DrawerNavigation /> */}
             <TransparentHoverMenu />
             <main className="flex-grow mx-auto ">{children}</main>
+            <Toaster />
             <Footer />
           </div>
         </ThemeProvider>

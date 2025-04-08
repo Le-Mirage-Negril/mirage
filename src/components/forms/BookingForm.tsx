@@ -9,7 +9,9 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { Room } from "@/types";
 import { useSearchParams } from "next/navigation";
 import { roomData } from "@/lib/data";
-import emailjs from "@emailjs/browser";
+
+import { sendEmail } from "./utils";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   name: z.string(),
@@ -50,34 +52,22 @@ function BookingForm() {
     const roomSelected = roomData.find((room: Room) => room.id === parseInt(values.room));
     console.log(roomSelected);
     // post request to booking api
-    emailjs
-      .send(
-        "service_4ufw5zb",
-        "template_iq19jfv",
-        {
-          email: values.email,
-          name: values.name,
-          phone: values.phone,
-          checkIn: values.checkIn,
-          checkOut: values.checkOut,
-          room: roomSelected?.name,
-          numberOfGuests: values.numberOfGuests,
-        },
-        "Q3FdJozPBW62sJiSg"
-      )
-      .then(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (result: any) => {
-          console.log("sent email", result);
-          // toast.success("Email sent successfully");
-          form.reset();
-        },
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (error: any) => {
-          console.log("faile", error);
-          // toast.error("Email failed to send");
-        }
-      );
+    const result = sendEmail(values);
+    console.log(result);
+    if (result) {
+      form.setValue("name", "");
+      form.setValue("email", "");
+      form.setValue("phone", "");
+      form.setValue("checkIn", "");
+      form.setValue("checkOut", "");
+      form.setValue("room", "");
+      form.setValue("numberOfGuests", 1);
+      toast.success("Email sent successfully");
+      // set to default values
+      form.reset();
+    } else {
+      toast.error("Email failed to send");
+    }
   };
   console.log(form.formState.errors);
 

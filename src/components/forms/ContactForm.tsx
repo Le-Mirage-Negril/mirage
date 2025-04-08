@@ -8,7 +8,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import Typography from "../ui/Typography";
-
+import { sendEmail } from "./utils";
+import { toast } from "sonner";
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -30,6 +31,18 @@ function ContactForm() {
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
     // Handle form submission here
+    const result = sendEmail(values);
+    if (result) {
+      form.reset();
+      form.setValue("name", "");
+      form.setValue("email", "");
+      form.setValue("phone", "");
+      form.setValue("message", "");
+
+      toast.success("Email sent successfully");
+    } else {
+      toast.error("Email failed to send");
+    }
   };
 
   return (
@@ -107,8 +120,12 @@ function ContactForm() {
             )}
           />
 
-          <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white">
-            Send Message
+          <Button
+            type="submit"
+            className="w-full bg-cyan-600 hover:bg-cyan-700 text-white"
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting ? "Sending..." : "Send Message"}
           </Button>
         </form>
       </Form>
