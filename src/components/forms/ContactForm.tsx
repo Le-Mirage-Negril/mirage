@@ -38,11 +38,8 @@ function ContactForm() {
       form.setValue("email", "");
       form.setValue("phone", "");
       form.setValue("message", "");
-
       toast.success("Email sent successfully");
-    } else {
-      toast.error("Email failed to send");
-    }
+    } 
   };
 
   return (

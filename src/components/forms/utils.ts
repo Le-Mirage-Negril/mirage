@@ -16,7 +16,11 @@ export function sendEmail(params: Record<string, string | any>, templateId: stri
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (result: any) => {
         console.log("sent email", result);
-        result = true;
+        if (result.status === 200) {
+          result = true;
+        } else if (result.status !== 200) {
+          result = false;
+        }
       },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (error: any) => {
