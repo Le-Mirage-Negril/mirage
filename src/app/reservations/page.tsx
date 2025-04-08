@@ -14,6 +14,7 @@ function ReservationPage() {
       <section className="relative h-screen flex items-center overflow-hidden">
         <div className="container mx-auto px-4 z-20 text-center">
           <AnimatedSection delay={0.2}>
+            {/* comment */}
             <Typography variant="h1">Reservations</Typography>
           </AnimatedSection>
           <div className="text-center">
