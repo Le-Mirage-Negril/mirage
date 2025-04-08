@@ -52,7 +52,7 @@ function BookingForm() {
     const roomSelected = roomData.find((room: Room) => room.id === parseInt(values.room));
     console.log(roomSelected);
     // post request to booking api
-    const result = sendEmail(values);
+    const result = sendEmail(values, "template_6lmus0g");
     console.log(result);
     if (result) {
       form.setValue("name", "");

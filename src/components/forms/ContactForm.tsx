@@ -31,7 +31,7 @@ function ContactForm() {
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
     // Handle form submission here
-    const result = sendEmail(values);
+    const result = sendEmail(values, "template_ugb7z57");
     if (result) {
       form.reset();
       form.setValue("name", "");
