@@ -19,11 +19,11 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-medium text-white mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li>
-                <a href="#" className="hover:text-amber-500 transition-colors">
+              {/* <li>
+                <Link href="/about" className="hover:text-amber-500 transition-colors">
                   About Us
-                </a>
-              </li>
+                </Link>
+              </li> */}
               <li>
                 <Link href="/rooms" className="hover:text-amber-500 transition-colors">
                   Rooms & Suites
