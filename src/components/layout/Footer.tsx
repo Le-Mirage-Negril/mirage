@@ -77,7 +77,7 @@ const Footer = () => {
             <div className="mt-4 text-center space-y-2 mb-4">
               <p className="text-sm  flex items-center gap-2">
                 <Mail className="text-white w-4 h-4" />{" "}
-                <a href="mailto:mirage02@cwjamaica.com">mirage02@cwjamaica.com</a>
+                <a href="mailto:info@miragenegril.com">info@miragenegril.com</a>
               </p>
               <p className="text-sm  flex items-center gap-2">
                 <Phone className="text-white w-4 h-4" />{" "}
