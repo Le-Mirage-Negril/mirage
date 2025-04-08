@@ -3,7 +3,8 @@ import React from "react";
 import Link from "next/link";
 
 import { Mail, Phone } from "lucide-react";
-
+import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="bg-cyan-950 text-stone-400 py-12">
@@ -11,14 +12,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-xl font-bold text-white mb-4">Le Mirage</h3>
-
-            <p className="mb-4">
-              <a href="mailto:mirage02@cwjamaica.com">mirage02@cwjamaica.com</a>
-            </p>
-            <p>
-              <a href="tel:+1-876-957-0386">+1 (876) 957-0386</a> |{" "}
-              <span>Whatsapp: +1 (876) 379-1505</span>
-            </p>
+            {/* logo */}
+            <Image src="/logo.png" alt="Le Mirage" width={100} height={100} />
           </div>
 
           <div>
@@ -81,11 +76,15 @@ const Footer = () => {
             <h4 className="text-lg font-medium  text-white mb-4">Connect With Us</h4>
             <div className="mt-4 text-center space-y-2 mb-4">
               <p className="text-sm  flex items-center gap-2">
-                <Mail /> <a href="mailto:mirage02@cwjamaica.com">mirage02@cwjamaica.com</a>
+                <Mail className="text-white w-4 h-4" />{" "}
+                <a href="mailto:mirage02@cwjamaica.com">mirage02@cwjamaica.com</a>
               </p>
               <p className="text-sm  flex items-center gap-2">
-                <Phone /> <a href="tel:+1-876-957-0386">+1 876-957-0386</a> |{" "}
-                <span>Whatsapp: (876) 379-1505</span>
+                <Phone className="text-white w-4 h-4" />{" "}
+                <a href="tel:+1-876-957-0386">+1 876-957-0386</a>
+              </p>
+              <p className="text-sm  flex items-center gap-2">
+                <FaWhatsapp className="text-white" /> <span>Whatsapp: (876) 893-7675</span>
               </p>
             </div>
             <div className="flex space-x-4">
@@ -103,7 +102,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://www.instagram.com/lemirageresort"
+                href="https://www.instagram.com/miragenegril/"
                 className="text-white hover:text-amber-500 transition-colors"
               >
                 {/* Instagram icon */}

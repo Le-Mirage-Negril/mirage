@@ -23,10 +23,10 @@ async function Page() {
         </div>
       </section>
 
-      <PageWrapper className="pt-7 pb-10">
-        <section className="container mx-auto">
+      <PageWrapper className="pt-8 pb-10">
+        <section className="container mx-auto px-4">
           <AnimatedSection delay={0.4} className="space-y-4 pb-4">
-            <Typography variant="h2" className="mb-8">
+            <Typography variant="h2" className="pb-2">
               Our Rooms
             </Typography>
             <p className="font-bold text-center mb-4">
@@ -49,7 +49,9 @@ async function Page() {
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5">
             <AnimatedSection delay={0.5} className="flex">
               <div className="bg-amber-50 p-6 rounded-lg max-w-3xl mx-auto my-1 shadow-md">
-                <h3 className="text-lg font-bold text-cyan-900 mb-3">Additional Information</h3>
+                <Typography variant="h3" className="text-center mb-3">
+                  Additional Information
+                </Typography>
                 <p className="text-gray-700">
                   There is an additional 10% service charge & 10% Gov. tax and room tax of US$1.00
                   per room night implemented by the Government of Jamaica will be applied upon
@@ -62,7 +64,9 @@ async function Page() {
             </AnimatedSection>
             <AnimatedSection delay={0.5} className="flex">
               <div className="bg-cyan-50 p-6 rounded-lg max-w-3xl mx-auto my-8 shadow-md">
-                <h3 className="text-lg font-bold text-cyan-900 mb-3">Guest Privileges</h3>
+                <Typography variant="h3" className="text-center mb-3">
+                  Guest Privileges
+                </Typography>
                 <p className="text-gray-700">
                   Guests at Mirage Resort are welcome to spend a day on Negril&apos;s sparkling
                   7-mile beach at our sister property, the Charela Inn Hotel. Towels and beach
@@ -78,7 +82,9 @@ async function Page() {
           </div>
           <AnimatedSection delay={0.6}>
             <div className="w-full max-w-3xl mx-auto pb-20 bg-gradient-to-r from-cyan-50 to-amber-50 p-6 md:my-10 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-cyan-900 mb-4 text-center">Room Amenities</h3>
+              <Typography variant="h3" className="text-center mb-4 text-cyan-900">
+                Room Amenities
+              </Typography>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                 <div className="flex items-center gap-2">
                   <svg
@@ -93,7 +99,7 @@ async function Page() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Ceiling Fan</span>
+                  <span className="font-medium text-cyan-900">Ceiling Fan</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
@@ -108,7 +114,7 @@ async function Page() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Air Conditioning</span>
+                  <span className="font-medium text-cyan-900">Air Conditioning</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
@@ -123,7 +129,7 @@ async function Page() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Cable TV</span>
+                  <span className="font-medium text-cyan-900">Cable TV</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
@@ -138,7 +144,7 @@ async function Page() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Refrigerator</span>
+                  <span className="font-medium text-cyan-900">Refrigerator</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
@@ -153,7 +159,7 @@ async function Page() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Coffee Maker</span>
+                  <span className="font-medium text-cyan-900">Coffee Maker</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
@@ -168,7 +174,7 @@ async function Page() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Spacious Bathroom</span>
+                  <span className="font-medium text-cyan-900">Spacious Bathroom</span>
                 </div>
               </div>
               <div className="flex justify-center items-center gap-4 mt-4 bg-white p-3 rounded-lg">
@@ -187,7 +193,9 @@ async function Page() {
                       d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"
                     />
                   </svg>
-                  <span className="font-medium">Free WiFi throughout the property</span>
+                  <span className="font-medium text-cyan-900">
+                    Free WiFi throughout the property
+                  </span>
                 </div>
               </div>
               <div className="mt-4 text-center">

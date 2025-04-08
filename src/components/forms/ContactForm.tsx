@@ -46,8 +46,8 @@ function ContactForm() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto container py-5">
-      <Typography variant="h2" className="text-center mb-6 text-gray-700">
+    <div className="max-w-2xl mx-auto container py-10">
+      <Typography variant="h2" className="text-center text-gray-700">
         Contact Us
       </Typography>
       <p className="text-center mb-6 text-gray-700">
