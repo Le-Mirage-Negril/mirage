@@ -5,11 +5,15 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
-
+import emailjs from "@emailjs/browser";
 import TransparentHoverMenu from "@/components/layout/TransparentHoverMenu";
 import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+
+emailjs.init({
+  publicKey: process.env.EMAILJS_PUBLIC_KEY,
+});
 
 export const metadata: Metadata = {
   title: "Le Mirage - Negril Jamaica",
