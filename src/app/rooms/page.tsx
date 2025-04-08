@@ -23,7 +23,7 @@ async function Page() {
         </div>
       </section>
 
-      <PageWrapper className="pt-8 pb-10">
+      <PageWrapper className=" pb-6">
         <section className="container mx-auto px-4">
           <AnimatedSection delay={0.4} className="space-y-4 pb-4">
             <Typography variant="h2" className="pb-2">
