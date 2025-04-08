@@ -15,16 +15,18 @@ function page() {
       <section className="relative h-screen flex items-center overflow-hidden">
         <div className="container mx-auto px-4 z-20 text-center">
           <AnimatedSection delay={0.2}>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 font-serif">Weddings</h1>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 font-serif">
+              Le Mirage Weddings
+            </h1>
           </AnimatedSection>
         </div>
       </section>
       <PageWrapper className="bg-white px-4">
-        <section className="container py-8 mx-auto space-y-8">
+        <section className="container py-4 mx-auto space-y-8">
           <div className="pb-7">
             <AnimatedSection>
-              <Typography variant="h2" className="mb-10 capitalize">
-                Le Mirage Weddings
+              <Typography variant="h2" className=" capitalize">
+                Weddings
               </Typography>
             </AnimatedSection>
             <AnimatedSection>
@@ -42,8 +44,8 @@ function page() {
             </AnimatedSection>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-4 flex flex-col items-center justify-center">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4 flex flex-col items-center justify-center mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <Card className="p-4 shadow-lg hover:shadow-xl transition-shadow duration-300 border-amber-100 bg-gradient-to-b from-white to-amber-50">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-2xl text-cyan-950 font-serif flex items-center">
