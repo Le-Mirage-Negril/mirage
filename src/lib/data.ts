@@ -1,5 +1,25 @@
 import { Amenity, Room, Season, Testimonial } from "@/types";
 
+const homepageImages = [
+  "/drone-shot.jpg",
+  "/hotel-1.jpg",
+  "/hotel-2.jpg",
+  "/hotelred.jpg",
+  "/pool-1.jpg",
+  "/pool-2.jpg",
+  "/swim-1.jpg",
+  "/swimming.jpg",
+];
+
+const weddingImages = [
+  "/wedding.jpg",
+  "/weddings-hero1.jpg",
+  "/weddings-hero2.jpg",
+  "/weddings-hero3.jpg",
+  "/weddings-hero4.jpg",
+  "/weddings-hero5.jpg",
+];
+
 const rooms: Partial<Room>[] = [
   {
     id: 1,
@@ -178,4 +198,4 @@ const roomData = [
   },
 ];
 
-export { rooms, amenities, testimonials, roomData };
+export { rooms, amenities, testimonials, roomData, homepageImages, weddingImages };

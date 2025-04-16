@@ -7,7 +7,7 @@ import LightTheme from "@/components/providers/LightTheme";
 import Room from "@/components/rooms/Room";
 import { Button } from "@/components/ui/button";
 
-import { amenities } from "@/lib/data";
+import { amenities, homepageImages } from "@/lib/data";
 import Image from "next/image";
 
 import Link from "next/link";
@@ -15,6 +15,8 @@ import { getFeaturedRooms } from "@/lib/actions/room.actions";
 import type { Room as RoomType } from "@/types";
 import Typography from "@/components/ui/Typography";
 import { ArrowDown } from "lucide-react";
+import { ImageCarousel } from "@/components/ui/image-carousel";
+// import ImageCarousel from "@/components/features/ImageCarousel";
 
 export default async function Home() {
   const rooms = await getFeaturedRooms();
@@ -157,6 +159,9 @@ export default async function Home() {
                   </ParallaxSection>
                 </AnimatedSection>
               </div>
+            </div>
+            <div className="mt-12">
+              <ImageCarousel images={homepageImages} alt="Homepage Images" />
             </div>
           </div>
         </section>
