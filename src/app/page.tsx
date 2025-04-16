@@ -90,7 +90,7 @@ export default async function Home() {
                 </AnimatedSection>
                 <AnimatedSection>
                   <p className="text-cyan-700">
-                    Guests at Mirage Resort are also welcome to spend a day on Negril&apos;s
+                    Guests at Mirage Resort are also welcome to spend time on Negril&apos;s
                     sparkling 7 - mile beach at our sister property, the Charela Inn Hotel.
                     Swimming/sunbathing. We offer quietude, privacy and discreet service is always
                     near at hand when needed.
