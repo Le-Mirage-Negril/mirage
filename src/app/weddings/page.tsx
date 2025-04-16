@@ -79,17 +79,21 @@ function page() {
                     <div className="space-y-3">
                       <div className="flex justify-between items-center p-2 rounded-md bg-white border border-amber-100">
                         <span className="font-medium">10-20 persons</span>
-                        <span className="text-lg font-bold text-amber-600">US$110.00</span>
-                      </div>
-                      <div className="flex justify-between items-center p-2 rounded-md bg-white border border-amber-100">
-                        <span className="font-medium">21-40 persons</span>
                         <span className="text-lg font-bold text-amber-600">US$250.00</span>
                       </div>
                       <div className="flex justify-between items-center p-2 rounded-md bg-white border border-amber-100">
-                        <span className="font-medium">41-80 persons</span>
+                        <span className="font-medium">21-40 persons</span>
                         <span className="text-lg font-bold text-amber-600">US$350.00</span>
                       </div>
+                      <div className="flex justify-between items-center p-2 rounded-md bg-white border border-amber-100">
+                        <span className="font-medium">41-80 persons</span>
+                        <span className="text-lg font-bold text-amber-600">US$450.00</span>
+                      </div>
                     </div>
+                    <p className="text-sm text-gray-600 pt-3">
+                      US$50.00 is a security deposit that is refunded if the property was returned
+                      as it was received by the person renting the venue.
+                    </p>
                   </CardContent>
                 </Card>
               </div>
