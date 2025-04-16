@@ -30,7 +30,7 @@ const rooms: Partial<Room>[] = [
 const amenities: Amenity[] = [
   {
     id: 1,
-    title: "“Infinity Swimming Pool",
+    title: "Infinity Swimming Pool",
     description: "Relax by our outdoor pool with a cocktail in hand",
     icon: "🏖️",
   },
