@@ -25,17 +25,18 @@ const weddingPageImages = [
     height: 700,
   },
   {
-    src: "/wed4.jpg",
-    alt: "Wedding view",
-    width: 2000,
-    height: 1333,
-  },
-  {
     src: "/wed10.jpg",
     alt: "Wedding view",
     width: 1333,
     height: 700,
   },
+  {
+    src: "/wed4.jpg",
+    alt: "Wedding view",
+    width: 2000,
+    height: 1333,
+  },
+
   {
     src: "/wed11.jpg",
     alt: "Wedding view",
@@ -92,6 +93,12 @@ const landingPageImages = [
   {
     src: "/hotel-1.jpg",
     alt: "Hotel view",
+    width: 2000,
+    height: 1333,
+  },
+  {
+    src: "/swimming.jpg",
+    alt: "Wedding view",
     width: 2000,
     height: 1333,
   },

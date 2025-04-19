@@ -162,7 +162,10 @@ export default async function Home() {
             </div>
           </div>
           <div className="container mx-auto py-8 px-4">
-            <ImageMasonDisplay images={landingPageImages} />
+            <ImageMasonDisplay
+              images={landingPageImages}
+              columns={{ default: 2, sm: 3, md: 3, lg: 3 }}
+            />
           </div>
         </section>
         {/* Room Showcase */}

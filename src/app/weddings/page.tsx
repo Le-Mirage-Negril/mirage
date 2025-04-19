@@ -117,7 +117,10 @@ function page() {
             </div>
           </div>
           {/* things */}
-          <ImageMasonDisplay images={weddingPageImages} />
+          <ImageMasonDisplay
+            images={weddingPageImages}
+            columns={{ default: 2, sm: 3, md: 3, lg: 3 }}
+          />
         </section>
       </PageWrapper>
     </div>
