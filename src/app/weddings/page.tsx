@@ -1,5 +1,6 @@
 import AnimatedSection from "@/components/animations/AnimatedSection";
 import ImageMasonDisplay from "@/components/features/ImageMasonDisplay";
+import ContactForm from "@/components/forms/ContactForm";
 
 import Hero from "@/components/layout/Hero";
 import PageWrapper from "@/components/layout/PageWrapper";
@@ -116,7 +117,10 @@ function page() {
               </AnimatedSection>
             </div>
           </div>
-          {/* things */}
+          <ContactForm
+            title="Book Your Wedding"
+            description="To book your wedding at Le Mirage Resort, please fill out the form below."
+          />
           <ImageMasonDisplay
             images={weddingPageImages}
             columns={{ default: 2, sm: 3, md: 3, lg: 3 }}

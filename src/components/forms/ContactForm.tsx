@@ -17,10 +17,26 @@ const formSchema = z.object({
   message: z.string().min(10, { message: "Message must be at least 10 characters" }),
 });
 
-function ContactForm() {
+function ContactForm({
+  title = "Contact Us",
+  description = `Feel free to contact us at any time. We are here to provide you with more information and
+        answer any questions you may have about our resort`,
+  isWeddingForm = false,
+}: {
+  title?: string;
+  description?: string;
+  isWeddingForm?: boolean;
+}) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      ...(isWeddingForm
+        ? {
+            formTitle: "Wedding Enquiry",
+          }
+        : {
+            formTitle: "Contact Us",
+          }),
       name: "",
       email: "",
       phone: "",
@@ -39,18 +55,15 @@ function ContactForm() {
       form.setValue("phone", "");
       form.setValue("message", "");
       toast.success("Email sent successfully");
-    } 
+    }
   };
 
   return (
     <div className="max-w-2xl mx-auto container py-10">
       <Typography variant="h2" className="text-center text-gray-700">
-        Contact Us
+        {title}
       </Typography>
-      <p className="text-center mb-6 text-gray-700">
-        Feel free to contact us at any time. We are here to provide you with more information and
-        answer any questions you may have about our resort
-      </p>
+      <p className="text-center mb-6 text-gray-700">{description}</p>
 
       <Form {...form}>
         <form
