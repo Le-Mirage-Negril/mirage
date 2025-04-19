@@ -7,7 +7,7 @@ import LightTheme from "@/components/providers/LightTheme";
 import Room from "@/components/rooms/Room";
 import { Button } from "@/components/ui/button";
 
-import { amenities, homepageImages } from "@/lib/data";
+import { amenities, landingPageImages } from "@/lib/data";
 import Image from "next/image";
 
 import Link from "next/link";
@@ -15,7 +15,7 @@ import { getFeaturedRooms } from "@/lib/actions/room.actions";
 import type { Room as RoomType } from "@/types";
 import Typography from "@/components/ui/Typography";
 import { ArrowDown } from "lucide-react";
-import { ImageCarousel } from "@/components/ui/image-carousel";
+import ImageMasonDisplay from "@/components/features/ImageMasonDisplay";
 // import ImageCarousel from "@/components/features/ImageCarousel";
 
 export default async function Home() {
@@ -160,9 +160,9 @@ export default async function Home() {
                 </AnimatedSection>
               </div>
             </div>
-            <div className="mt-12">
-              <ImageCarousel images={homepageImages} alt="Homepage Images" />
-            </div>
+          </div>
+          <div className="container mx-auto py-8 px-4">
+            <ImageMasonDisplay images={landingPageImages} />
           </div>
         </section>
         {/* Room Showcase */}

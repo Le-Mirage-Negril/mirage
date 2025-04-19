@@ -1,10 +1,12 @@
 import AnimatedSection from "@/components/animations/AnimatedSection";
+import ImageMasonDisplay from "@/components/features/ImageMasonDisplay";
 
 import Hero from "@/components/layout/Hero";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImageCarousel } from "@/components/ui/image-carousel";
 import Typography from "@/components/ui/Typography";
+import { weddingPageImages } from "@/lib/data";
 
 import React from "react";
 
@@ -115,6 +117,7 @@ function page() {
             </div>
           </div>
           {/* things */}
+          <ImageMasonDisplay images={weddingPageImages} />
         </section>
       </PageWrapper>
     </div>

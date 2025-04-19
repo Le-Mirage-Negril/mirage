@@ -11,6 +11,92 @@ const homepageImages = [
   "/swimming.jpg",
 ];
 
+const weddingPageImages = [
+  {
+    src: "/wed1.jpg",
+    alt: "Wedding view",
+    width: 2000,
+    height: 1333,
+  },
+  {
+    src: "/wed3.jpg",
+    alt: "Wedding view",
+    width: 1333,
+    height: 700,
+  },
+  {
+    src: "/wed4.jpg",
+    alt: "Wedding view",
+    width: 2000,
+    height: 1333,
+  },
+  {
+    src: "/wed10.jpg",
+    alt: "Wedding view",
+    width: 1333,
+    height: 700,
+  },
+  {
+    src: "/wed11.jpg",
+    alt: "Wedding view",
+    width: 1333,
+    height: 700,
+  },
+  {
+    src: "/wed12.jpg",
+    alt: "Wedding view",
+    width: 2000,
+    height: 1333,
+  },
+
+  {
+    src: "/wed8.jpg",
+    alt: "Wedding view",
+    width: 2000,
+    height: 1333,
+  },
+];
+
+const landingPageImages = [
+  {
+    src: "/pool-1.jpg",
+    alt: "Pool view",
+    width: 2000,
+    height: 1333,
+  },
+  {
+    src: "/hotelred.jpg",
+    alt: "Hotel view",
+    width: 1000,
+    height: 650,
+  },
+  {
+    src: "/landing1.png",
+    alt: "Drone shot of the hotel",
+    width: 2000,
+    height: 1333,
+  },
+  {
+    src: "/landing3.jpg",
+    alt: "Drone shot of the hotel",
+    width: 1333,
+    height: 700,
+  },
+  {
+    src: "/landing2.jpg",
+    alt: "Drone shot of the hotel",
+    width: 2000,
+    height: 1000,
+  },
+
+  {
+    src: "/hotel-1.jpg",
+    alt: "Hotel view",
+    width: 2000,
+    height: 1333,
+  },
+];
+
 const weddingImages = [
   "/wedding.jpg",
   "/weddings-hero1.jpg",
@@ -198,4 +284,13 @@ const roomData = [
   },
 ];
 
-export { rooms, amenities, testimonials, roomData, homepageImages, weddingImages };
+export {
+  rooms,
+  amenities,
+  testimonials,
+  roomData,
+  homepageImages,
+  weddingImages,
+  landingPageImages,
+  weddingPageImages,
+};
