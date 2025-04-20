@@ -20,6 +20,7 @@ import ImageMasonDisplay from "@/components/features/ImageMasonDisplay";
 
 export default async function Home() {
   const rooms = await getFeaturedRooms();
+  console.log(rooms);
   return (
     <LightTheme>
       <div className="mx-auto w-screen  bg-white">

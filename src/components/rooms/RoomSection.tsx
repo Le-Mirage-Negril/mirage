@@ -3,15 +3,33 @@ import { ImageCarousel } from "../ui/image-carousel";
 import AnimatedSection from "../animations/AnimatedSection";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { Room } from "@/types";
+import { Room, RoomImage } from "@/types";
+
+// Helper function to normalize room images to string[] format
+const normalizeRoomImages = (images: string[] | RoomImage[]): string[] => {
+  if (images.length === 0) return [];
+
+  // If images are already strings, return as is
+  if (typeof images[0] === "string") {
+    return images as string[];
+  }
+
+  // If images are RoomImage objects, extract the URL
+  return (images as RoomImage[]).map((img) => {
+    return `${img.url}`;
+  });
+};
 
 function RoomSection({ floor, description, images, rates, season, id, currentSeason }: Room) {
+  const normalizedImages = normalizeRoomImages(images);
+  console.log(normalizedImages);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-4 py-7">
       {/* implement share feature */}
       <div className="md:order-2">
         <AnimatedSection delay={0.1}>
-          <ImageCarousel images={images} alt={`${floor} Room`} />
+          <ImageCarousel images={normalizedImages} alt={`${floor} Room`} />
         </AnimatedSection>
       </div>
       {/* Room Description - Order changes on mobile */}

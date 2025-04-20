@@ -1,55 +1,53 @@
 "use server";
 
 import { Room } from "@/types";
-import { roomData } from "../data";
-export const getFeaturedRooms = async () => {
-  // get from django api
-  // const rooms = await prisma.room.findMany({
-  //   where: {
-  //     isFeatured: true,
-  //   },
-  // });
-  // await prisma.$disconnect();
-  // return convertPrismaObject(rooms);
-  // if the date is before April 15th, 2025, then return the winter rate
-  // if the date is after April 15th, 2025, then return the summer rate
-  // summer rate ends on December 14th, 2025
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
+import { transformStrapiRoom } from "@/utils/dataTransformers";
+import type { StrapiRoomData } from "@/utils/dataTransformers";
 
-  // Summer rate is from April 15th to December 14th
-  const summerStartDate = new Date(`${currentYear}-04-15`);
-  const summerEndDate = new Date(`${currentYear}-12-14`);
+export const getFeaturedRooms = async (): Promise<Room[]> => {
+  try {
+    const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+    const response = await fetch(`${strapiUrl}/rooms?populate=*`, {
+      next: { revalidate: 3600 }, // Cache for 1 hour
+    });
 
-  // Check if current date is within summer season
-  const isSummerSeason = currentDate >= summerStartDate && currentDate <= summerEndDate;
-  const season = isSummerSeason ? "summer" : "winter";
-  console.log(season);
-  return roomData.map((room) => {
-    return {
-      ...room,
-      price: room.rates?.["double"][season],
-      currentSeason: season as Room["currentSeason"],
-    };
-  });
+    if (!response.ok) {
+      throw new Error(`Failed to fetch featured rooms: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Transform and return the data
+    return (
+      data?.data?.map((room: Record<string, unknown>) =>
+        transformStrapiRoom(room as unknown as StrapiRoomData)
+      ) || []
+    );
+  } catch (error) {
+    console.error("Error fetching featured rooms:", error);
+    return [];
+  }
 };
 
-export const getRooms = async () => {
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
+export const getRooms = async (): Promise<Room[]> => {
+  try {
+    const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+    const response = await fetch(`${strapiUrl}/rooms?populate=*`);
 
-  // Summer rate is from April 15th to December 14th
-  const summerStartDate = new Date(`${currentYear}-04-15`);
-  const summerEndDate = new Date(`${currentYear}-12-14`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch rooms: ${response.status}`);
+    }
 
-  // Check if current date is within summer season
-  const isSummerSeason = currentDate >= summerStartDate && currentDate <= summerEndDate;
-  const season = isSummerSeason ? "summer" : "winter";
-  return roomData.map((room) => {
-    return {
-      ...room,
-      price: room.rates?.["double"][season],
-      currentSeason: season as Room["currentSeason"],
-    };
-  });
+    const data = await response.json();
+
+    // Transform and return the data
+    return (
+      data?.data?.map((room: Record<string, unknown>) =>
+        transformStrapiRoom(room as unknown as StrapiRoomData)
+      ) || []
+    );
+  } catch (error) {
+    console.error("Error fetching rooms:", error);
+    return [];
+  }
 };

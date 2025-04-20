@@ -15,11 +15,13 @@ interface RoomProps {
 }
 
 function Room({ room, buttonHref = "/rooms", buttonTitle = "View Detail" }: RoomProps) {
+  console.log(room);
+  const roomImage = room.images?.[0]?.url as string;
   return (
     <Card className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 pt-0">
       <div className="h-80 overflow-hidden">
         <Image
-          src={room.images?.[0]}
+          src={roomImage}
           alt={`Le Mirage - ${room.name}`}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale:110"
           width={500}

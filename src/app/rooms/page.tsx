@@ -6,11 +6,12 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import RoomSection from "@/components/rooms/RoomSection";
 import Typography from "@/components/ui/Typography";
 import { getRooms } from "@/lib/actions/room.actions";
-
+import { Room } from "@/types";
 import React from "react";
 
 async function Page() {
   const rooms = await getRooms();
+  console.log(rooms);
 
   return (
     <div className="mx-auto w-screen bg-white">
@@ -40,7 +41,7 @@ async function Page() {
 
           <StaggeredGroup>
             <div className="md:space-y-12">
-              {rooms.map((room, index) => (
+              {rooms.map((room: Room, index: number) => (
                 <RoomSection key={index} {...room} />
               ))}
             </div>
