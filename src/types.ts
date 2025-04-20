@@ -76,7 +76,7 @@ interface Room {
   documentId?: string;
   name?: string;
   description?: string | null;
-  images: string[] | RoomImage[];
+  images: RoomImage[] | string[];
   price?: number | null;
   winterRate?: number;
   summerRate?: number;
