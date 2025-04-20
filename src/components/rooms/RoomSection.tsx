@@ -14,7 +14,7 @@ const normalizeRoomImages = (images: string[] | RoomImage[]): string[] => {
     return images as string[];
   }
 
-  // If images are RoomImage objects, extract the URL
+
   return (images as RoomImage[]).map((img) => {
     return `${img.url}`;
   });
