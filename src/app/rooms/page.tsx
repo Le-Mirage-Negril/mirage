@@ -11,7 +11,7 @@ import React from "react";
 
 async function Page() {
   const rooms = await getRooms();
-  console.log(rooms);
+  console.log("rooms", rooms);
 
   return (
     <div className="mx-auto w-screen bg-white">
