@@ -7,7 +7,7 @@ import type { StrapiRoomData } from "@/utils/dataTransformers";
 export const getFeaturedRooms = async (): Promise<Room[]> => {
   try {
     // const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-    const response = await fetch(`https://mirage-be.onrender.com/api/rooms?populate=*`, {
+    const response = await fetch(`https://api.miragenegril.com/api/rooms?populate=*`, {
       next: { revalidate: 3600 }, // Cache for 1 hour
     });
 
@@ -32,7 +32,7 @@ export const getFeaturedRooms = async (): Promise<Room[]> => {
 export const getRooms = async (): Promise<Room[]> => {
   try {
     // const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-    const response = await fetch(`https://mirage-be.onrender.com/api/rooms?populate=*`);
+    const response = await fetch(`https://api.miragenegril.com/api/rooms?populate=*`);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch rooms: ${response.status}`);
