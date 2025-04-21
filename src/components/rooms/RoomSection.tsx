@@ -12,7 +12,6 @@ function RoomSection({
   description,
   images,
   rates,
-  season,
   id,
   currentSeason,
   seasonal_rates,
