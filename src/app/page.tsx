@@ -7,7 +7,7 @@ import LightTheme from "@/components/providers/LightTheme";
 import Room from "@/components/rooms/Room";
 import { Button } from "@/components/ui/button";
 
-import { amenities, landingPageImages } from "@/lib/data";
+import { amenities } from "@/lib/data";
 import Image from "next/image";
 
 import Link from "next/link";
@@ -16,10 +16,13 @@ import type { Room as RoomType } from "@/types";
 import Typography from "@/components/ui/Typography";
 import { ArrowDown } from "lucide-react";
 import ImageMasonDisplay from "@/components/features/ImageMasonDisplay";
+import { getHomepage } from "@/lib/actions/homepage.actions";
 // import ImageCarousel from "@/components/features/ImageCarousel";
 
 export default async function Home() {
   const rooms = await getFeaturedRooms();
+  const homepage = await getHomepage();
+
   console.log(rooms);
   return (
     <LightTheme>
@@ -164,7 +167,7 @@ export default async function Home() {
           </div>
           <div className="container mx-auto py-8 px-4">
             <ImageMasonDisplay
-              images={landingPageImages}
+              images={homepage?.data?.display_images}
               columns={{ default: 2, sm: 3, md: 3, lg: 3 }}
             />
           </div>
