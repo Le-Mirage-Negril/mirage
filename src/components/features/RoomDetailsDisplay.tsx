@@ -11,8 +11,8 @@ interface RoomDetailsDisplayProps {
 
 const RoomDetailsDisplay: React.FC<RoomDetailsDisplayProps> = ({ room }) => {
   const images =
-    Array.isArray(room.images) && room.images.length > 0 && typeof room.images[0] !== "string"
-      ? prepareImagesForMasonryDisplay(room.images as RoomImage[])
+    Array.isArray(room?.images) && room?.images?.length > 0 && typeof room?.images[0] !== "string"
+      ? prepareImagesForMasonryDisplay(room?.images as RoomImage[])
       : [];
 
   // Determine which rate to display based on current season
@@ -124,13 +124,17 @@ const RoomDetailsDisplay: React.FC<RoomDetailsDisplayProps> = ({ room }) => {
             <p className="text-gray-700 mb-4">{room.description}</p>
           </div>
 
-          {images.length > 0 && (
+          {images?.length > 0 && (
             <div className="bg-white shadow-md rounded-lg p-6">
               <h2 className="text-xl font-semibold mb-4">Room Gallery</h2>
               <p className="text-sm text-gray-500 mb-4">
                 Click on any image to view it in full size
               </p>
-              <ImageMasonDisplay images={images} columns={{ default: 1, sm: 2, md: 2, lg: 2 }} />
+              <ImageMasonDisplay
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                images={images as any}
+                columns={{ default: 1, sm: 2, md: 2, lg: 2 }}
+              />
             </div>
           )}
         </div>

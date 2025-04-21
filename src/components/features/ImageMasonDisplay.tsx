@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 interface ImageItem {
-  src: string;
+  url: string;
   alt?: string;
   width?: number;
   height?: number;
@@ -59,7 +59,7 @@ const ImageMasonDisplay: React.FC<ImageMasonDisplayProps> = ({
   const distributeImages = () => {
     const columnArrays: ImageItem[][] = Array.from({ length: columnCount }, () => []);
 
-    images.forEach((image, index) => {
+    images?.forEach((image, index) => {
       const columnIndex = index % columnCount;
       columnArrays[columnIndex].push(image);
     });
@@ -71,17 +71,17 @@ const ImageMasonDisplay: React.FC<ImageMasonDisplayProps> = ({
     <>
       <div className="w-full">
         <div className="flex gap-2 md:gap-4">
-          {distributeImages().map((column, columnIndex) => (
+          {distributeImages()?.map((column, columnIndex) => (
             <div key={columnIndex} className="flex flex-col gap-2 md:gap-4 flex-1">
-              {column.map((image, imageIndex) => (
+              {column?.map((image, imageIndex) => (
                 <div
                   key={imageIndex}
                   className="relative aspect-auto overflow-hidden rounded-lg cursor-pointer transform transition-transform hover:scale-[1.02]"
                   onClick={() => setSelectedImage(image)}
                 >
                   <Image
-                    src={image.src}
-                    alt={image.alt || `Image ${imageIndex}`}
+                    src={image?.url}
+                    alt={`Le Mirage Weddings}`}
                     width={image.width || 500}
                     height={image.height || 500}
                     className="w-full h-auto object-cover"
@@ -104,10 +104,10 @@ const ImageMasonDisplay: React.FC<ImageMasonDisplayProps> = ({
           >
             <div className="relative w-full h-full">
               <Image
-                src={selectedImage.src}
-                alt={selectedImage.alt || "Enlarged image"}
-                width={selectedImage.width || 1200}
-                height={selectedImage.height || 800}
+                src={selectedImage?.url}
+                alt={`Le Mirage Weddings`}
+                width={selectedImage?.width || 1200}
+                height={selectedImage?.height || 800}
                 className="object-contain max-h-[85vh] rounded-lg mx-auto"
               />
             </div>

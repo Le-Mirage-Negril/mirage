@@ -7,11 +7,13 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImageCarousel } from "@/components/ui/image-carousel";
 import Typography from "@/components/ui/Typography";
-import { weddingPageImages } from "@/lib/data";
+import { getWedding } from "@/lib/actions/wedding.action";
 
 import React from "react";
 
-function page() {
+async function WeddingPage() {
+  const wedding = await getWedding();
+  console.log("wedding", wedding);
   return (
     <div className="mx-auto w-screen  bg-cyan-900">
       <Hero image="/weddings-hero5.jpg" />
@@ -104,14 +106,14 @@ function page() {
             <div>
               <AnimatedSection delay={0.1}>
                 <ImageCarousel
-                  images={[
-                    "/wedding.jpg",
-                    "/weddings-hero1.jpg",
-                    "/weddings-hero2.jpg",
-                    "/weddings-hero3.jpg",
-                    "/weddings-hero4.jpg",
-                    "/weddings-hero5.jpg",
-                  ]}
+                  images={wedding?.data?.display_images?.map(
+                    (image: { id: string; url: string; width: number; height: number }) => ({
+                      id: image.id,
+                      url: image.url,
+                      width: image.width,
+                      height: image.height,
+                    })
+                  )}
                   alt={`Le Mirage Weddings`}
                 />
               </AnimatedSection>
@@ -122,7 +124,7 @@ function page() {
             description="To book your wedding at Le Mirage Resort, please fill out the form below."
           />
           <ImageMasonDisplay
-            images={weddingPageImages}
+            images={wedding?.data?.slide_images}
             columns={{ default: 2, sm: 3, md: 3, lg: 3 }}
           />
         </section>
@@ -131,7 +133,7 @@ function page() {
   );
 }
 
-export default page;
+export default WeddingPage;
 
 // LE MIRAGE Weddings
 // Imagine saying “I do” with the Caribbean Sea and Sunset as your backdrop. Nature is one of the best decorators and the panoramic view from the cliffs of Le Mirage Resort is perfect to complement your wedding. Come take God’s creation and make it into your own, let Le Mirage be the foundation on which you build your dream wedding. Our spacious venue holds up to 80 persons and the ceremony, reception and cocktail can all be comfortably held on our cliffside. Get beautiful wedding pictures and videos that stand out and set your wedding apart from others. So grab your wedding planner, book Le Mirage Resort and make the wedding of your dreams a reality.
