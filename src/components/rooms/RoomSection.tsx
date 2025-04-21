@@ -7,8 +7,17 @@ import { Room } from "@/types";
 
 // Helper function to normalize room images to string[] format
 
-function RoomSection({ floor, description, images, rates, season, id, currentSeason }: Room) {
-  console.log("images", images);
+function RoomSection({
+  floor,
+  description,
+  images,
+  rates,
+  season,
+  id,
+  currentSeason,
+  seasonal_rates,
+}: Room) {
+  console.log("images", images, seasonal_rates);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-4 py-7">
       {/* implement share feature */}
@@ -32,7 +41,18 @@ function RoomSection({ floor, description, images, rates, season, id, currentSea
             <h3 className="text-xl font-semibold text-cyan-950">
               Current Season: {currentSeason === "summer" ? "Summer" : "Winter"} Rates
             </h3>
-            <div className="text-sm text-gray-600 mb-2">
+            {seasonal_rates?.map((rate) => (
+              <div className="text-sm text-gray-600 mb-2" key={rate.id}>
+                <p>
+                  <span className="font-bold">{rate?.season_name}</span>{" "}
+                  {new Date(rate.start_date).toLocaleDateString()} to{" "}
+                  {new Date(rate.end_date).toLocaleDateString()}: Double ${rate.double_rate} /
+                  Single ${rate.single_rate}
+                </p>
+              </div>
+            ))}
+
+            {/* <div className="text-sm text-gray-600 mb-2">
               <p>
                 Summer Rates ({season?.summer.start} to {season?.summer.end}): Double $
                 {rates?.double.summer} / Single ${rates?.single.summer}
@@ -41,7 +61,7 @@ function RoomSection({ floor, description, images, rates, season, id, currentSea
                 Winter Rates ({season?.winter.start} to {season?.winter.end}): Double $
                 {rates?.double.winter} / Single ${rates?.single.winter}
               </p>
-            </div>
+            </div> */}
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-amber-50 p-4 rounded-lg">
                 <p className="text-amber-700 font-medium">Double Rate</p>
