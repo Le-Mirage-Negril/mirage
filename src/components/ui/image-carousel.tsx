@@ -47,7 +47,7 @@ export function ImageCarousel({ images, alt }: ImageCarouselProps) {
             src={images?.[currentIndex]?.url || ""}
             alt={`${alt} - Image ${currentIndex + 1}`}
             fill
-            className="object-cover"
+            className="object-cover object-bottom"
           />
         </motion.div>
       </AnimatePresence>
