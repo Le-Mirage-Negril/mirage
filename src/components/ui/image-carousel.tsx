@@ -6,8 +6,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./button";
 
+export interface CarouselImage {
+  id: number;
+  url: string;
+  width: number;
+  height: number;
+  alternativeText?: string;
+  caption?: string;
+  createdAt?: string;
+}
+
 interface ImageCarouselProps {
-  images: string[];
+  images: CarouselImage[];
   alt: string;
 }
 
@@ -34,7 +44,7 @@ export function ImageCarousel({ images, alt }: ImageCarouselProps) {
           className="absolute inset-0 "
         >
           <Image
-            src={images[currentIndex]}
+            src={images[currentIndex].url}
             alt={`${alt} - Image ${currentIndex + 1}`}
             fill
             className="object-cover"
