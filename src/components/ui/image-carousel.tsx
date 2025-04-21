@@ -44,7 +44,7 @@ export function ImageCarousel({ images, alt }: ImageCarouselProps) {
           className="absolute inset-0 "
         >
           <Image
-            src={images[currentIndex].url}
+            src={images?.[currentIndex]?.url || ""}
             alt={`${alt} - Image ${currentIndex + 1}`}
             fill
             className="object-cover"
@@ -74,7 +74,7 @@ export function ImageCarousel({ images, alt }: ImageCarouselProps) {
 
       {/* Dots Indicator */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-        {images.map((_, index) => (
+        {(images || []).map((_, index) => (
           <button
             key={index}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${

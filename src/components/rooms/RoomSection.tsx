@@ -8,6 +8,7 @@ import { Room } from "@/types";
 // Helper function to normalize room images to string[] format
 
 function RoomSection({ floor, description, images, rates, season, id, currentSeason }: Room) {
+  console.log("images", images);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-4 py-7">
       {/* implement share feature */}
