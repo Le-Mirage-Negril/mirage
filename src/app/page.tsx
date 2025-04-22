@@ -165,12 +165,7 @@ export default async function Home() {
               </div>
             </div>
           </div>
-          {/* <div className="container mx-auto py-8 px-4">
-            <ImageMasonDisplay
-              images={homepage?.data?.display_images}
-              columns={{ default: 2, sm: 3, md: 3, lg: 3 }}
-            />
-          </div> */}
+
           {/* Gallery */}
           <div className="mb-20">
             <ImageMasonDisplay
