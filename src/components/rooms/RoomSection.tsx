@@ -7,15 +7,7 @@ import { Room } from "@/types";
 import { DateTime } from "luxon";
 // Helper function to normalize room images to string[] format
 
-function RoomSection({
-  floor,
-  description,
-  images,
-  rates,
-  id,
-  currentSeason,
-  seasonal_rates,
-}: Room) {
+function RoomSection({ floor, description, images, id, currentSeason, seasonal_rates }: Room) {
   console.log("images", images, seasonal_rates);
   const currentSeasonRates = seasonal_rates?.find((rate) =>
     rate.season_name.toLowerCase().includes(currentSeason)
