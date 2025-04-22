@@ -17,6 +17,7 @@ interface RatesByOccupancy {
 }
 
 interface ImageFormat {
+  id: number;
   name: string;
   hash: string;
   ext: string;
