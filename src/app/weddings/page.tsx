@@ -55,7 +55,7 @@ async function WeddingPage() {
               <AnimatedSection delay={0.1}>
                 <div className="rounded-xl overflow-hidden shadow-2xl">
                   <ImageCarousel
-                    images={wedding?.data?.display_images?.map(
+                    images={wedding?.data?.slide_images?.map(
                       (image: { id: string; url: string; width: number; height: number }) => ({
                         id: image.id,
                         url: image.url,
@@ -155,7 +155,7 @@ async function WeddingPage() {
           {/* Gallery */}
           <div className="mb-20">
             <ImageMasonDisplay
-              images={wedding?.data?.slide_images}
+              images={wedding?.data?.display_images}
               columns={{ default: 2, sm: 3, md: 4, lg: 4 }}
               title="Wedding Gallery"
             />
