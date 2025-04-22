@@ -119,13 +119,13 @@ async function WeddingPage() {
               </AnimatedSection>
             </div>
           </div>
-          <ContactForm
-            title="Book Your Wedding"
-            description="To book your wedding at Le Mirage Resort, please fill out the form below."
-          />
           <ImageMasonDisplay
             images={wedding?.data?.slide_images}
             columns={{ default: 2, sm: 3, md: 3, lg: 3 }}
+          />
+          <ContactForm
+            title="Book Your Wedding"
+            description="To book your wedding at Le Mirage Resort, please fill out the form below."
           />
         </section>
       </PageWrapper>
