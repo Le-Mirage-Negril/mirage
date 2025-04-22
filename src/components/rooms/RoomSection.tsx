@@ -4,7 +4,7 @@ import AnimatedSection from "../animations/AnimatedSection";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { Room } from "@/types";
-
+import { DateTime } from "luxon";
 // Helper function to normalize room images to string[] format
 
 function RoomSection({
@@ -17,6 +17,9 @@ function RoomSection({
   seasonal_rates,
 }: Room) {
   console.log("images", images, seasonal_rates);
+  const currentSeasonRates = seasonal_rates?.find((rate) =>
+    rate.season_name.toLowerCase().includes(currentSeason)
+  );
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-4 py-7">
       {/* implement share feature */}
@@ -44,33 +47,27 @@ function RoomSection({
               <div className="text-sm text-gray-600 mb-2" key={rate.id}>
                 <p>
                   <span className="font-bold">{rate?.season_name}</span>{" "}
-                  {new Date(rate.start_date).toLocaleDateString()} to{" "}
-                  {new Date(rate.end_date).toLocaleDateString()}: Double ${rate.double_rate} /
-                  Single ${rate.single_rate}
+                  {DateTime.fromISO(rate.start_date).toLocaleString(DateTime.DATE_MED)} to{" "}
+                  {DateTime.fromISO(rate.end_date).toLocaleString(DateTime.DATE_MED)}: Double $
+                  {rate.double_rate} / Single ${rate.single_rate}
                 </p>
               </div>
             ))}
 
-            {/* <div className="text-sm text-gray-600 mb-2">
-              <p>
-                Summer Rates ({season?.summer.start} to {season?.summer.end}): Double $
-                {rates?.double.summer} / Single ${rates?.single.summer}
-              </p>
-              <p>
-                Winter Rates ({season?.winter.start} to {season?.winter.end}): Double $
-                {rates?.double.winter} / Single ${rates?.single.winter}
-              </p>
-            </div> */}
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-amber-50 p-4 rounded-lg">
                 <p className="text-amber-700 font-medium">Double Rate</p>
 
-                <p className="text-2xl font-bold text-amber-600">${rates?.double[currentSeason]}</p>
+                <p className="text-2xl font-bold text-amber-600">
+                  ${currentSeasonRates?.double_rate}
+                </p>
               </div>
               <div className="bg-amber-50 p-4 rounded-lg">
                 <p className="text-amber-700 font-medium">Single Rate</p>
 
-                <p className="text-2xl font-bold text-amber-600">${rates?.single[currentSeason]}</p>
+                <p className="text-2xl font-bold text-amber-600">
+                  ${currentSeasonRates?.single_rate}
+                </p>
               </div>
             </div>
             <div className="pt-4">
