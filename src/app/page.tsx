@@ -167,19 +167,12 @@ export default async function Home() {
           </div>
 
           {/* Gallery */}
-          <div className="md:mt-24 mt-16 md:mb-20 mb-10 md:pt-16 pt-8 border-t border-gray-100">
+          <div className="md:mt-24 mt-16 md:mb-20 mb-10 md:pt-16 pt-8 border-t border-gray-100 px-4">
             <AnimatedSection>
               <Typography variant="h2" className="mb-8">
                 Resort Gallery
               </Typography>
             </AnimatedSection>
-            {/* <div className="max-w-7xl mx-auto px-4">
-              <ImageMasonDisplay
-                images={homepage?.data?.display_images}
-                columns={{ default: 1, sm: 2, md: 3, lg: 4 }}
-                title=""
-              />
-            </div> */}
             <div className="mb-20">
               <ImageMasonDisplay
                 images={homepage?.data?.display_images}
