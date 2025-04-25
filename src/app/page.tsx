@@ -167,17 +167,24 @@ export default async function Home() {
           </div>
 
           {/* Gallery */}
-          <div className="mt-24 mb-20 pt-16 border-t border-gray-100">
+          <div className="md:mt-24 mt-16 md:mb-20 mb-10 md:pt-16 pt-8 border-t border-gray-100">
             <AnimatedSection>
               <Typography variant="h2" className="mb-8">
                 Resort Gallery
               </Typography>
             </AnimatedSection>
-            <div className="max-w-7xl mx-auto px-4">
+            {/* <div className="max-w-7xl mx-auto px-4">
               <ImageMasonDisplay
                 images={homepage?.data?.display_images}
                 columns={{ default: 1, sm: 2, md: 3, lg: 4 }}
                 title=""
+              />
+            </div> */}
+            <div className="mb-20">
+              <ImageMasonDisplay
+                images={homepage?.data?.display_images}
+                columns={{ default: 2, sm: 3, md: 4, lg: 4 }}
+                title="Wedding Gallery"
               />
             </div>
           </div>
@@ -225,23 +232,6 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        {/* <section className="py-12 bg-amber-50">
-          <div className="container mx-auto px-4 space-y-3">
-            <AnimatedSection>
-              <Typography variant="h2">Guest Experiences</Typography>
-            </AnimatedSection>
-
-            <StaggeredGroup>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {testimonials.map((testimonial, index) => (
-                  <TestimonialCard key={index} testimonial={testimonial} />
-                ))}
-              </div>
-            </StaggeredGroup>
-          </div>
-        </section> */}
-        {/* END Testimonials */}
         <section className="relative py-12 overflow-hidden">
           <ParallaxSection speed={0.2} className="absolute inset-0 opacity-20">
             <div

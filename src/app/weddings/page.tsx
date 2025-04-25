@@ -29,7 +29,7 @@ async function WeddingPage() {
         </div>
       </section>
 
-      <PageWrapper className="bg-gradient-to-b from-cyan-950 to-white">
+      <PageWrapper className="bg-gradient-to-b from-cyan-950 to-white px-4">
         <section className="container py-16 mx-auto">
           <div className="text-center mb-16 max-w-4xl mx-auto">
             <AnimatedSection>
