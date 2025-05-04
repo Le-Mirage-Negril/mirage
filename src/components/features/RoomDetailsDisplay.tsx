@@ -133,7 +133,6 @@ const RoomDetailsDisplay: React.FC<RoomDetailsDisplayProps> = ({ room }) => {
               <ImageMasonDisplay
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 images={images as any}
-                columns={{ default: 1, sm: 2, md: 2, lg: 2 }}
               />
             </div>
           )}
