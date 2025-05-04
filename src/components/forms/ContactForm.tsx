@@ -59,17 +59,14 @@ function ContactForm({
   };
 
   return (
-    <div className="max-w-2xl mx-auto container py-10">
+    <div className="max-w-2xl mx-auto container py-10 bg-white rounded-lg shadow-md">
       <Typography variant="h2" className="text-center text-gray-700">
         {title}
       </Typography>
       <p className="text-center mb-6 text-gray-700">{description}</p>
 
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-6 bg-amber-50 p-6 rounded-lg"
-        >
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 border p-6 rounded-lg">
           <FormField
             control={form.control}
             name="name"

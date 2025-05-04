@@ -3,16 +3,18 @@ import ImageMasonDisplay from "@/components/features/ImageMasonDisplay";
 import ContactForm from "@/components/forms/ContactForm";
 import Hero from "@/components/layout/Hero";
 import PageWrapper from "@/components/layout/PageWrapper";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ImageCarousel } from "@/components/ui/image-carousel";
+
 import Typography from "@/components/ui/Typography";
-import { getWedding } from "@/lib/actions/wedding.action";
-import { HeartIcon, Sparkles, Camera, Palette, Calendar } from "lucide-react";
+import { getWedding, getWeddingGCards } from "@/lib/actions/wedding.action";
+import { Calendar } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 async function WeddingPage() {
   const wedding = await getWedding();
-
+  const weddingCards = await getWeddingGCards();
   return (
     <div className="mx-auto w-screen ">
       <Hero image="/weddings-hero5.jpg" />
@@ -29,7 +31,7 @@ async function WeddingPage() {
         </div>
       </section>
 
-      <PageWrapper className="bg-gradient-to-b from-cyan-950 to-white px-4">
+      <PageWrapper className="bg-gradient-to-b from-cyan-950 to-cyan-100 px-4">
         <section className="container py-16 mx-auto">
           <div className="text-center mb-16 max-w-4xl mx-auto">
             <AnimatedSection>
@@ -49,103 +51,38 @@ async function WeddingPage() {
           </div>
 
           {/* Feature Sections */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 py-12">
-            {/* Left Side: Image Display */}
-            <div className="order-2 lg:order-1">
-              <AnimatedSection delay={0.1}>
-                <div className="rounded-xl overflow-hidden shadow-2xl">
-                  <ImageCarousel
-                    images={wedding?.data?.slide_images?.map(
-                      (image: { id: string; url: string; width: number; height: number }) => ({
-                        id: image.id,
-                        url: image.url,
-                        width: image.width,
-                        height: image.height,
-                      })
-                    )}
-                    alt={`Le Mirage Weddings`}
-                  />
-                </div>
-              </AnimatedSection>
-            </div>
-
-            {/* Right Side: Content Sections */}
-            <div className="space-y-12 order-1 lg:order-2">
-              <AnimatedSection delay={0.2}>
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <Sparkles className="text-amber-400 mr-3 h-6 w-6" />
-                    <h3 className="text-2xl font-serif text-cyan-400 font-medium">
-                      A Ceremony Like No Other
-                    </h3>
+          <div className="space-y-12 py-12 max-w-5xl mx-auto">
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            {weddingCards?.data?.map((card: any) => (
+              <AnimatedSection delay={0.4} key={card?.id}>
+                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10 gap-5">
+                  <div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={card?.image?.url}
+                      alt="Wedding"
+                      className="w-[350px] h-[300px] md:w-[500px] md:h-[500px] max-w-full object-cover mx-auto rounded-md"
+                    />
                   </div>
-                  <p className="text-gray-300 leading-relaxed ml-9">
-                    Say &ldquo;I do&rdquo; with the Caribbean Sea and golden sunset as your witness.
-                    At Le Mirage Resort, nature takes center stage—our panoramic cliffside view sets
-                    a breathtaking backdrop that needs little else. It&apos;s where the ocean meets
-                    the sky… and your forever begins.
-                  </p>
-                </div>
-              </AnimatedSection>
 
-              <AnimatedSection delay={0.3}>
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <HeartIcon className="text-amber-400 mr-3 h-6 w-6" />
-                    <h3 className="text-2xl font-serif text-cyan-400 font-medium">
-                      Your Dream Wedding, Your Way
-                    </h3>
+                  <div className=" flex flex-col justify-center gap-5">
+                    <h2 className="text-2xl lg:text-3xl text-center font-serif text-white font-medium">
+                      {card?.Title}
+                    </h2>
+                    <p className=" leading-relaxed ml-9 text-white">{card?.description}</p>
+                    <Button variant="outline" className="rounded-full w-fit mx-auto" asChild>
+                      <a href="#contact">Learn More</a>
+                    </Button>
                   </div>
-                  <p className="text-gray-300 leading-relaxed ml-9">
-                    Whether you&apos;re envisioning an intimate elopement or a celebration with all
-                    your closest people, our venue can host up to 80 guests comfortably. From
-                    ceremony to cocktail hour to reception, every moment flows seamlessly in one
-                    stunning location. No extra moving parts, just pure joy and beauty from start to
-                    finish.
-                  </p>
                 </div>
               </AnimatedSection>
-
-              <AnimatedSection delay={0.4}>
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <Camera className="text-amber-400 mr-3 h-6 w-6" />
-                    <h3 className="text-2xl font-serif text-cyan-400 font-medium">
-                      Picture-Perfect Memories
-                    </h3>
-                  </div>
-                  <p className="text-gray-300 leading-relaxed ml-9">
-                    When the cliffs, the sea, and the setting sun come together—your wedding photos
-                    don&apos;t just capture a moment, they become timeless. The natural light, the
-                    gentle breeze, the endless horizon—it all works in your favor to create imagery
-                    that sets your wedding apart.
-                  </p>
-                </div>
-              </AnimatedSection>
-
-              <AnimatedSection delay={0.5}>
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <Palette className="text-amber-400 mr-3 h-6 w-6" />
-                    <h3 className="text-2xl font-serif text-cyan-400 font-medium">
-                      Bring Your Vision to Life
-                    </h3>
-                  </div>
-                  <p className="text-gray-300 leading-relaxed ml-9">
-                    Already working with a wedding planner? Amazing. Still searching? No problem.
-                    We&apos;ll work alongside you (or your team) to make sure every detail feels
-                    like you. Le Mirage is more than a venue—it&apos;s a canvas for your vision. Let
-                    it be the foundation on which you build something unforgettable.
-                  </p>
-                </div>
-              </AnimatedSection>
-            </div>
+            ))}
           </div>
 
           {/* Gallery Title */}
           <div className="text-center mt-20 mb-8">
             <AnimatedSection>
-              <h2 className="text-3xl font-serif text-cyan-500">Moments to Remember</h2>
+              <h2 className="text-3xl lg:text-4xl font-serif text-white">Moments to Remember</h2>
               <p className="text-gray-300 mt-2">
                 Browse our gallery of unforgettable wedding moments
               </p>
@@ -153,16 +90,16 @@ async function WeddingPage() {
           </div>
 
           {/* Gallery */}
-          <div className="mb-20">
+          <div className="mb-20 space-y-5">
             <ImageMasonDisplay images={wedding?.data?.display_images} title="Wedding Gallery" />
           </div>
+          <hr className="my-12 border-t border-gray-200" />
 
-          {/* Information Cards Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
             <AnimatedSection delay={0.1}>
-              <Card className="p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border-amber-100 bg-gradient-to-b from-white to-amber-50 h-full">
+              <Card className="p-6 bg-transparent border-none shadow-none">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-2xl text-cyan-950 font-serif flex items-center">
+                  <CardTitle className="text-2xl lg:text-3xl text-cyan-900 font-serif flex items-center">
                     <span className="mr-2">✨</span> Things to know
                   </CardTitle>
                 </CardHeader>
@@ -186,7 +123,7 @@ async function WeddingPage() {
                     </li>
                   </ul>
 
-                  <div className="bg-white p-4 rounded-lg border border-amber-100">
+                  <div className=" p-4 ">
                     <p className="italic text-cyan-900 text-center font-serif text-lg">
                       &ldquo;Ready to Make It Official? Your dream wedding deserves a dream
                       location. Book your date at Le Mirage Resort and let&apos;s bring your love
@@ -198,28 +135,28 @@ async function WeddingPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <Card className="p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border-amber-100 bg-gradient-to-b from-white to-amber-50 h-full">
+              <Card className="p-6  bg-transparent border-none shadow-none">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-2xl text-cyan-950 font-serif flex items-center">
+                  <CardTitle className="text-2xl lg:text-3xl text-cyan-900 font-serif flex items-center">
                     <span className="mr-2">💍</span> Pricing
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <div className="flex justify-between items-center p-4 rounded-md bg-white border border-amber-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex justify-between items-center p-4">
                       <span className="font-medium">10-20 persons</span>
-                      <span className="text-xl font-bold text-amber-600">US$250.00</span>
+                      <span className="text-xl font-bold text-cyan-900">US$250.00</span>
                     </div>
-                    <div className="flex justify-between items-center p-4 rounded-md bg-white border border-amber-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex justify-between items-center p-4 rounded-md  shadow-sm hover:shadow-md transition-shadow">
                       <span className="font-medium">21-40 persons</span>
-                      <span className="text-xl font-bold text-amber-600">US$350.00</span>
+                      <span className="text-xl font-bold text-cyan-900">US$350.00</span>
                     </div>
-                    <div className="flex justify-between items-center p-4 rounded-md bg-white border border-amber-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex justify-between items-center p-4 rounded-md  shadow-sm hover:shadow-md transition-shadow">
                       <span className="font-medium">41-80 persons</span>
-                      <span className="text-xl font-bold text-amber-600">US$450.00</span>
+                      <span className="text-xl font-bold text-cyan-900">US$450.00</span>
                     </div>
                   </div>
-                  <div className="bg-cyan-50 p-4 rounded-lg mt-6 border border-cyan-100">
+                  <div className=" p-4  mt-6  ">
                     <p className="text-gray-700">
                       <span className="font-semibold">Security Deposit:</span> US$50.00 is refunded
                       if the property is returned in its original condition.
@@ -236,8 +173,7 @@ async function WeddingPage() {
             </AnimatedSection>
           </div>
 
-          {/* Contact Form with special styling */}
-          <div className="bg-gradient-to-r from-cyan-50 to-amber-50 rounded-2xl p-8 shadow-xl">
+          <div className="p-8" id="contact">
             <ContactForm
               title="Begin Your Forever"
               description="Ready to start planning your perfect day at Le Mirage Resort? Reach out to our wedding specialists."
