@@ -17,7 +17,7 @@ async function WeddingPage() {
   const weddingCards = await getWeddingGCards();
   return (
     <div className="mx-auto w-screen ">
-      <Hero image="/weddings-hero5.jpg" />
+      <Hero image={wedding?.data?.header_image?.url || "/weddings-hero5.jpg"} />
       <section className="relative h-screen flex items-center overflow-hidden">
         <div className="container mx-auto px-4 z-20 text-center">
           <AnimatedSection delay={0.2}>
