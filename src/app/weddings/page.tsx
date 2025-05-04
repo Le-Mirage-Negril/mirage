@@ -15,6 +15,7 @@ import React from "react";
 async function WeddingPage() {
   const wedding = await getWedding();
   const weddingCards = await getWeddingGCards();
+  console.log(wedding?.data);
   return (
     <div className="mx-auto w-screen ">
       <Hero image={wedding?.data?.header_image?.url || "/weddings-hero5.jpg"} />
