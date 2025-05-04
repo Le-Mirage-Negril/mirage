@@ -165,22 +165,6 @@ export default async function Home() {
               </div>
             </div>
           </div>
-
-          {/* Gallery */}
-          <div className="md:mt-24 mt-16 md:mb-20 mb-10 md:pt-16 pt-8 border-t border-gray-100 px-4">
-            <AnimatedSection>
-              <Typography variant="h2" className="mb-8">
-                Resort Gallery
-              </Typography>
-            </AnimatedSection>
-            <div className="mb-20">
-              <ImageMasonDisplay
-                images={homepage?.data?.display_images}
-                columns={{ default: 2, sm: 3, md: 4, lg: 4 }}
-                title="Wedding Gallery"
-              />
-            </div>
-          </div>
         </section>
         {/* Room Showcase */}
         <section className="py-12">
@@ -256,6 +240,17 @@ export default async function Home() {
             </AnimatedSection>
           </div>
         </section>
+        {/* Gallery */}
+        <div className="p-4 border-t border-gray-100 ">
+          <AnimatedSection>
+            <Typography variant="h2" className="mb-8">
+              Resort Gallery
+            </Typography>
+          </AnimatedSection>
+          <div className="mb-20">
+            <ImageMasonDisplay images={homepage?.data?.display_images} title="Wedding Gallery" />
+          </div>
+        </div>
       </div>
     </LightTheme>
   );

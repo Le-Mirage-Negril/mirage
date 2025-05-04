@@ -154,11 +154,7 @@ async function WeddingPage() {
 
           {/* Gallery */}
           <div className="mb-20">
-            <ImageMasonDisplay
-              images={wedding?.data?.display_images}
-              columns={{ default: 2, sm: 3, md: 4, lg: 4 }}
-              title="Wedding Gallery"
-            />
+            <ImageMasonDisplay images={wedding?.data?.display_images} title="Wedding Gallery" />
           </div>
 
           {/* Information Cards Section */}

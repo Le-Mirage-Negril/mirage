@@ -12,27 +12,13 @@ interface ImageItem {
   height?: number;
 }
 
-interface ColumnConfig {
-  default: number;
-  sm?: number;
-  md?: number;
-  lg?: number;
-}
-
 interface ImageMasonDisplayProps {
   images: ImageItem[];
-  columns?: number | ColumnConfig;
   title?: string;
 }
 
-const ImageMasonDisplay: React.FC<ImageMasonDisplayProps> = ({
-  images,
-  columns = { default: 2, sm: 3, md: 4, lg: 4 },
-  title = "Gallery",
-}) => {
+const ImageMasonDisplay: React.FC<ImageMasonDisplayProps> = ({ images, title = "Gallery" }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-  const [columnCount, setColumnCount] = useState(3);
-  const [isLoading, setIsLoading] = useState<boolean[]>([]);
   const [loadError, setLoadError] = useState<boolean[]>([]);
   const [zoom, setZoom] = useState<number>(1);
 
@@ -40,50 +26,8 @@ const ImageMasonDisplay: React.FC<ImageMasonDisplayProps> = ({
 
   // Setup loading and error states for each image
   useEffect(() => {
-    setIsLoading(new Array(images.length).fill(true));
     setLoadError(new Array(images.length).fill(false));
   }, [images]);
-
-  // Calculate column distribution based on responsive settings
-  const getColumnCount = useCallback(() => {
-    if (typeof window === "undefined") return 3;
-
-    if (typeof columns === "number") {
-      return columns;
-    }
-
-    const width = window.innerWidth;
-    if (width < 640) return columns.default;
-    if (width < 768) return columns.sm || columns.default;
-    if (width < 1024) return columns.md || columns.sm || columns.default;
-    return columns.lg || columns.md || columns.sm || columns.default;
-  }, [columns]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setColumnCount(getColumnCount());
-    };
-
-    // Initial setup
-    setColumnCount(getColumnCount());
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [getColumnCount]);
-
-  // Distribute images into columns
-  const distributeImages = useCallback(() => {
-    if (!images || images.length === 0) return [];
-
-    const columnArrays: ImageItem[][] = Array.from({ length: columnCount }, () => []);
-
-    images.forEach((image, index) => {
-      const columnIndex = index % columnCount;
-      columnArrays[columnIndex].push(image);
-    });
-
-    return columnArrays;
-  }, [images, columnCount]);
 
   // Navigation handlers for lightbox
   const handlePrevImage = useCallback(() => {
@@ -135,37 +79,11 @@ const ImageMasonDisplay: React.FC<ImageMasonDisplayProps> = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedImageIndex, handlePrevImage, handleNextImage]);
 
-  // Find the flat index for a given image in the masonry layout
-  const getImageFlatIndex = (columnIndex: number, imageIndex: number): number => {
-    const columns = distributeImages();
-    let flatIndex = 0;
-
-    for (let i = 0; i < columnIndex; i++) {
-      flatIndex += columns[i].length;
-    }
-
-    return flatIndex + imageIndex;
-  };
-
-  // Handle image load state
-  const handleImageLoad = (index: number) => {
-    setIsLoading((prev) => {
-      const updated = [...prev];
-      updated[index] = false;
-      return updated;
-    });
-  };
-
   // Handle image load error
   const handleImageError = (index: number) => {
     setLoadError((prev) => {
       const updated = [...prev];
       updated[index] = true;
-      return updated;
-    });
-    setIsLoading((prev) => {
-      const updated = [...prev];
-      updated[index] = false;
       return updated;
     });
   };
@@ -174,46 +92,31 @@ const ImageMasonDisplay: React.FC<ImageMasonDisplayProps> = ({
     <>
       <div className="w-full">
         <h2 className="sr-only">{title}</h2>
-        <div className="flex gap-2 md:gap-4">
-          {distributeImages().map((column, columnIndex) => (
-            <div key={columnIndex} className="flex flex-col gap-2 md:gap-4 flex-1">
-              {column.map((image, imageIndex) => {
-                const flatIndex = getImageFlatIndex(columnIndex, imageIndex);
-                return (
-                  <motion.div
-                    key={imageIndex}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: flatIndex * 0.05 }}
-                    className="relative aspect-auto overflow-hidden rounded-lg shadow-md cursor-pointer transform transition-all hover:scale-[1.02] hover:shadow-lg"
-                    onClick={() => setSelectedImageIndex(flatIndex)}
-                  >
-                    {isLoading[flatIndex] && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-                        <div className="w-8 h-8 border-4 border-gray-300 border-t-amber-500 rounded-full animate-spin"></div>
-                      </div>
-                    )}
-
-                    {loadError[flatIndex] ? (
-                      <div className="w-full aspect-[4/3] bg-gray-100 flex items-center justify-center text-gray-500">
-                        <span>Failed to load image</span>
-                      </div>
-                    ) : (
-                      <Image
-                        src={image?.url}
-                        alt={image?.alt || `Gallery image ${flatIndex + 1}`}
-                        width={image?.width || 500}
-                        height={image?.height || 500}
-                        className="w-full h-auto object-cover"
-                        onLoad={() => handleImageLoad(flatIndex)}
-                        onError={() => handleImageError(flatIndex)}
-                        priority={flatIndex < 4} // Prioritize loading the first 4 images
-                      />
-                    )}
-                  </motion.div>
-                );
-              })}
-            </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
+          {images.map((image, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              className="relative aspect-auto overflow-hidden rounded-lg shadow-md cursor-pointer transform transition-all hover:scale-[1.02] hover:shadow-lg"
+              onClick={() => setSelectedImageIndex(index)}
+            >
+              {loadError[index] ? (
+                <div className="w-full aspect-[4/3] bg-gray-100 flex items-center justify-center text-gray-500">
+                  <span>Failed to load image</span>
+                </div>
+              ) : (
+                <Image
+                  src={image?.url}
+                  alt={image?.alt || `Gallery image ${index + 1}`}
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover"
+                  onError={() => handleImageError(index)}
+                />
+              )}
+            </motion.div>
           ))}
         </div>
       </div>
