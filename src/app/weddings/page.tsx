@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Typography from "@/components/ui/Typography";
 import { getWedding, getWeddingGCards } from "@/lib/actions/wedding.action";
 import { Calendar } from "lucide-react";
-import Image from "next/image";
+
 import React from "react";
 
 async function WeddingPage() {
