@@ -13,7 +13,9 @@ const Typography = (props: Props) => {
   switch (variant) {
     case "h1":
       return (
-        <h1 className={cn("text-4xl md:text-6xl font-bold text-white mb-4 font-serif", className)}>
+        <h1
+          className={cn("text-4xl md:text-6xl font-normal text-white mb-4 font-serif", className)}
+        >
           {children}
         </h1>
       );
@@ -21,7 +23,7 @@ const Typography = (props: Props) => {
       return (
         <h2
           className={cn(
-            "font-serif text-4xl md:text-5xl font-bold text-center text-cyan-900 pb-5",
+            "font-serif text-4xl md:text-5xl font-normal text-center text-cyan-900 pb-5",
             className
           )}
         >
@@ -32,7 +34,7 @@ const Typography = (props: Props) => {
       return (
         <h3
           className={cn(
-            "font-serif text-2xl md:text-3xl font-bold text-center text-cyan-900 mb-4",
+            "font-serif text-2xl md:text-3xl font-normal text-center text-cyan-900 mb-4",
             className
           )}
         >

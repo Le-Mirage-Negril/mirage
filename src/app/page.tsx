@@ -63,6 +63,7 @@ export default async function Home() {
           </div>
         </section>
         {/* NEW */}
+
         <section className="py-12 bg-amber-50">
           <div className="container mx-auto px-4 ">
             <AnimatedSection direction="up" delay={0.1}>
@@ -209,7 +210,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="relative py-12 overflow-hidden">
+        <section className="relative py-12 overflow-hidden container mx-auto px-4">
           <ParallaxSection speed={0.2} className="absolute inset-0 opacity-20">
             <div
               className="w-full h-full bg-cover bg-center"
@@ -241,13 +242,13 @@ export default async function Home() {
           </div>
         </section>
         {/* Gallery */}
-        <div className="p-4 border-t border-gray-100 ">
+        <div className="p-4 border-t border-gray-100 container mx-auto px-4">
           <AnimatedSection>
             <Typography variant="h2" className="mb-8">
               Resort Gallery
             </Typography>
           </AnimatedSection>
-          <div className="mb-20">
+          <div className="mb-20 space-y-5">
             <ImageMasonDisplay images={homepage?.data?.display_images} title="Wedding Gallery" />
           </div>
         </div>
