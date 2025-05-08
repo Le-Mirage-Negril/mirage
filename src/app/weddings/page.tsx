@@ -62,6 +62,7 @@ async function WeddingPage() {
               <p className="text-gray-300 mt-2">
                 Browse our gallery of unforgettable wedding moments
               </p>
+              <small className="text-gray-300">*Click on the images to view the full gallery</small>
             </AnimatedSection>
           </div>
 

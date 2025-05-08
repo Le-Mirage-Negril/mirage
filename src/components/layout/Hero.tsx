@@ -14,10 +14,10 @@ function Hero({ image = "/pool-1.jpg" }: { image?: string }) {
           alt="Hero Image"
           width={2000}
           height={700}
-          className="w-full object-cover h-full shadow-2xl  brightness-70"
+          className="w-full object-cover h-full shadow-2xl  "
         />
 
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0  z-10" />
       </ParallaxSection>
     </div>
   );

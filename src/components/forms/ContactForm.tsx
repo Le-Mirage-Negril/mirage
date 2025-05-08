@@ -8,8 +8,9 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import Typography from "../ui/Typography";
-import { sendEmail } from "./utils";
+
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -44,18 +45,31 @@ function ContactForm({
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
 
-    const result = sendEmail(values, "template_ugb7z57");
-    if (result) {
-      form.reset();
-      form.setValue("name", "");
-      form.setValue("email", "");
-      form.setValue("phone", "");
-      form.setValue("message", "");
-      toast.success("Email sent successfully");
-    }
+    emailjs
+      .send(
+        "service_a7b44yl",
+        "template_ugb7z57",
+        {
+          ...values,
+        },
+        "r9oLUPKSxZyTe75XQ"
+      )
+      .then(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (result: any) => {
+          if (result.status === 200) {
+            toast.success("Email sent successfully");
+            form.reset();
+            form.setValue("name", "");
+            form.setValue("email", "");
+            form.setValue("phone", "");
+            form.setValue("message", "");
+          }
+        }
+      );
   };
 
   return (

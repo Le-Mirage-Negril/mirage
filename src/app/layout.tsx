@@ -30,11 +30,11 @@ export default function RootLayout({
       <head />
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        className={cn("min-h-screen bg-teal-50 font-sans antialiased", inter.variable)}
+        className={cn("min-h-screen font-sans antialiased", inter.variable)}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >

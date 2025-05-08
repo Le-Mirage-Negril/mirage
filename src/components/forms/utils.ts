@@ -1,9 +1,9 @@
 import emailjs from "@emailjs/browser";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function sendEmail(params: Record<string, string | any>, templateId: string) {
-  let result = false;
-  emailjs
+export async function sendEmail(params: Record<string, string | any>, templateId: string) {
+  const result = null;
+  await emailjs
     .send(
       "service_a7b44yl",
       templateId,
@@ -16,16 +16,15 @@ export function sendEmail(params: Record<string, string | any>, templateId: stri
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (result: any) => {
         console.log("sent email", result);
-        if (result.status === 200) {
-          result = true;
-        } else if (result.status !== 200) {
-          result = false;
-        }
+        return result;
       },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (error: any) => {
         console.log("faile", error);
-        result = false;
+        return {
+          status: 400,
+          text: "Failed to send email",
+        };
       }
     );
   return result;
