@@ -3,10 +3,11 @@ import ImageMasonDisplay from "@/components/features/ImageMasonDisplay";
 import ContactForm from "@/components/forms/ContactForm";
 import Hero from "@/components/layout/Hero";
 import PageWrapper from "@/components/layout/PageWrapper";
-import { Button } from "@/components/ui/button";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import Typography from "@/components/ui/Typography";
+import WeddingCards from "@/components/weddings/WeddingCards";
 import { getWedding, getWeddingGCards } from "@/lib/actions/wedding.action";
 import { Calendar } from "lucide-react";
 
@@ -16,6 +17,7 @@ async function WeddingPage() {
   const wedding = await getWedding();
   const weddingCards = await getWeddingGCards();
   console.log(wedding?.data);
+
   return (
     <div className="mx-auto w-screen ">
       <Hero image={wedding?.data?.header_image?.url || "/weddings-hero5.jpg"} />
@@ -32,7 +34,7 @@ async function WeddingPage() {
         </div>
       </section>
 
-      <PageWrapper className="bg-gradient-to-b from-cyan-950 to-cyan-100 px-4">
+      <PageWrapper className="bg-gradient-to-b from-cyan-950 to-cyan-100 ">
         <section className="container py-16 mx-auto">
           <div className="text-center mb-16 max-w-4xl mx-auto">
             <AnimatedSection>
@@ -51,34 +53,7 @@ async function WeddingPage() {
             </AnimatedSection>
           </div>
 
-          {/* Feature Sections */}
-          <div className="space-y-12 py-12 max-w-5xl mx-auto">
-            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-            {weddingCards?.data?.map((card: any) => (
-              <AnimatedSection delay={0.4} key={card?.id}>
-                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10 gap-5">
-                  <div>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={card?.image?.url}
-                      alt="Wedding"
-                      className="w-[350px] h-[300px] md:w-[500px] md:h-[500px] max-w-full object-cover mx-auto rounded-md"
-                    />
-                  </div>
-
-                  <div className=" flex flex-col justify-center gap-5">
-                    <h2 className="text-2xl lg:text-3xl text-center font-serif text-white font-medium">
-                      {card?.Title}
-                    </h2>
-                    <p className=" leading-relaxed ml-9 text-white">{card?.description}</p>
-                    <Button variant="outline" className="rounded-full w-fit mx-auto" asChild>
-                      <a href="#contact">Learn More</a>
-                    </Button>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
+          <WeddingCards weddingCards={weddingCards?.data} />
 
           {/* Gallery Title */}
           <div className="text-center mt-20 mb-8">

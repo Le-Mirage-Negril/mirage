@@ -5,7 +5,8 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Room, RoomImage, SeasonalRate } from "@/types";
 import { DateTime } from "luxon";
-import { Divide } from "lucide-react";
+
+import { Skeleton } from "../ui/skeleton";
 
 // Helper function to get current season rates
 const getCurrentSeasonRates = (

@@ -59,22 +59,22 @@ function ContactForm({
   };
 
   return (
-    <div className="max-w-2xl mx-auto container py-10 bg-white rounded-lg shadow-md">
-      <Typography variant="h2" className="text-center text-gray-700">
+    <div className="max-w-2xl mx-auto container p-4 bg-gradient-to-b to-cyan-950 from-cyan-100 rounded-lg shadow-md">
+      <Typography variant="h2" className="text-center   ">
         {title}
       </Typography>
-      <p className="text-center mb-6 text-gray-700">{description}</p>
+      <p className="text-center mb-6 ">{description}</p>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 border p-6 rounded-lg">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6  rounded-lg">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel className="text-white">Full Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Your name" {...field} />
+                  <Input className="text-white" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -86,9 +86,9 @@ function ContactForm({
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className="text-white">Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="Your email" type="email" {...field} />
+                  <Input className="text-white" type="email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -100,9 +100,9 @@ function ContactForm({
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone</FormLabel>
+                <FormLabel className="text-white">Phone</FormLabel>
                 <FormControl>
-                  <Input placeholder="Your phone number" {...field} />
+                  <Input className="text-white" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -113,27 +113,25 @@ function ContactForm({
             control={form.control}
             name="message"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Message</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="How can we help you?"
-                    className="min-h-[120px]"
-                    {...field}
-                  />
+              <FormItem className="text-white">
+                <FormLabel className="text-white">Message</FormLabel>
+                <FormControl className="text-white">
+                  <Textarea className="min-h-[120px] text-white" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
 
-          <Button
-            type="submit"
-            className="w-full bg-cyan-600 hover:bg-cyan-700 text-white"
-            disabled={form.formState.isSubmitting}
-          >
-            {form.formState.isSubmitting ? "Sending..." : "Send Message"}
-          </Button>
+          <div className="flex justify-center">
+            <Button
+              type="submit"
+              className="font-serif w-full text-lg capitalize hover:bg-cyan-950 bg-cyan-800 cursor-pointer"
+              disabled={form.formState.isSubmitting}
+            >
+              {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+            </Button>
+          </div>
         </form>
       </Form>
     </div>
