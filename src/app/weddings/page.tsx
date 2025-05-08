@@ -154,6 +154,7 @@ async function WeddingPage() {
             <ContactForm
               title="Begin Your Forever"
               description="Ready to start planning your perfect day at Le Mirage Resort? Reach out to our wedding specialists."
+              isWeddingForm={true}
             />
           </div>
         </section>

@@ -206,7 +206,7 @@ async function Page() {
               </div>
             </div>
           </AnimatedSection>
-          <ContactForm />
+          <ContactForm title="Contact Us" />
         </section>
       </PageWrapper>
     </div>
