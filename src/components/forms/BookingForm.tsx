@@ -10,8 +10,8 @@ import { Room } from "@/types";
 import { useSearchParams } from "next/navigation";
 import { roomData } from "@/lib/data";
 
-import { sendEmail } from "./utils";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 
 const formSchema = z.object({
   name: z.string(),
@@ -52,22 +52,44 @@ function BookingForm() {
     const roomSelected = roomData.find((room: Room) => room.id === parseInt(values.room));
     console.log(roomSelected);
     // post request to booking api
-    const result = sendEmail(values, "template_6lmus0g");
-    console.log(result);
-    if (result) {
-      form.setValue("name", "");
-      form.setValue("email", "");
-      form.setValue("phone", "");
-      form.setValue("checkIn", "");
-      form.setValue("checkOut", "");
-      form.setValue("room", "");
-      form.setValue("numberOfGuests", 1);
-      toast.success("Email sent successfully");
-      // set to default values
-      form.reset();
-    } else {
-      toast.error("Email failed to send");
-    }
+
+    emailjs
+      .send(
+        "service_a7b44yl",
+        "template_6lmus0g",
+        {
+          ...values,
+        },
+        "r9oLUPKSxZyTe75XQ"
+      )
+      .then(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (result: any) => {
+          console.log("sent email", result);
+          if (result?.status === 200) {
+            form.setValue("name", "");
+            form.setValue("email", "");
+            form.setValue("phone", "");
+            form.setValue("checkIn", "");
+            form.setValue("checkOut", "");
+            form.setValue("room", "");
+            form.setValue("numberOfGuests", 1);
+            toast.success("Email sent successfully");
+            // set to default values
+            form.reset();
+          } else {
+            toast.error("Email failed to send");
+          }
+        },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (error: any) => {
+          console.log("faile", error);
+          return {
+            status: 400,
+            text: "Failed to send email",
+          };
+        }
+      );
   };
   console.log(form.formState.errors);
 
