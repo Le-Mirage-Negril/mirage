@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Room, RoomImage, SeasonalRate } from "@/types";
 import { DateTime } from "luxon";
+import { Divide } from "lucide-react";
 
 // Helper function to get current season rates
 const getCurrentSeasonRates = (
@@ -80,7 +81,11 @@ function RoomSection({
       {/* Room Images - Changes order on mobile */}
       <div className="md:order-2">
         <AnimatedSection delay={0.1}>
-          <ImageCarousel images={carouselImages} alt={`${floor} Room`} />
+          {carouselImages.length > 0 ? (
+            <ImageCarousel images={carouselImages} alt={`${floor} Room`} />
+          ) : (
+            <div className="w-full h-[300px] bg-gray-200 rounded-lg animate-pulse"></div>
+          )}
         </AnimatedSection>
       </div>
 
@@ -125,21 +130,29 @@ function RoomSection({
               </div>
             )}
 
-            {/* Current Season Rate Cards */}
-            <div className="grid grid-cols-2 gap-4 mt-4">
-              <div className="bg-amber-50 p-4 rounded-lg">
-                <p className="text-amber-700 font-medium">Double Rate</p>
-                <p className="text-2xl font-bold text-amber-600">
-                  ${currentSeasonRates?.double_rate || "N/A"}
-                </p>
+            {currentSeasonRates ? (
+              <>
+                <div className="grid grid-cols-2 gap-4 mt-4">
+                  <div className="bg-amber-50 p-4 rounded-lg">
+                    <p className="text-amber-700 font-medium">Double Rate</p>
+                    <p className="text-2xl font-bold text-amber-600">
+                      ${currentSeasonRates?.double_rate || "N/A"}
+                    </p>
+                  </div>
+                  <div className="bg-amber-50 p-4 rounded-lg">
+                    <p className="text-amber-700 font-medium">Single Rate</p>
+                    <p className="text-2xl font-bold text-amber-600">
+                      ${currentSeasonRates?.single_rate || "N/A"}
+                    </p>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="grid grid-cols-2 gap-4 mt-4">
+                <Skeleton className="w-full h-[300px] rounded-lg" />
+                <Skeleton className="w-full h-[300px] rounded-lg" />
               </div>
-              <div className="bg-amber-50 p-4 rounded-lg">
-                <p className="text-amber-700 font-medium">Single Rate</p>
-                <p className="text-2xl font-bold text-amber-600">
-                  ${currentSeasonRates?.single_rate || "N/A"}
-                </p>
-              </div>
-            </div>
+            )}
 
             {/* CTA Button */}
             <div className="pt-4">
