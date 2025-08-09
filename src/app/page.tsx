@@ -11,7 +11,7 @@ import { amenities, localRooms } from "@/lib/data";
 import Image from "next/image";
 
 import Link from "next/link";
-import type { BasicImage, Room as RoomType } from "@/types";
+import type { BasicImage, RoomData } from "@/types";
 import Typography from "@/components/ui/Typography";
 import { ArrowDown } from "lucide-react";
 import ImageMasonDisplay from "@/components/features/ImageMasonDisplay";
@@ -212,7 +212,7 @@ export default async function Home() {
 
             <StaggeredGroup>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {rooms?.map((room: RoomType, index: number) => (
+                {rooms?.map((room: RoomData, index: number) => (
                   <Room key={index} room={room} buttonHref={`/rooms`} />
                 ))}
               </div>

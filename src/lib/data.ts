@@ -128,6 +128,16 @@ const localRooms = [
     price: 140,
     isFeatured: true,
     currentSeason: "summer",
+    rates: {
+      double: {
+        winter: 150,
+        summer: 100,
+      },
+      single: {
+        winter: 120,
+        summer: 80,
+      },
+    },
     seasonal_rates: [
       {
         id: 1,
@@ -146,6 +156,16 @@ const localRooms = [
         single_rate: 140,
       },
     ],
+    season: {
+      summer: {
+        start: "April 15th, 2025",
+        end: "December 14th, 2025",
+      },
+      winter: {
+        start: "December 15th, 2025",
+        end: "April 14th, 2026",
+      },
+    },
   },
   {
     id: 2,
@@ -161,6 +181,16 @@ const localRooms = [
     price: 130,
     isFeatured: true,
     currentSeason: "summer",
+    rates: {
+      double: {
+        winter: 150,
+        summer: 100,
+      },
+      single: {
+        winter: 120,
+        summer: 80,
+      },
+    },
     seasonal_rates: [
       {
         id: 1,
@@ -179,6 +209,16 @@ const localRooms = [
         single_rate: 180,
       },
     ],
+    season: {
+      summer: {
+        start: "April 15th, 2025",
+        end: "December 14th, 2025",
+      },
+      winter: {
+        start: "December 15th, 2025",
+        end: "April 14th, 2026",
+      },
+    },
   },
   {
     id: 3,
@@ -194,6 +234,16 @@ const localRooms = [
     price: 120,
     isFeatured: true,
     currentSeason: "summer",
+    rates: {
+      double: {
+        winter: 150,
+        summer: 100,
+      },
+      single: {
+        winter: 120,
+        summer: 80,
+      },
+    },
     seasonal_rates: [
       {
         id: 1,
@@ -212,6 +262,16 @@ const localRooms = [
         single_rate: 120,
       },
     ],
+    season: {
+      summer: {
+        start: "April 15th, 2025",
+        end: "December 14th, 2025",
+      },
+      winter: {
+        start: "December 15th, 2025",
+        end: "April 14th, 2026",
+      },
+    },
   },
 ];
 

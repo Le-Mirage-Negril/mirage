@@ -7,8 +7,8 @@ interface BasicImage {
 }
 
 interface SeasonPeriod {
-  start: string;
-  end: string;
+  start?: string;
+  end?: string;
 }
 
 interface RatesByOccupancy {
@@ -116,7 +116,14 @@ interface RoomData {
   price: number;
   isFeatured: boolean;
   currentSeason: Season | string;
-  seasonal_rates: SeasonalRate[];
+  seasonal_rates?: SeasonalRate[];
+  rates?: RatesByOccupancy;
+  season?:
+    | {
+        summer: Record<string, string>;
+        winter: Record<string, string>;
+      }
+    | undefined;
 }
 
 interface Amenity {
