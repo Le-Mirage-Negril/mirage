@@ -117,6 +117,7 @@ const localRooms = [
   {
     id: 1,
     name: "King Room (Second Floor)",
+    floor: "Second Floor",
     description: `Our King Rooms on the second floor offer a scenic view of the pristine blue waters of the Caribbean Sea. These rooms are slightly more spacious than those on the ground floor and also boast more upgraded bathrooms, two of these rooms also feature a wrap around balcony.`,
     images: [
       {
@@ -170,6 +171,7 @@ const localRooms = [
   {
     id: 2,
     name: "Deluxe Room (Third Floor)",
+    floor: "Third Floor",
     description: `Our Deluxe Rooms on the third floor offer a panoramic view of the Caribbean Sea and the infinity pool, these rooms are extra large, tastefully furnished. Sunsets and sunrise views from the balcony of these rooms are exquisite and a great way to open and close the day.`,
     images: [
       {
@@ -223,6 +225,7 @@ const localRooms = [
   {
     id: 3,
     name: "Standard Room (Poolside)",
+    floor: "First Floor",
     description: `Our Standard Poolside Rooms on the first floor are steps away from the infinity pool, these four spacious rooms feature wide windows and glass doors that will allow you to see all of nature from the comfort of the bedroom. Whether it is to just sit on your balcony and enjoy a drink in the shade or grab a lounge chair and bask in the sunshine before diving into the pool.`,
     images: [
       {

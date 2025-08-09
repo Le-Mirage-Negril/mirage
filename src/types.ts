@@ -113,8 +113,8 @@ interface RoomData {
   name: string;
   description: string;
   images: BasicImage[];
-  price: number;
-  isFeatured: boolean;
+  price?: number;
+  isFeatured?: boolean;
   currentSeason: Season | string;
   seasonal_rates?: SeasonalRate[];
   rates?: RatesByOccupancy;

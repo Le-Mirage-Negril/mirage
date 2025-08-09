@@ -6,9 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 
-import { Room } from "@/types";
+import { RoomData } from "@/types";
 import { useSearchParams } from "next/navigation";
-import { roomData } from "@/lib/data";
+import { localRooms } from "@/lib/data";
 
 import { toast } from "sonner";
 import emailjs from "@emailjs/browser";
@@ -49,8 +49,8 @@ function BookingForm() {
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
-    const roomSelected = roomData.find((room: Room) => room.id === parseInt(values.room));
-    console.log(roomSelected);
+    const roomSelected = localRooms.find((room: RoomData) => room.id === parseInt(values.room));
+    console.log("roomSelected\n\n\nn", roomSelected);
     // post request to booking api
 
     emailjs
@@ -152,7 +152,7 @@ function BookingForm() {
                     value={field.value}
                   >
                     <option value="">Select a room</option>
-                    {roomData?.map((room: Room) => (
+                    {localRooms?.map((room: RoomData) => (
                       <option key={room.id} value={room.id}>
                         {room.floor}
                       </option>
