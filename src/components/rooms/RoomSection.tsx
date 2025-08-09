@@ -1,9 +1,9 @@
 import React from "react";
-import { CarouselImage, ImageCarousel } from "../ui/image-carousel";
+import { ImageCarousel } from "../ui/image-carousel";
 import AnimatedSection from "../animations/AnimatedSection";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { Room, RoomImage, SeasonalRate } from "@/types";
+import { BasicImage, RoomData, SeasonalRate } from "@/types";
 import { DateTime } from "luxon";
 
 import { Skeleton } from "../ui/skeleton";
@@ -18,41 +18,48 @@ const getCurrentSeasonRates = (
 };
 
 // Helper function to process images for the carousel
-const processImages = (images: (string | RoomImage)[]): CarouselImage[] => {
+const processImages = (images: (string | BasicImage)[]): BasicImage[] => {
   if (!images || images.length === 0) return [];
 
   // Handle both string URLs and complex image objects
-  return images.map((img): CarouselImage => {
+  return images.map((img): BasicImage => {
     if (typeof img === "string") {
       return {
         id: Math.floor(Math.random() * 1000000),
         url: img,
-        width: 0,
-        height: 0,
-        alternativeText: "Room image",
+        alt: "Room image",
+        // width: 0,
+        // height: 0,
+        // alternativeText: "Room image",
       };
     }
 
     // Handle Strapi image format
     if ("url" in img) {
-      const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "";
       return {
-        id: typeof img.id === "number" ? img.id : Math.floor(Math.random() * 1000000),
-        url: img.url.startsWith("http") ? img.url : `${baseUrl}${img.url}`,
-        width: img.width || 0,
-        height: img.height || 0,
-        alternativeText: img.alternativeText || img.name || undefined,
-        caption: img.caption || undefined,
-        createdAt: img.createdAt || undefined,
+        id: img.id,
+        url: img.url,
+        alt: img.alt,
       };
+      // const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "";
+      // return {
+      //   id: typeof img.id === "number" ? img.id : Math.floor(Math.random() * 1000000),
+      //   url: img.url.startsWith("http") ? img.url : `${baseUrl}${img.url}`,
+      //   width: img.width || 0,
+      //   height: img.height || 0,
+      //   alternativeText: img.alternativeText || img.name || undefined,
+      //   caption: img.caption || undefined,
+      //   createdAt: img.createdAt || undefined,
+      // };
     }
 
     return {
       id: Math.floor(Math.random() * 1000000),
       url: "/placeholder-room.jpg",
-      width: 0,
-      height: 0,
-      alternativeText: "Room image placeholder",
+      alt: "Room image placeholder",
+      // width: 0,
+      // height: 0,
+      // alternativeText: "Room image placeholder",
     };
   });
 };
@@ -60,7 +67,10 @@ const processImages = (images: (string | RoomImage)[]): CarouselImage[] => {
 // Format date to a user-friendly string
 const formatDate = (dateString: string): string => {
   try {
-    return DateTime.fromISO(dateString).toLocaleString(DateTime.DATE_MED);
+    if (DateTime.fromISO(dateString).isValid) {
+      return DateTime.fromISO(dateString).toLocaleString(DateTime.DATE_MED);
+    }
+    return dateString;
   } catch {
     return dateString; // Fallback to the original string if parsing fails
   }
@@ -73,9 +83,9 @@ function RoomSection({
   id,
   currentSeason = "summer",
   seasonal_rates = [],
-}: Room) {
+}: RoomData) {
   const currentSeasonRates = getCurrentSeasonRates(seasonal_rates, currentSeason);
-  const carouselImages = processImages(images as (string | RoomImage)[]);
+  const carouselImages = processImages(images as (string | BasicImage)[]);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-4 py-7">

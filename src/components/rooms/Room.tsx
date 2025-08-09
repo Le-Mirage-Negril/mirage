@@ -1,11 +1,10 @@
-import type { Room } from "@/types";
+import type { BasicImage, Room } from "@/types";
 import React from "react";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
 
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Typography from "../ui/Typography";
-import { CarouselImage } from "../ui/image-carousel";
 import { ImageCarousel } from "../ui/image-carousel";
 
 interface RoomProps {
@@ -18,13 +17,16 @@ interface RoomProps {
 
 function Room({ room, buttonHref = "/rooms", buttonTitle = "View Detail" }: RoomProps) {
   console.log(room);
-  // @ts-expect-error - room.images is a string[] or RoomImage[]
+
   const roomImage = room.images?.[0]?.url as string;
   console.log("roomImage", roomImage);
   return (
     <Card className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 pt-0">
       <div className="h-80 overflow-hidden">
-        <ImageCarousel images={room.images as CarouselImage[]} alt={`Le Mirage - ${room.name}`} />
+        <ImageCarousel
+          images={room.images as unknown as BasicImage[]}
+          alt={`Le Mirage - ${room.name}`}
+        />
       </div>
       <CardHeader>
         <CardTitle>

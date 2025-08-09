@@ -1,4 +1,4 @@
-import { Amenity, Room, Season, Testimonial } from "@/types";
+import { Amenity, Season, Testimonial } from "@/types";
 
 const homepageImages = [
   "/drone-shot.jpg",
@@ -113,30 +113,105 @@ const weddingImages = [
   "/weddings-hero5.jpg",
 ];
 
-const rooms: Partial<Room>[] = [
+const localRooms = [
   {
     id: 1,
-    name: "Deluxe Suite",
-    description: "Spacious suite with city views and premium amenities",
-    images: ["/room-1.jpg"],
-    price: 299,
+    name: "King Room (Second Floor)",
+    description: `Our King Rooms on the second floor offer a scenic view of the pristine blue waters of the Caribbean Sea. These rooms are slightly more spacious than those on the ground floor and also boast more upgraded bathrooms, two of these rooms also feature a wrap around balcony.`,
+    images: [
+      {
+        id: 1,
+        url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Froom-2.jpg?alt=media&token=2cb5a901-f45e-4f70-97d5-b353777a68b2",
+        alt: "King Room (Second Floor)",
+      },
+    ],
+    price: 140,
     isFeatured: true,
+    currentSeason: "summer",
+    seasonal_rates: [
+      {
+        id: 1,
+        season_name: "Summer",
+        start_date: "April 15th, 2025",
+        end_date: "December 14th, 2025",
+        double_rate: 120,
+        single_rate: 90,
+      },
+      {
+        id: 2,
+        season_name: "Winter",
+        start_date: "December 15th, 2025",
+        end_date: "April 14th, 2026",
+        double_rate: 180,
+        single_rate: 140,
+      },
+    ],
   },
   {
     id: 2,
-    name: "Executive Room",
-    description: "Perfect for business travelers with dedicated workspace",
-    images: ["/room-2.jpg"],
-    price: 199,
+    name: "Deluxe Room (Third Floor)",
+    description: `Our Deluxe Rooms on the third floor offer a panoramic view of the Caribbean Sea and the infinity pool, these rooms are extra large, tastefully furnished. Sunsets and sunrise views from the balcony of these rooms are exquisite and a great way to open and close the day.`,
+    images: [
+      {
+        id: 1,
+        url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Froom-1.jpg?alt=media&token=70dcda1c-e5cf-4ea3-973c-39b6791f080b",
+        alt: "Deluxe Room (Third Floor)",
+      },
+    ],
+    price: 130,
     isFeatured: true,
+    currentSeason: "summer",
+    seasonal_rates: [
+      {
+        id: 1,
+        season_name: "Summer",
+        start_date: "April 15th, 2025",
+        end_date: "December 14th, 2025",
+        double_rate: 130,
+        single_rate: 120,
+      },
+      {
+        id: 2,
+        season_name: "Winter",
+        start_date: "December 15th, 2025",
+        end_date: "April 14th, 2026",
+        double_rate: 200,
+        single_rate: 180,
+      },
+    ],
   },
   {
     id: 3,
-    name: "Presidential Suite",
-    description: "Our finest accommodation with panoramic views",
-    images: ["/room-1.jpg"],
-    price: 499,
+    name: "Standard Room (Poolside)",
+    description: `Our Standard Poolside Rooms on the first floor are steps away from the infinity pool, these four spacious rooms feature wide windows and glass doors that will allow you to see all of nature from the comfort of the bedroom. Whether it is to just sit on your balcony and enjoy a drink in the shade or grab a lounge chair and bask in the sunshine before diving into the pool.`,
+    images: [
+      {
+        id: 1,
+        url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Froom-1.jpg?alt=media&token=70dcda1c-e5cf-4ea3-973c-39b6791f080b",
+        alt: "Standard Room (Poolside)",
+      },
+    ],
+    price: 120,
     isFeatured: true,
+    currentSeason: "summer",
+    seasonal_rates: [
+      {
+        id: 1,
+        season_name: "Summer",
+        start_date: "April 15th, 2025",
+        end_date: "December 14th, 2025",
+        double_rate: 100,
+        single_rate: 80,
+      },
+      {
+        id: 2,
+        season_name: "Winter",
+        start_date: "December 15th, 2025",
+        end_date: "April 14th, 2026",
+        double_rate: 150,
+        single_rate: 120,
+      },
+    ],
   },
 ];
 
@@ -292,7 +367,7 @@ const roomData = [
 ];
 
 export {
-  rooms,
+  localRooms,
   amenities,
   testimonials,
   roomData,

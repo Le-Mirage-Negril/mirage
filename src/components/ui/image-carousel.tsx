@@ -5,19 +5,21 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./button";
+import { BasicImage } from "@/types";
 
 export interface CarouselImage {
   id: number;
   url: string;
-  width: number;
-  height: number;
+  alt: string;
+  width?: number;
+  height?: number;
   alternativeText?: string;
   caption?: string;
   createdAt?: string;
 }
 
 interface ImageCarouselProps {
-  images: CarouselImage[];
+  images: BasicImage[];
   alt: string;
 }
 

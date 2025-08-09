@@ -7,23 +7,51 @@ import LightTheme from "@/components/providers/LightTheme";
 import Room from "@/components/rooms/Room";
 import { Button } from "@/components/ui/button";
 
-import { amenities } from "@/lib/data";
+import { amenities, localRooms } from "@/lib/data";
 import Image from "next/image";
 
 import Link from "next/link";
-import { getFeaturedRooms } from "@/lib/actions/room.actions";
-import type { Room as RoomType } from "@/types";
+import type { BasicImage, Room as RoomType } from "@/types";
 import Typography from "@/components/ui/Typography";
 import { ArrowDown } from "lucide-react";
 import ImageMasonDisplay from "@/components/features/ImageMasonDisplay";
-import { getHomepage } from "@/lib/actions/homepage.actions";
-// import ImageCarousel from "@/components/features/ImageCarousel";
+
+const homepageImages: BasicImage[] = [
+  {
+    id: 1,
+    url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Fhotelred.jpg?alt=media&token=98992f81-44b6-4cbc-9b1f-8e282364cedf",
+    alt: "Luxury Resort Swimming Pool",
+  },
+  {
+    id: 2,
+    url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Fpool-2.jpg?alt=media&token=950d5bb8-4de7-4114-9c6f-d72c90303347",
+    alt: "Infinity Pool View",
+  },
+  {
+    id: 3,
+    url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Fhotel-2.jpg?alt=media&token=c1f16f8b-8d3f-4b4c-8f6d-4f58b65d0443",
+    alt: "Poolside Lounging Area",
+  },
+  {
+    id: 4,
+    url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Flanding2.jpg?alt=media&token=faef2aa6-5d43-4a38-aa5a-d8c4b8c544b9",
+    alt: "Luxury Resort Swimming Pool",
+  },
+  {
+    id: 5,
+    url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Flanding%203.jpg?alt=media&token=0a62757b-35f2-4843-b408-c26a3b328187",
+    alt: "",
+  },
+  {
+    id: 6,
+    url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Flanding1.png?alt=media&token=d4688769-e680-4b02-a5e1-1762f23b1a1a",
+    alt: "",
+  },
+];
 
 export default async function Home() {
-  const rooms = await getFeaturedRooms();
-  const homepage = await getHomepage();
+  const rooms = localRooms;
 
-  console.log(rooms);
   return (
     <LightTheme>
       <div className="mx-auto w-screen  bg-white">
@@ -249,7 +277,7 @@ export default async function Home() {
             </Typography>
           </AnimatedSection>
           <div className="mb-20 space-y-5">
-            <ImageMasonDisplay images={homepage?.data?.display_images} title="Wedding Gallery" />
+            <ImageMasonDisplay images={homepageImages} title="Wedding Gallery" />
           </div>
         </div>
       </div>

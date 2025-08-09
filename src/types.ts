@@ -1,5 +1,11 @@
 type Season = "summer" | "winter";
 
+interface BasicImage {
+  id: number;
+  url: string;
+  alt: string;
+}
+
 interface SeasonPeriod {
   start: string;
   end: string;
@@ -61,15 +67,15 @@ interface RoomImage {
 
 interface SeasonalRate {
   id: number;
-  documentId: string;
+  documentId?: string | undefined;
   season_name: string;
   start_date: string;
   end_date: string;
   double_rate: number;
   single_rate: number;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
+  createdAt?: string | undefined;
+  updatedAt?: string | undefined;
+  publishedAt?: string | undefined;
 }
 
 interface Room {
@@ -77,7 +83,7 @@ interface Room {
   documentId?: string;
   name?: string;
   description?: string | null;
-  images: RoomImage[] | string[];
+  images: RoomImage[] | BasicImage[];
   price?: number | null;
   winterRate?: number;
   summerRate?: number;
@@ -88,7 +94,7 @@ interface Room {
     summer: SeasonPeriod;
     winter: SeasonPeriod;
   };
-  currentSeason: Season;
+  currentSeason: Season | string;
   isFeatured?: boolean;
   roomNumber?: number;
   roomType?: string;
@@ -99,6 +105,18 @@ interface Room {
   updatedAt?: string;
   publishedAt?: string;
   seasonal_rates?: SeasonalRate[];
+}
+
+interface RoomData {
+  id: number | string;
+  floor?: string;
+  name: string;
+  description: string;
+  images: BasicImage[];
+  price: number;
+  isFeatured: boolean;
+  currentSeason: Season | string;
+  seasonal_rates: SeasonalRate[];
 }
 
 interface Amenity {
@@ -126,4 +144,6 @@ export type {
   SeasonalRate,
   SeasonPeriod,
   RatesByOccupancy,
+  BasicImage,
+  RoomData,
 };
