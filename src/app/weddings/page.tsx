@@ -16,7 +16,7 @@ import React from "react";
 async function WeddingPage() {
   const wedding = await getWedding();
   const weddingCards = await getWeddingGCards();
-  console.log(wedding?.data);
+  console.log(wedding?.data, weddingCards);
 
   return (
     <div className="mx-auto w-screen ">
