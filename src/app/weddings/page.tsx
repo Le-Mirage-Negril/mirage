@@ -8,19 +8,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import Typography from "@/components/ui/Typography";
 import WeddingCards from "@/components/weddings/WeddingCards";
-import { getWedding, getWeddingGCards } from "@/lib/actions/wedding.action";
+import { weddingCards, weddingGallery } from "@/lib/data";
 import { Calendar } from "lucide-react";
 
 import React from "react";
 
 async function WeddingPage() {
-  const wedding = await getWedding();
-  const weddingCards = await getWeddingGCards();
-  console.log(wedding?.data, weddingCards);
+  const weddingGalleryData = weddingGallery;
+  const weddingCardsData = weddingCards;
 
   return (
     <div className="mx-auto w-screen ">
-      <Hero image={wedding?.data?.header_image?.url || "/weddings-hero5.jpg"} />
+      <Hero
+        image={`https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fweddings-hero5.jpg?alt=media&token=7abd0497-480d-45cb-98b3-34775cd32c00`}
+      />
       <section className="relative h-screen flex items-center overflow-hidden">
         <div className="container mx-auto px-4 z-20 text-center">
           <AnimatedSection delay={0.2}>
@@ -53,7 +54,7 @@ async function WeddingPage() {
             </AnimatedSection>
           </div>
 
-          <WeddingCards weddingCards={weddingCards?.data} />
+          <WeddingCards weddingCards={weddingCardsData} />
 
           {/* Gallery Title */}
           <div className="text-center mt-20 mb-8">
@@ -68,7 +69,7 @@ async function WeddingPage() {
 
           {/* Gallery */}
           <div className="mb-20 space-y-5">
-            <ImageMasonDisplay images={wedding?.data?.display_images} title="Wedding Gallery" />
+            <ImageMasonDisplay images={weddingGalleryData} title="Wedding Gallery" />
           </div>
           <hr className="my-12 border-t border-gray-200" />
 

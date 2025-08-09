@@ -429,6 +429,84 @@ const roomData = [
   },
 ];
 
+// Local Data to use for now
+
+const weddingCards = [
+  {
+    id: 1,
+    title: `A Ceremony Like No Other`,
+    description: `Say “I do” with the Caribbean Sea and golden sunset as your witness. At Le Mirage Resort, nature takes center stage—our panoramic cliffside view sets a breathtaking backdrop that needs little else. It's where the ocean meets the sky… and your forever begins.`,
+    image: {
+      id: 1,
+      url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fwed12.jpg?alt=media&token=d1c7af0b-152c-4b9c-86c3-45b564292157",
+      alt: "Wedding view",
+    },
+  },
+  {
+    id: 2,
+    title: `Your Dream Wedding, Your Way`,
+    description: `Whether you're envisioning an intimate elopement or a celebration with all your closest people, our venue can host up to 80 guests comfortably. From ceremony to cocktail hour to reception, every moment flows seamlessly in one stunning location. No extra moving parts, just pure joy and beauty from start to finish.`,
+    image: {
+      id: 1,
+      url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fwed1.jpg?alt=media&token=9eee440f-2e92-4b9c-9822-32d4682e28f4",
+      alt: "Wedding view",
+    },
+  },
+  {
+    id: 3,
+    title: `Picture-Perfect Memories`,
+    description: `When the cliffs, the sea, and the setting sun come together—your wedding photos don't just capture a moment, they become timeless. The natural light, the gentle breeze, the endless horizon—it all works in your favor to create imagery that sets your wedding apart.`,
+    image: {
+      id: 1,
+      url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fwed4.jpg?alt=media&token=2f6e730c-deb0-479d-ad11-f4c0328e2c26",
+      alt: "Wedding view",
+    },
+  },
+  {
+    id: 4,
+    title: `Bring Your Vision to Life`,
+    description: `Already working with a wedding planner? Amazing. Still searching? No problem. We'll work alongside you (or your team) to make sure every detail feels like you. Le Mirage is more than a venue—it's a canvas for your vision. Let it be the foundation on which you build something unforgettable.`,
+    image: {
+      id: 1,
+      url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fwed7.jpg?alt=media&token=94a88b6f-cf23-4b84-ac36-a8665e46c42b",
+      alt: "Wedding view",
+    },
+  },
+];
+
+const weddingGallery = [
+  {
+    id: 1,
+    url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fwed8.jpg?alt=media&token=0338ef5d-0ec6-46ce-8c8c-27e38781aa50",
+    alt: "Wedding view",
+  },
+  {
+    id: 2,
+    url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fwed7.jpg?alt=media&token=94a88b6f-cf23-4b84-ac36-a8665e46c42b",
+    alt: "Wedding view",
+  },
+  {
+    id: 3,
+    url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fwed6.jpg?alt=media&token=40bb0afa-cc2f-4bc4-9d33-0e03e5c5e9cc",
+    alt: "Wedding view",
+  },
+  {
+    id: 4,
+    url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fwed5.jpg?alt=media&token=91c9d32d-aec5-44a7-9985-7c1650b0290b",
+    alt: "Wedding view",
+  },
+  {
+    id: 5,
+    url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fwed4.jpg?alt=media&token=2f6e730c-deb0-479d-ad11-f4c0328e2c26",
+    alt: "Wedding view",
+  },
+  {
+    id: 6,
+    url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fwed4.jpg?alt=media&token=2f6e730c-deb0-479d-ad11-f4c0328e2c26",
+    alt: "Wedding view",
+  },
+];
+
 export {
   localRooms,
   amenities,
@@ -438,4 +516,6 @@ export {
   weddingImages,
   landingPageImages,
   weddingPageImages,
+  weddingCards,
+  weddingGallery,
 };

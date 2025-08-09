@@ -1,11 +1,5 @@
 type Season = "summer" | "winter";
 
-interface BasicImage {
-  id: number;
-  url: string;
-  alt: string;
-}
-
 interface SeasonPeriod {
   start?: string;
   end?: string;
@@ -107,6 +101,26 @@ interface Room {
   seasonal_rates?: SeasonalRate[];
 }
 
+//----------------NEW TYPES -----------------------------//
+interface BasicImage {
+  id: number;
+  url: string;
+  alt: string;
+}
+interface Amenity {
+  id: number | string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+interface Testimonial {
+  id: number | string;
+  name: string;
+  location: string;
+  testimonial: string;
+}
+
 interface RoomData {
   id: number | string;
   floor?: string;
@@ -126,18 +140,11 @@ interface RoomData {
     | undefined;
 }
 
-interface Amenity {
+interface WeddingCard {
   id: number | string;
   title: string;
   description: string;
-  icon: string;
-}
-
-interface Testimonial {
-  id: number | string;
-  name: string;
-  location: string;
-  testimonial: string;
+  image: BasicImage;
 }
 
 export type {
@@ -153,4 +160,5 @@ export type {
   RatesByOccupancy,
   BasicImage,
   RoomData,
+  WeddingCard,
 };

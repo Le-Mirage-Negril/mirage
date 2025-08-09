@@ -53,7 +53,7 @@ function WeddingCards({ weddingCards }: WeddingCardsProps) {
 
             <div className=" flex flex-col justify-center gap-5">
               <h2 className="text-2xl lg:text-3xl text-center font-serif text-white font-medium">
-                {card?.Title}
+                {card?.title}
               </h2>
               <p className=" leading-relaxed ml-9 text-white">{card?.description}</p>
               <Button variant="outline" className="rounded-full w-fit mx-auto" asChild>
@@ -69,7 +69,7 @@ function WeddingCards({ weddingCards }: WeddingCardsProps) {
             {currentCard + 1}/{weddingCards.length}
           </Typography>
           <Typography variant="p" className="capitalize font-serif text-white mb-0">
-            {weddingCards[currentCard]?.Title}
+            {weddingCards[currentCard]?.title}
           </Typography>
         </div>
         <div className="flex gap-4 items-center justify-center">

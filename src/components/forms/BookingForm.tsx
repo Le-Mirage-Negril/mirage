@@ -20,7 +20,7 @@ const formSchema = z.object({
   checkIn: z.string(),
   checkOut: z.string(),
   room: z.string(),
-  numberOfGuests: z.number(),
+  numberOfGuests: z.number().min(1).max(20),
 });
 
 function BookingForm() {
@@ -50,15 +50,24 @@ function BookingForm() {
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
     const roomSelected = localRooms.find((room: RoomData) => room.id === parseInt(values.room));
-    console.log("roomSelected\n\n\nn", roomSelected);
+
     // post request to booking api
+    const payload = {
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+      checkIn: values.checkIn,
+      checkOut: values.checkOut,
+      room: roomSelected?.name,
+      numberOfGuests: values.numberOfGuests,
+    };
 
     emailjs
       .send(
         "service_a7b44yl",
         "template_6lmus0g",
         {
-          ...values,
+          ...payload,
         },
         "r9oLUPKSxZyTe75XQ"
       )
