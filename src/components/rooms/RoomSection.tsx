@@ -7,6 +7,7 @@ import { BasicImage, RoomData, SeasonalRate } from "@/types";
 import { DateTime } from "luxon";
 
 import { Skeleton } from "../ui/skeleton";
+import { ROOM_TAX_BLURB } from "@/lib/constants";
 
 // Helper function to get current season rates
 const getCurrentSeasonRates = (
@@ -175,6 +176,7 @@ function RoomSection({
             </div>
           </div>
         </AnimatedSection>
+        <p className="text-xs text-gray-600">{ROOM_TAX_BLURB}</p>
       </div>
     </div>
   );

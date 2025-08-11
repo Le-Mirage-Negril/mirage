@@ -10,7 +10,6 @@ import { RoomData } from "@/types";
 import React from "react";
 
 async function Page() {
-  // const rooms = await getRooms();
   const rooms = localRooms;
 
   return (
