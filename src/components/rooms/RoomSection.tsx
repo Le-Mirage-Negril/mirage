@@ -89,7 +89,7 @@ function RoomSection({
   const carouselImages = processImages(images as (string | BasicImage)[]);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-4 py-7">
+    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-4 md:py-7 py-4">
       {/* Room Images - Changes order on mobile */}
       <div className="md:order-2">
         <AnimatedSection delay={0.1}>
@@ -102,7 +102,7 @@ function RoomSection({
       </div>
 
       {/* Room Description - Changes order on mobile */}
-      <div className="md:order-1 space-y-6 p-6 flex flex-col justify-center items-center">
+      <div className="md:order-1 space-y-6 md:p-6 p-4 flex flex-col justify-center items-center">
         <AnimatedSection>
           <h2 className="text-3xl font-serif text-cyan-950">{floor}</h2>
         </AnimatedSection>

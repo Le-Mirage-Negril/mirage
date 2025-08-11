@@ -36,8 +36,8 @@ async function WeddingPage() {
       </section>
 
       <PageWrapper className="bg-gradient-to-b from-cyan-950 to-cyan-100 ">
-        <section className="container py-16 mx-auto">
-          <div className="text-center mb-16 max-w-4xl mx-auto">
+        <section className="container md:py-16 py-8 mx-auto">
+          <div className="text-center md:mb-16 mb-8 max-w-4xl mx-auto">
             <AnimatedSection>
               <Typography variant="h2" className="capitalize text-white mb-8">
                 Your Perfect Day Awaits

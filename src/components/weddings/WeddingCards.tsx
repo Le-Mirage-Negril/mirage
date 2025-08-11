@@ -35,7 +35,7 @@ function WeddingCards({ weddingCards }: WeddingCardsProps) {
   };
 
   return (
-    <div className="space-y-12 py-12 max-w-5xl mx-auto">
+    <div className="space-y-12 md:py-12 py-8 max-w-5xl mx-auto">
       {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
       {weddingCards?.map((card: any, index: number) => (
         <AnimatedSection
@@ -48,14 +48,14 @@ function WeddingCards({ weddingCards }: WeddingCardsProps) {
             <img
               src={card?.image?.url}
               alt="Wedding"
-              className="max-w-[350px] h-[300px] md:max-w-[500px] md:h-[500px] w-full object-cover mx-auto rounded-md"
+              className="max-w-full h-[300px] md:max-w-[500px] md:h-[500px] w-full object-cover mx-auto rounded-md"
             />
 
             <div className=" flex flex-col justify-center gap-5">
               <h2 className="text-2xl lg:text-3xl text-center font-serif text-white font-medium">
                 {card?.title}
               </h2>
-              <p className=" leading-relaxed ml-9 text-white">{card?.description}</p>
+              <p className=" leading-relaxed text-white">{card?.description}</p>
               <Button variant="outline" className="rounded-full w-fit mx-auto" asChild>
                 <a href="#contact">Inquire</a>
               </Button>

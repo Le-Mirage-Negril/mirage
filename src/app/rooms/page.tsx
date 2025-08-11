@@ -16,17 +16,17 @@ async function Page() {
     <div className="mx-auto w-screen bg-white">
       <Hero image="/room-1.jpg" />
       <section className="relative h-screen flex items-center overflow-hidden">
-        <div className="container mx-auto px-4 z-20 text-center">
+        <div className="container mx-auto md:px-4 px-2 z-20 text-center">
           <AnimatedSection delay={0.2}>
             <Typography variant="h1">Rooms & Rates</Typography>
           </AnimatedSection>
         </div>
       </section>
 
-      <PageWrapper className=" pb-6">
-        <section className="container mx-auto px-4">
-          <AnimatedSection delay={0.4} className="space-y-4 pb-4">
-            <Typography variant="h2" className="pb-2">
+      <PageWrapper className="md:pb-6 pb-4">
+        <section className="container mx-auto md:px-4 px-2 space-y-4">
+          <AnimatedSection delay={0.4} className="space-y-4">
+            <Typography variant="h2" className="md:pb-2 pb-0">
               Our Rooms
             </Typography>
             <p className="font-bold text-center mb-4">
@@ -46,9 +46,9 @@ async function Page() {
             </div>
           </StaggeredGroup>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5">
+          <div className="flex flex-col md:flex-row gap-4">
             <AnimatedSection delay={0.5} className="flex">
-              <div className="bg-amber-50 p-6 rounded-lg max-w-3xl mx-auto my-1 shadow-md">
+              <div className="bg-amber-50 md:p-6 p-4 rounded-lg max-w-3xl mx-auto my-1 shadow-md">
                 <Typography variant="h3" className="text-center mb-3">
                   Additional Information
                 </Typography>
@@ -63,7 +63,7 @@ async function Page() {
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.5} className="flex">
-              <div className="bg-cyan-50 p-6 rounded-lg max-w-3xl mx-auto my-8 shadow-md">
+              <div className="bg-cyan-50 md:p-6 p-4 rounded-lg max-w-3xl mx-auto my-1 shadow-md">
                 <Typography variant="h3" className="text-center mb-3">
                   Guest Privileges
                 </Typography>

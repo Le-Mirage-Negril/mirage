@@ -28,7 +28,7 @@ function ReservationPage() {
       </section>
       <PageWrapper className="bg-cyan-950">
         <section id="booking-form">
-          <Typography variant="h2" className="text-center text-white pb-12">
+          <Typography variant="h2" className="text-center text-white md:pb-12 pb-8">
             Book a Room
           </Typography>
           <Suspense
