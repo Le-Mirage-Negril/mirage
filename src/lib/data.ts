@@ -115,7 +115,7 @@ const weddingImages = [
 
 const localRooms = [
   {
-    id: 2,
+    id: 1,
     name: "Deluxe Room (Third Floor)",
     floor: "Third Floor",
     description: `Our Deluxe Rooms on the third floor offer a panoramic view of the Caribbean Sea and the infinity pool, these rooms are extra large, tastefully furnished. Sunsets and sunrise views from the balcony of these rooms are exquisite and a great way to open and close the day.`,
@@ -169,7 +169,7 @@ const localRooms = [
     },
   },
   {
-    id: 1,
+    id: 2,
     name: "King Room (Second Floor)",
     floor: "Second Floor",
     description: `Our King Rooms on the second floor offer a scenic view of the pristine blue waters of the Caribbean Sea. These rooms are slightly more spacious than those on the ground floor and also boast more upgraded bathrooms, two of these rooms also feature a wrap around balcony.`,
