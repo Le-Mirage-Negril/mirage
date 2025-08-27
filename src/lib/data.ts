@@ -131,12 +131,12 @@ const localRooms = [
     currentSeason: "summer",
     rates: {
       double: {
-        winter: 150,
-        summer: 100,
+        winter: 180,
+        summer: 120,
       },
       single: {
-        winter: 120,
-        summer: 80,
+        winter: 140,
+        summer: 90,
       },
     },
     seasonal_rates: [
@@ -185,12 +185,12 @@ const localRooms = [
     currentSeason: "summer",
     rates: {
       double: {
-        winter: 150,
-        summer: 100,
+        winter: 200,
+        summer: 130,
       },
       single: {
-        winter: 120,
-        summer: 80,
+        winter: 180,
+        summer: 120,
       },
     },
     seasonal_rates: [
@@ -234,7 +234,7 @@ const localRooms = [
         alt: "Standard Room (Poolside)",
       },
     ],
-    price: 120,
+    price: 100,
     isFeatured: true,
     currentSeason: "summer",
     rates: {
