@@ -58,7 +58,7 @@ async function Page() {
                   client&apos;s arrival at the hotel.
                 </p>
                 <p className="text-gray-700 mt-2 font-medium">
-                  We offer a complementary continental breakfast.
+                  We offer a complimentary continental breakfast.
                 </p>
               </div>
             </AnimatedSection>

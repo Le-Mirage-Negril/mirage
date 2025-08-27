@@ -287,7 +287,7 @@ const amenities: Amenity[] = [
   },
   {
     id: 2,
-    title: "Complementary Continental Breakfast",
+    title: "complimentary Continental Breakfast",
     description: "We offer a complimentary continental breakfast.",
     icon: "🍽️",
   },
