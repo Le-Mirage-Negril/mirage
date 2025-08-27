@@ -115,60 +115,6 @@ const weddingImages = [
 
 const localRooms = [
   {
-    id: 1,
-    name: "King Room (Second Floor)",
-    floor: "Second Floor",
-    description: `Our King Rooms on the second floor offer a scenic view of the pristine blue waters of the Caribbean Sea. These rooms are slightly more spacious than those on the ground floor and also boast more upgraded bathrooms, two of these rooms also feature a wrap around balcony.`,
-    images: [
-      {
-        id: 1,
-        url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Froom-2.jpg?alt=media&token=2cb5a901-f45e-4f70-97d5-b353777a68b2",
-        alt: "King Room (Second Floor)",
-      },
-    ],
-    price: 140,
-    isFeatured: true,
-    currentSeason: "summer",
-    rates: {
-      double: {
-        winter: 180,
-        summer: 120,
-      },
-      single: {
-        winter: 140,
-        summer: 90,
-      },
-    },
-    seasonal_rates: [
-      {
-        id: 1,
-        season_name: "Summer",
-        start_date: "April 15th, 2025",
-        end_date: "December 14th, 2025",
-        double_rate: 120,
-        single_rate: 90,
-      },
-      {
-        id: 2,
-        season_name: "Winter",
-        start_date: "December 15th, 2025",
-        end_date: "April 14th, 2026",
-        double_rate: 180,
-        single_rate: 140,
-      },
-    ],
-    season: {
-      summer: {
-        start: "April 15th, 2025",
-        end: "December 14th, 2025",
-      },
-      winter: {
-        start: "December 15th, 2025",
-        end: "April 14th, 2026",
-      },
-    },
-  },
-  {
     id: 2,
     name: "Deluxe Room (Third Floor)",
     floor: "Third Floor",
@@ -209,6 +155,60 @@ const localRooms = [
         end_date: "April 14th, 2026",
         double_rate: 200,
         single_rate: 180,
+      },
+    ],
+    season: {
+      summer: {
+        start: "April 15th, 2025",
+        end: "December 14th, 2025",
+      },
+      winter: {
+        start: "December 15th, 2025",
+        end: "April 14th, 2026",
+      },
+    },
+  },
+  {
+    id: 1,
+    name: "King Room (Second Floor)",
+    floor: "Second Floor",
+    description: `Our King Rooms on the second floor offer a scenic view of the pristine blue waters of the Caribbean Sea. These rooms are slightly more spacious than those on the ground floor and also boast more upgraded bathrooms, two of these rooms also feature a wrap around balcony.`,
+    images: [
+      {
+        id: 1,
+        url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Froom-2.jpg?alt=media&token=2cb5a901-f45e-4f70-97d5-b353777a68b2",
+        alt: "King Room (Second Floor)",
+      },
+    ],
+    price: 120,
+    isFeatured: true,
+    currentSeason: "summer",
+    rates: {
+      double: {
+        winter: 180,
+        summer: 120,
+      },
+      single: {
+        winter: 140,
+        summer: 90,
+      },
+    },
+    seasonal_rates: [
+      {
+        id: 1,
+        season_name: "Summer",
+        start_date: "April 15th, 2025",
+        end_date: "December 14th, 2025",
+        double_rate: 120,
+        single_rate: 90,
+      },
+      {
+        id: 2,
+        season_name: "Winter",
+        start_date: "December 15th, 2025",
+        end_date: "April 14th, 2026",
+        double_rate: 180,
+        single_rate: 140,
       },
     ],
     season: {

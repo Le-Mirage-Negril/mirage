@@ -16,10 +16,8 @@ interface RoomProps {
 }
 
 function Room({ room, buttonHref = "/rooms", buttonTitle = "View Detail" }: RoomProps) {
-  console.log(room);
-
   const roomImage = room.images?.[0]?.url as string;
-  console.log("roomImage", roomImage);
+
   return (
     <Card className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 pt-0">
       <div className="h-80 overflow-hidden">
@@ -49,5 +47,8 @@ function Room({ room, buttonHref = "/rooms", buttonTitle = "View Detail" }: Room
     </Card>
   );
 }
+
+
+
 
 export default Room;
