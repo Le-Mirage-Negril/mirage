@@ -116,27 +116,27 @@ const weddingImages = [
 const localRooms = [
   {
     id: 1,
-    name: "Deluxe Room (Third Floor)",
-    floor: "Third Floor",
-    description: `Our Deluxe Rooms on the third floor offer a panoramic view of the Caribbean Sea and the infinity pool, these rooms are extra large, tastefully furnished. Sunsets and sunrise views from the balcony of these rooms are exquisite and a great way to open and close the day.`,
+    name: "Standard Room (Poolside)",
+    floor: "First Floor",
+    description: `Our Standard Poolside Rooms on the first floor are steps away from the infinity pool, these four spacious rooms feature wide windows and glass doors that will allow you to see all of nature from the comfort of the bedroom. Whether it is to just sit on your balcony and enjoy a drink in the shade or grab a lounge chair and bask in the sunshine before diving into the pool.`,
     images: [
       {
         id: 1,
         url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Froom-1.jpg?alt=media&token=70dcda1c-e5cf-4ea3-973c-39b6791f080b",
-        alt: "Deluxe Room (Third Floor)",
+        alt: "Standard Room (Poolside)",
       },
     ],
-    price: 130,
+    price: 100,
     isFeatured: true,
     currentSeason: "summer",
     rates: {
       double: {
-        winter: 200,
-        summer: 130,
+        winter: 150,
+        summer: 100,
       },
       single: {
-        winter: 180,
-        summer: 120,
+        winter: 120,
+        summer: 80,
       },
     },
     seasonal_rates: [
@@ -145,16 +145,16 @@ const localRooms = [
         season_name: "Summer",
         start_date: "April 15th, 2025",
         end_date: "December 14th, 2025",
-        double_rate: 130,
-        single_rate: 120,
+        double_rate: 100,
+        single_rate: 80,
       },
       {
         id: 2,
         season_name: "Winter",
         start_date: "December 15th, 2025",
         end_date: "April 14th, 2026",
-        double_rate: 200,
-        single_rate: 180,
+        double_rate: 150,
+        single_rate: 120,
       },
     ],
     season: {
@@ -168,6 +168,7 @@ const localRooms = [
       },
     },
   },
+
   {
     id: 2,
     name: "King Room (Second Floor)",
@@ -224,27 +225,27 @@ const localRooms = [
   },
   {
     id: 3,
-    name: "Standard Room (Poolside)",
-    floor: "First Floor",
-    description: `Our Standard Poolside Rooms on the first floor are steps away from the infinity pool, these four spacious rooms feature wide windows and glass doors that will allow you to see all of nature from the comfort of the bedroom. Whether it is to just sit on your balcony and enjoy a drink in the shade or grab a lounge chair and bask in the sunshine before diving into the pool.`,
+    name: "Deluxe Room (Third Floor)",
+    floor: "Third Floor",
+    description: `Our Deluxe Rooms on the third floor offer a panoramic view of the Caribbean Sea and the infinity pool, these rooms are extra large, tastefully furnished. Sunsets and sunrise views from the balcony of these rooms are exquisite and a great way to open and close the day.`,
     images: [
       {
         id: 1,
         url: "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/homepage%2Froom-1.jpg?alt=media&token=70dcda1c-e5cf-4ea3-973c-39b6791f080b",
-        alt: "Standard Room (Poolside)",
+        alt: "Deluxe Room (Third Floor)",
       },
     ],
-    price: 100,
+    price: 130,
     isFeatured: true,
     currentSeason: "summer",
     rates: {
       double: {
-        winter: 150,
-        summer: 100,
+        winter: 200,
+        summer: 130,
       },
       single: {
-        winter: 120,
-        summer: 80,
+        winter: 180,
+        summer: 120,
       },
     },
     seasonal_rates: [
@@ -253,16 +254,16 @@ const localRooms = [
         season_name: "Summer",
         start_date: "April 15th, 2025",
         end_date: "December 14th, 2025",
-        double_rate: 100,
-        single_rate: 80,
+        double_rate: 130,
+        single_rate: 120,
       },
       {
         id: 2,
         season_name: "Winter",
         start_date: "December 15th, 2025",
         end_date: "April 14th, 2026",
-        double_rate: 150,
-        single_rate: 120,
+        double_rate: 200,
+        single_rate: 180,
       },
     ],
     season: {
