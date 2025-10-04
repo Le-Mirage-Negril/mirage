@@ -21,6 +21,7 @@ const formSchema = z.object({
   checkOut: z.string(),
   room: z.string(),
   numberOfGuests: z.number().min(1).max(20),
+  promoCode: z.string().optional(),
 });
 
 function BookingForm() {
@@ -37,6 +38,7 @@ function BookingForm() {
       checkOut: "",
       room: roomId,
       numberOfGuests: 1,
+      promoCode: "",
     },
   });
 
@@ -48,7 +50,6 @@ function BookingForm() {
   }, [roomId, form]);
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
     const roomSelected = localRooms.find((room: RoomData) => room.id === parseInt(values.room));
 
     // post request to booking api
@@ -60,6 +61,7 @@ function BookingForm() {
       checkOut: values.checkOut,
       room: roomSelected?.name,
       numberOfGuests: values.numberOfGuests,
+      promoCode: values.promoCode || "",
     };
 
     emailjs
@@ -83,6 +85,7 @@ function BookingForm() {
             form.setValue("checkOut", "");
             form.setValue("room", "");
             form.setValue("numberOfGuests", 1);
+            form.setValue("promoCode", "");
             toast.success("Email sent successfully");
             // set to default values
             form.reset();
@@ -92,13 +95,14 @@ function BookingForm() {
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (error: any) => {
-          console.log("faile", error);
+          console.log("failed", error);
           return {
             status: 400,
             text: "Failed to send email",
           };
         }
       );
+    form.reset();
   };
   console.log(form.formState.errors);
 
@@ -206,6 +210,18 @@ function BookingForm() {
                 <FormLabel>Guests</FormLabel>
                 <FormControl>
                   <Input placeholder="Number of guests" {...field} type="number" min={1} max={2} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="promoCode"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Promo Code</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter promo code" {...field} />
                 </FormControl>
               </FormItem>
             )}

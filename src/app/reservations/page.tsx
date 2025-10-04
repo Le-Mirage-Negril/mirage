@@ -28,8 +28,8 @@ function ReservationPage() {
       </section>
       <PageWrapper className="bg-cyan-950">
         <section id="booking-form">
-          <Typography variant="h2" className="text-center text-white md:pb-12 pb-8">
-            Book a Room
+          <Typography variant="h2" className="text-center text-white md:pb-8 pb-6">
+            Book a room
           </Typography>
           <Suspense
             fallback={<div className="text-white text-center">Loading booking form...</div>}
