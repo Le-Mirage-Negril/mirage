@@ -78,7 +78,7 @@ function TransparentHoverMenu() {
             >
               <Link
                 href={link.href}
-                className={`py-2 text-lg font-bold transition-colors relative ${
+                className={`py-2 text-lg font-medium transition-colors relative ${
                   pathname === link.href
                     ? scrolled
                       ? "text-amber-600"
