@@ -1,5 +1,5 @@
 "use server";
-import { signIn, signOut } from "@/auth";
+// import { signIn, signOut } from "@/auth";
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { z } from "zod";
 
@@ -14,7 +14,8 @@ export async function signInWitCredentials(prevState: unknown, formData: FormDat
       email: formData.get("email"),
       password: formData.get("password"),
     });
-    await signIn("credentials", user);
+    console.log(user);
+    // await signIn("credentials", user);
     return {
       success: true,
       message: "Sign in successful",
@@ -31,5 +32,5 @@ export async function signInWitCredentials(prevState: unknown, formData: FormDat
 }
 
 export async function signOutUser() {
-  await signOut();
+  // await signOut();
 }

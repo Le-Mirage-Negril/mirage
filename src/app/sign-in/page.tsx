@@ -1,11 +1,11 @@
 import React from "react";
 import CredentialSignIn from "./CredentialsSignIn";
-import { auth } from "@/auth";
+// import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 async function page() {
-  const session = await auth();
+  const session = null;
   console.log(session);
   if (session) {
     redirect("/admin");
