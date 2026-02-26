@@ -9,7 +9,3 @@ export function formatNumberWithDecimal(num: number): string {
   const [int, decimal] = num.toString().split(".");
   return decimal ? `${int}.${decimal.padEnd(2, "0")}` : `${int}.00`;
 }
-
-export function convertPrismaObject<T>(obj: T) {
-  return JSON.parse(JSON.stringify(obj));
-}
