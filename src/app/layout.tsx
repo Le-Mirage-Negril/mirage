@@ -42,7 +42,7 @@ export default function RootLayout({
             {/* <Header /> */}
             {/* <DrawerNavigation /> */}
             <TransparentHoverMenu />
-            <main className="flex-grow mx-auto ">{children}</main>
+            <main className="grow mx-auto ">{children}</main>
             <Toaster />
             <Footer />
           </div>

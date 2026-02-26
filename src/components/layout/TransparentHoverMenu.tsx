@@ -78,14 +78,14 @@ function TransparentHoverMenu() {
             >
               <Link
                 href={link.href}
-                className={`py-2 text-sm font-medium transition-colors relative ${
+                className={`py-2 text-lg font-bold transition-colors relative ${
                   pathname === link.href
                     ? scrolled
                       ? "text-amber-600"
                       : "text-amber-400"
                     : scrolled
-                    ? "text-cyan-950 hover:text-amber-600"
-                    : "text-white hover:text-amber-400"
+                      ? "text-cyan-950 hover:text-amber-600"
+                      : "text-white hover:text-amber-400"
                 }`}
               >
                 {link.name}
@@ -94,8 +94,8 @@ function TransparentHoverMenu() {
                     pathname === link.href
                       ? "bg-amber-500 w-full"
                       : scrolled
-                      ? "bg-amber-500"
-                      : "bg-white"
+                        ? "bg-amber-500"
+                        : "bg-white"
                   }`}
                 ></span>
               </Link>
@@ -112,7 +112,7 @@ function TransparentHoverMenu() {
                   >
                     <div className="relative h-40 w-full">
                       <Image src={link.image} alt={link.name} fill className="object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-cyan-950/80 to-transparent"></div>
+                      <div className="absolute inset-0 bg-linear-to-t from-cyan-950/80 to-transparent"></div>
                       <div className="absolute bottom-0 left-0 right-0 p-4">
                         <h3 className="text-white font-medium text-sm">{link.name}</h3>
                       </div>
