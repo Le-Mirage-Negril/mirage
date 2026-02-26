@@ -18,11 +18,11 @@ const StaggeredGroup = ({ children }: { children: ReactNode }) => {
   };
 
   const itemVariants = {
-    hidden: { y: 10, opacity: 0 }, // Reduced y movement
+    hidden: { y: 10, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.4, ease: "easeOut" }, // Smoother transition
+      transition: { duration: 0.4, ease: "easeOut" as const },
     },
   };
 
