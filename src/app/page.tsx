@@ -6,97 +6,108 @@ import Hero from "@/components/layout/Hero";
 import LightTheme from "@/components/providers/LightTheme";
 import Room from "@/components/rooms/Room";
 import { Button } from "@/components/ui/button";
-
-import { amenities, homepageImagesData, localRooms } from "@/lib/data";
+import { homepageImagesData } from "@/lib/data";
+import { getAmenitiesForSite, getHomeCmsContent, getRoomsForSite } from "@/lib/cms/content";
 import Image from "next/image";
-
 import Link from "next/link";
-import type { RoomData } from "@/types";
+import type { BasicImage, RoomData } from "@/types";
 import Typography from "@/components/ui/Typography";
 import { ArrowDown } from "lucide-react";
 import ImageMasonDisplay from "@/components/features/ImageMasonDisplay";
 import { ROOM_TAX_BLURB } from "@/lib/constants";
 
+const fallbackFeatureImages: BasicImage[] = [
+  {
+    id: 1,
+    url: "/swim-4.jpg",
+    alt: "Luxury Resort Swimming Pool",
+  },
+  {
+    id: 2,
+    url: "/swim-2.jpg",
+    alt: "Infinity Pool View",
+  },
+  {
+    id: 3,
+    url: "/swim-3.jpg",
+    alt: "Poolside Lounging Area",
+  },
+];
+
 export default async function Home() {
-  const rooms = localRooms;
+  const [rooms, amenities, homeCmsContent] = await Promise.all([
+    getRoomsForSite(),
+    getAmenitiesForSite(),
+    getHomeCmsContent(),
+  ]);
+
+  const galleryImages =
+    homeCmsContent?.gallery.images && homeCmsContent.gallery.images.length > 0
+      ? homeCmsContent.gallery.images
+      : homepageImagesData;
+
+  const featureImages: BasicImage[] = [
+    homeCmsContent?.about.image ?? galleryImages[0] ?? fallbackFeatureImages[0],
+    galleryImages[1] ?? fallbackFeatureImages[1],
+    galleryImages[2] ?? fallbackFeatureImages[2],
+  ];
+
+  const heroImage = homeCmsContent?.hero.image?.url;
 
   return (
     <LightTheme>
       <div className="mx-auto w-screen  bg-white">
         <section className="relative h-screen flex items-center overflow-hidden">
-          <Hero />
+          <Hero image={heroImage && heroImage.length > 0 ? heroImage : undefined} />
           <div className="container mx-auto px-4 z-20 text-center">
             <AnimatedSection delay={0.2}>
-              <Typography variant="h3" className="text-white">
-                WELCOME TO
-              </Typography>
-            </AnimatedSection>
-            <AnimatedSection delay={0.2}>
-              <Typography variant="h1">LE MIRAGE</Typography>
+              <Typography variant="h1">{homeCmsContent?.hero.title || "LE MIRAGE"}</Typography>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
               <Typography variant="h3" className=" text-white mb-4">
-                Luxury Redefined
+                {homeCmsContent?.hero.subtitle || "Luxury Redefined"}
               </Typography>
             </AnimatedSection>
 
             <AnimatedSection delay={0.4}>
               <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-                Experience the perfect blend of comfort, elegance, and exceptional service
+                {homeCmsContent?.hero.description ||
+                  "Experience the perfect blend of comfort, elegance, and exceptional service"}
               </p>
             </AnimatedSection>
 
             <AnimatedSection delay={0.6} direction="up">
-              <Link href="/reservations">
+              <Link href={homeCmsContent?.hero.ctaUrl || "/reservations"}>
                 <Button
                   size="lg"
                   className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-6 text-lg"
                 >
-                  Book Your Stay
+                  {homeCmsContent?.hero.ctaText || "Book Your Stay"}
                 </Button>
               </Link>
             </AnimatedSection>
           </div>
         </section>
-        {/* NEW */}
 
         <section className="py-12 bg-amber-50">
           <div className="container mx-auto px-4 ">
             <AnimatedSection direction="up" delay={0.1}>
               <Typography variant="h2" className="pb-10">
-                Breathe, Relax, Unwind.
+                {homeCmsContent?.hero.subtitle || "Breathe, Relax, Unwind."}
               </Typography>
             </AnimatedSection>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center ">
-              {/* Text Column */}
               <div className="md:col-span-5 space-y-3 order-2 md:order-1 px-2 md:px-0 pt-10">
                 <AnimatedSection direction="left" delay={0.2}>
-                  <Typography variant="h3">Discover Tranquility</Typography>
+                  <Typography variant="h3">
+                    {homeCmsContent?.about.title || "Discover Tranquility"}
+                  </Typography>
                 </AnimatedSection>
                 <AnimatedSection direction="left" delay={0.3}>
                   <p className="text-cyan-700">
-                    Mirage Resort is a small private property, Clothing Optional, Adults Only
-                    Resort. Situated on the West End cliffs along the rugged coastline of Negril.
-                    With twelve large rooms facing the Caribbean Sea, the Resort offers an intimate
-                    experience - independence, quietude and the utmost privacy - great for nature
-                    lovers! The cliffside location offers swimming and snorkeling on the pristine
-                    coral reef. You can also swim in our gorgeous “Infinity Swimming Pool”.
-                  </p>
-                </AnimatedSection>
-                <AnimatedSection direction="left" delay={0.4}>
-                  <p className="text-cyan-700">
-                    Mirage Resort is a genuine retreat from the pressures of life, yet within ten
-                    minutes walk of the Rick&apos;s Café and numerous bars, restaurants &
-                    attractions.
-                  </p>
-                </AnimatedSection>
-                <AnimatedSection>
-                  <p className="text-cyan-700">
-                    Guests at Mirage Resort are also welcome to spend time on Negril&apos;s
-                    sparkling 7 - mile beach at our sister property, the Charela Inn Hotel.
-                    Swimming/sunbathing. We offer quietude, privacy and discreet service is always
-                    near at hand when needed.
+                    {homeCmsContent?.about.description ||
+                      "Mirage Resort is a small private property, Clothing Optional, Adults Only Resort. Situated on the West End cliffs along the rugged coastline of Negril. With twelve large rooms facing the Caribbean Sea, the Resort offers an intimate experience and privacy for nature lovers."}
                   </p>
                 </AnimatedSection>
                 <AnimatedSection direction="left" delay={0.5}>
@@ -113,15 +124,13 @@ export default async function Home() {
                 </AnimatedSection>
               </div>
 
-              {/* Images Column - Creative Layout */}
               <div className="md:col-span-7 order-1 md:order-2 grid grid-cols-12 grid-rows-6 gap-3 h-[600px]">
-                {/* Larger main image */}
                 <AnimatedSection direction="right" delay={0.1} className="col-span-8 row-span-6">
                   <ParallaxSection speed={0.2} className="h-full w-full">
                     <div className="overflow-hidden rounded-lg h-full shadow-lg">
                       <Image
-                        src="/swim-4.jpg"
-                        alt="Luxury Resort Swimming Pool"
+                        src={featureImages[0].url}
+                        alt={featureImages[0].alt}
                         className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                         width={500}
                         height={500}
@@ -130,13 +139,12 @@ export default async function Home() {
                   </ParallaxSection>
                 </AnimatedSection>
 
-                {/* Top right image */}
                 <AnimatedSection direction="down" delay={0.3} className="col-span-4 row-span-3">
                   <ParallaxSection speed={0.4} className="h-full w-full">
                     <div className="overflow-hidden rounded-lg h-full shadow-lg">
                       <Image
-                        src="/swim-2.jpg"
-                        alt="Infinity Pool View"
+                        src={featureImages[1].url}
+                        alt={featureImages[1].alt}
                         className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                         width={300}
                         height={300}
@@ -145,13 +153,12 @@ export default async function Home() {
                   </ParallaxSection>
                 </AnimatedSection>
 
-                {/* Bottom right image */}
                 <AnimatedSection direction="up" delay={0.5} className="col-span-4 row-span-3">
                   <ParallaxSection speed={-0.3} className="h-full w-full">
                     <div className="overflow-hidden rounded-lg h-full shadow-lg">
                       <Image
-                        src="/swim-3.jpg"
-                        alt="Poolside Lounging Area"
+                        src={featureImages[2].url}
+                        alt={featureImages[2].alt}
                         className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                         width={300}
                         height={300}
@@ -163,39 +170,46 @@ export default async function Home() {
             </div>
           </div>
         </section>
-        {/* Room Showcase */}
+
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="space-y-3">
               <AnimatedSection>
-                <Typography variant="h2">Luxurious Accommodations</Typography>
+                <Typography variant="h2">
+                  {homeCmsContent?.roomsPreview.title || "Luxurious Accommodations"}
+                </Typography>
               </AnimatedSection>
               <AnimatedSection>
                 <p className="text-center pb-8">
-                  With only 12 rooms, there is no overcrowding. There is ample space as we only
-                  cater to our own guests.
+                  {homeCmsContent?.roomsPreview.subtitle ||
+                    "With only 12 rooms, there is no overcrowding. There is ample space as we only cater to our own guests."}
                 </p>
               </AnimatedSection>
             </div>
 
             <StaggeredGroup>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {rooms?.map((room: RoomData, index: number) => (
-                  <Room key={index} room={room} buttonHref={`/rooms`} />
+                {rooms?.map((room: RoomData) => (
+                  <Room key={room.id} room={room} buttonHref={`/rooms`} />
                 ))}
               </div>
               <p className="text-xs text-gray-600 text-center md:pt-8 pt-4">{ROOM_TAX_BLURB}</p>
             </StaggeredGroup>
           </div>
         </section>
-        {/* Amenities */}
+
         <section className="py-12 bg-cyan-950 text-white" id="amenities">
           <div className="container mx-auto px-4 space-y-3">
             <AnimatedSection>
               <Typography variant="h2" className="text-white">
-                Exceptional Amenities
+                {homeCmsContent?.amenities.title || "Exceptional Amenities"}
               </Typography>
             </AnimatedSection>
+            {homeCmsContent?.amenities.subtitle && (
+              <AnimatedSection>
+                <p className="text-center text-stone-300">{homeCmsContent.amenities.subtitle}</p>
+              </AnimatedSection>
+            )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {amenities.map((feature, index) => (
@@ -217,36 +231,42 @@ export default async function Home() {
 
           <div className="container mx-auto px-4 relative z-10 text-center">
             <AnimatedSection>
-              <Typography variant="h2">Reserve Your Perfect Getaway</Typography>
+              <Typography variant="h2">
+                {homeCmsContent?.cta.title || "Reserve Your Perfect Getaway"}
+              </Typography>
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
               <p className="text-xl text-cyan-950/80 mb-8 max-w-2xl mx-auto">
-                Book directly with us for the best rates and exclusive perks
+                {homeCmsContent?.cta.description ||
+                  "Book directly with us for the best rates and exclusive perks"}
               </p>
             </AnimatedSection>
 
             <AnimatedSection delay={0.4}>
-              <Link href="/reservations">
+              <Link href={homeCmsContent?.cta.buttonUrl || "/reservations"}>
                 <Button
                   size="lg"
                   className="bg-cyan-900 hover:bg-cyan-950 text-white px-8 py-6 text-lg"
                 >
-                  Book Now
+                  {homeCmsContent?.cta.buttonText || "Book Now"}
                 </Button>
               </Link>
             </AnimatedSection>
           </div>
         </section>
-        {/* Gallery */}
+
         <div className="p-4 border-t border-gray-100 container mx-auto px-4">
           <AnimatedSection>
             <Typography variant="h2" className="mb-8">
-              Resort Gallery
+              {homeCmsContent?.gallery.title || "Resort Gallery"}
             </Typography>
           </AnimatedSection>
           <div className="mb-20 space-y-5">
-            <ImageMasonDisplay images={homepageImagesData} title="Wedding Gallery" />
+            <ImageMasonDisplay
+              images={galleryImages}
+              title={homeCmsContent?.gallery.title || "Resort Gallery"}
+            />
           </div>
         </div>
       </div>

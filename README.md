@@ -19,6 +19,40 @@ bun dev
 - hosting
 - designated github
 
+## GammaCMS Integration
+
+This project supports two content sources controlled by `CMS_SOURCE`:
+
+- `CMS_SOURCE=local` uses static data from `src/lib/data.ts` (default fallback)
+- `CMS_SOURCE=gamma` pulls rooms/home/weddings content from GammaCMS public API
+
+### Required Environment Variables
+
+```bash
+CMS_SOURCE=gamma
+GAMMACMS_API_URL=https://api.gammacms.com/api/public/v1
+GAMMACMS_API_KEY=your_public_api_key
+GAMMACMS_ORGANIZATION_ID=6dcc48d7-04b7-47b2-b6f1-a57274c6e60f
+GAMMACMS_SITE_DOMAIN=miragenegril.com
+CMS_REVALIDATE_SECONDS=300
+```
+
+### Optional: Webhook Revalidation
+
+To invalidate cache immediately on CMS publish events:
+
+```bash
+GAMMACMS_WEBHOOK_SECRET=your_secret
+```
+
+Send `POST /api/revalidate` with:
+
+- Header: `x-revalidate-secret: <GAMMACMS_WEBHOOK_SECRET>`
+- Optional JSON body:
+  - `{ \"slug\": \"home\" }`
+  - `{ \"path\": \"/rooms\" }`
+  - `{ \"paths\": [\"/\", \"/weddings\"] }`
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.

@@ -5,12 +5,12 @@ import Hero from "@/components/layout/Hero";
 import PageWrapper from "@/components/layout/PageWrapper";
 import RoomSection from "@/components/rooms/RoomSection";
 import Typography from "@/components/ui/Typography";
-import { localRooms } from "@/lib/data";
+import { getRoomsForSite } from "@/lib/cms/content";
 import { RoomData } from "@/types";
 import React from "react";
 
 async function Page() {
-  const rooms = localRooms;
+  const rooms = await getRoomsForSite();
 
   return (
     <div className="mx-auto w-screen bg-white">
@@ -40,8 +40,8 @@ async function Page() {
 
           <StaggeredGroup>
             <div className="md:space-y-12">
-              {rooms.map((room: RoomData, index: number) => (
-                <RoomSection key={index} {...room} />
+              {rooms.map((room: RoomData) => (
+                <RoomSection key={room.id} {...room} />
               ))}
             </div>
           </StaggeredGroup>
@@ -213,5 +213,4 @@ async function Page() {
 }
 
 export default Page;
-
 

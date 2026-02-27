@@ -5,14 +5,19 @@ import { Button } from "../ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Typography from "../ui/Typography";
+import type { WeddingCard } from "@/types";
+import Image from "next/image";
 
 interface WeddingCardsProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  weddingCards: Record<string, any>[];
+  weddingCards: WeddingCard[];
 }
 
 function WeddingCards({ weddingCards }: WeddingCardsProps) {
   const [currentCard, setCurrentCard] = useState<number>(0);
+
+  if (!weddingCards || weddingCards.length === 0) {
+    return null;
+  }
 
   const handleNextCard = (index: number) => {
     if (index < 0) {
@@ -36,18 +41,18 @@ function WeddingCards({ weddingCards }: WeddingCardsProps) {
 
   return (
     <div className="space-y-12 md:py-12 py-8 max-w-5xl mx-auto">
-      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-      {weddingCards?.map((card: any, index: number) => (
+      {weddingCards.map((card: WeddingCard, index: number) => (
         <AnimatedSection
           delay={0.4}
           key={card?.id}
           className={cn(index === currentCard ? "block" : "hidden")}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10 gap-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={card?.image?.url}
-              alt="Wedding"
+              alt={card?.image?.alt || "Wedding"}
+              width={500}
+              height={500}
               className="max-w-full h-[300px] md:max-w-[500px] md:h-[500px] w-full object-cover mx-auto rounded-md"
             />
 
@@ -76,7 +81,7 @@ function WeddingCards({ weddingCards }: WeddingCardsProps) {
           <Button
             variant="outline"
             className="rounded-full w-fit mx-auto"
-            onClick={() => handlePrevCard(currentCard + 1)}
+            onClick={() => handlePrevCard(currentCard - 1)}
           >
             <ArrowLeft fontSize={40} />
           </Button>
