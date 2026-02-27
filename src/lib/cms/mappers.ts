@@ -109,8 +109,19 @@ export const mapCmsAmenityToAmenity = (amenity: CmsAmenity): Amenity => ({
   icon: amenity.icon && amenity.icon.trim() ? amenity.icon : iconByName(amenity.name),
 });
 
-const findSection = (sections: CmsPageSection[] | undefined, type: string): CmsPageSection | null =>
-  sections?.find((section) => section.type === type) ?? null;
+const normalizeSectionType = (value: string | undefined): string =>
+  (value ?? "")
+    .toLowerCase()
+    .replace(/\s+/g, "_")
+    .replace(/-/g, "_")
+    .trim();
+
+const findSection = (sections: CmsPageSection[] | undefined, type: string): CmsPageSection | null => {
+  const normalizedTarget = normalizeSectionType(type);
+  return (
+    sections?.find((section) => normalizeSectionType(section.type) === normalizedTarget) ?? null
+  );
+};
 
 export interface HomeCmsContent {
   hero: {

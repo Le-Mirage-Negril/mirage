@@ -7,7 +7,12 @@ import LightTheme from "@/components/providers/LightTheme";
 import Room from "@/components/rooms/Room";
 import { Button } from "@/components/ui/button";
 import { homepageImagesData } from "@/lib/data";
-import { getAmenitiesForSite, getHomeCmsContent, getRoomsForSite } from "@/lib/cms/content";
+import {
+  getAmenitiesForSite,
+  getHomeCmsContent,
+  getRoomsForSite,
+  getSiteBranding,
+} from "@/lib/cms/content";
 import Image from "next/image";
 import Link from "next/link";
 import type { BasicImage, RoomData } from "@/types";
@@ -15,6 +20,7 @@ import Typography from "@/components/ui/Typography";
 import { ArrowDown } from "lucide-react";
 import ImageMasonDisplay from "@/components/features/ImageMasonDisplay";
 import { ROOM_TAX_BLURB } from "@/lib/constants";
+import type { CSSProperties } from "react";
 
 const fallbackFeatureImages: BasicImage[] = [
   {
@@ -34,11 +40,45 @@ const fallbackFeatureImages: BasicImage[] = [
   },
 ];
 
+const normalizeHexColor = (value: string | null | undefined): string | null => {
+  if (!value) {
+    return null;
+  }
+
+  const trimmed = value.trim();
+  if (/^#[0-9a-fA-F]{6}$/.test(trimmed)) {
+    return trimmed;
+  }
+
+  if (/^#[0-9a-fA-F]{3}$/.test(trimmed)) {
+    const r = trimmed.charAt(1);
+    const g = trimmed.charAt(2);
+    const b = trimmed.charAt(3);
+    return `#${r}${r}${g}${g}${b}${b}`;
+  }
+
+  return null;
+};
+
+const getReadableTextColor = (color: string | null): string => {
+  const normalized = normalizeHexColor(color);
+  if (!normalized) {
+    return "#ffffff";
+  }
+
+  const r = Number.parseInt(normalized.slice(1, 3), 16);
+  const g = Number.parseInt(normalized.slice(3, 5), 16);
+  const b = Number.parseInt(normalized.slice(5, 7), 16);
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  return brightness > 150 ? "#0f172a" : "#ffffff";
+};
+
 export default async function Home() {
-  const [rooms, amenities, homeCmsContent] = await Promise.all([
+  const [rooms, amenities, homeCmsContent, siteBranding] = await Promise.all([
     getRoomsForSite(),
     getAmenitiesForSite(),
     getHomeCmsContent(),
+    getSiteBranding(),
   ]);
 
   const galleryImages =
@@ -53,6 +93,16 @@ export default async function Home() {
   ];
 
   const heroImage = homeCmsContent?.hero.image?.url;
+  const heroPrimaryColor = normalizeHexColor(siteBranding?.primaryColor ?? null);
+  const heroHoverColor = normalizeHexColor(siteBranding?.secondaryColor ?? null) ?? heroPrimaryColor;
+  const heroButtonUsesBranding = Boolean(heroPrimaryColor && heroHoverColor);
+  const heroButtonStyle = heroButtonUsesBranding
+    ? ({
+        "--hero-cta-bg": heroPrimaryColor,
+        "--hero-cta-hover": heroHoverColor,
+        "--hero-cta-text": getReadableTextColor(heroPrimaryColor),
+      } as CSSProperties)
+    : undefined;
 
   return (
     <LightTheme>
@@ -80,7 +130,12 @@ export default async function Home() {
               <Link href={homeCmsContent?.hero.ctaUrl || "/reservations"}>
                 <Button
                   size="lg"
-                  className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-6 text-lg"
+                  className={
+                    heroButtonUsesBranding
+                      ? "bg-[var(--hero-cta-bg)] hover:bg-[var(--hero-cta-hover)] text-[var(--hero-cta-text)] px-8 py-6 text-lg"
+                      : "bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-6 text-lg"
+                  }
+                  style={heroButtonStyle}
                 >
                   {homeCmsContent?.hero.ctaText || "Book Your Stay"}
                 </Button>

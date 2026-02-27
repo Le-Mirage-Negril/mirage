@@ -86,5 +86,27 @@ export interface CmsPageDetail {
   id: string;
   title: string;
   slug: string;
+  is_homepage?: boolean;
   sections?: CmsPageSection[];
+}
+
+export interface CmsPageSummary {
+  id: string;
+  title: string;
+  slug: string;
+  is_homepage?: boolean;
+}
+
+export interface CmsSiteSettings {
+  primary_color?: string;
+  secondary_color?: string;
+  [key: string]: unknown;
+}
+
+export interface CmsSiteDetail {
+  id: string;
+  name: string;
+  slug: string;
+  domain: string;
+  settings?: CmsSiteSettings;
 }

@@ -3,9 +3,11 @@ import "server-only";
 import type {
   CmsAmenity,
   CmsPageDetail,
+  CmsPageSummary,
   CmsPaginatedResponse,
   CmsRoomDetail,
   CmsRoomSummary,
+  CmsSiteDetail,
 } from "@/lib/cms/types";
 
 const DEFAULT_API_URL = "https://api.gammacms.com/api/public/v1";
@@ -98,6 +100,13 @@ export const normalizeCmsListResponse = <T>(
 
 export const fetchCmsPageBySlug = async (slug: string): Promise<CmsPageDetail> =>
   requestCms<CmsPageDetail>(`/pages/${slug}/`);
+
+export const fetchCmsPages = async (): Promise<CmsPageSummary[]> => {
+  const payload = await requestCms<CmsPageSummary[] | CmsPaginatedResponse<CmsPageSummary>>("/pages/");
+  return normalizeCmsListResponse(payload);
+};
+
+export const fetchCmsSite = async (): Promise<CmsSiteDetail> => requestCms<CmsSiteDetail>("/");
 
 export const fetchCmsRooms = async (): Promise<CmsRoomSummary[]> => {
   const payload = await requestCms<CmsRoomSummary[] | CmsPaginatedResponse<CmsRoomSummary>>(
