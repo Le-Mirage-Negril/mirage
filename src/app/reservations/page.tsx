@@ -4,10 +4,13 @@ import Hero from "@/components/layout/Hero";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { Button } from "@/components/ui/button";
 import Typography from "@/components/ui/Typography";
+import { getRoomsForSite } from "@/lib/cms/content";
 import { ArrowBigDownDash } from "lucide-react";
 import { Suspense } from "react";
 
-function ReservationPage() {
+async function ReservationPage() {
+  const rooms = await getRoomsForSite();
+
   return (
     <div className="mx-auto w-screen bg-cyan-950">
       <Hero image="/room-1.jpg" />
@@ -34,7 +37,7 @@ function ReservationPage() {
           <Suspense
             fallback={<div className="text-white text-center">Loading booking form...</div>}
           >
-            <BookingForm />
+            <BookingForm rooms={rooms} />
           </Suspense>
         </section>
       </PageWrapper>

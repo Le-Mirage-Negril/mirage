@@ -8,7 +8,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 
 import { RoomData } from "@/types";
 import { useSearchParams } from "next/navigation";
-import { localRooms } from "@/lib/data";
 
 import { toast } from "sonner";
 import emailjs from "@emailjs/browser";
@@ -24,7 +23,11 @@ const formSchema = z.object({
   promoCode: z.string().optional(),
 });
 
-function BookingForm() {
+interface BookingFormProps {
+  rooms: RoomData[];
+}
+
+function BookingForm({ rooms }: BookingFormProps) {
   const searchParams = useSearchParams();
   const roomId = searchParams.get("room") || "0";
 
@@ -50,7 +53,7 @@ function BookingForm() {
   }, [roomId, form]);
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    const roomSelected = localRooms.find((room: RoomData) => room.id === parseInt(values.room));
+    const roomSelected = rooms.find((room: RoomData) => String(room.id) === String(values.room));
 
     // post request to booking api
     const payload = {
@@ -165,7 +168,7 @@ function BookingForm() {
                     value={field.value}
                   >
                     <option value="">Select a room</option>
-                    {localRooms?.map((room: RoomData) => (
+                    {rooms?.map((room: RoomData) => (
                       <option key={room.id} value={room.id}>
                         {room.floor}
                       </option>

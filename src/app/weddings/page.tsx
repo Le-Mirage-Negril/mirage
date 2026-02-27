@@ -8,28 +8,56 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import Typography from "@/components/ui/Typography";
 import WeddingCards from "@/components/weddings/WeddingCards";
-import { weddingCards, weddingGallery } from "@/lib/data";
+import {
+  getFallbackWeddingCards,
+  getFallbackWeddingGallery,
+  getWeddingsCmsContent,
+} from "@/lib/cms/content";
 import { Calendar } from "lucide-react";
 
 import React from "react";
 
+const defaultPricingPackages = [
+  { name: "10-20 persons", guests: "10-20", price: "US$250.00", features: [] },
+  { name: "21-40 persons", guests: "21-40", price: "US$350.00", features: [] },
+  { name: "41-80 persons", guests: "41-80", price: "US$450.00", features: [] },
+];
+
 async function WeddingPage() {
-  const weddingGalleryData = weddingGallery;
-  const weddingCardsData = weddingCards;
+  const weddingsCmsContent = await getWeddingsCmsContent();
+
+  const weddingGalleryData =
+    weddingsCmsContent?.gallery.images && weddingsCmsContent.gallery.images.length > 0
+      ? weddingsCmsContent.gallery.images
+      : getFallbackWeddingGallery();
+
+  const weddingCardsData =
+    weddingsCmsContent?.cards && weddingsCmsContent.cards.length > 0
+      ? weddingsCmsContent.cards
+      : getFallbackWeddingCards();
+
+  const pricingPackages =
+    weddingsCmsContent?.pricing.packages && weddingsCmsContent.pricing.packages.length > 0
+      ? weddingsCmsContent.pricing.packages
+      : defaultPricingPackages;
 
   return (
     <div className="mx-auto w-screen ">
       <Hero
-        image={`https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fweddings-hero5.jpg?alt=media&token=7abd0497-480d-45cb-98b3-34775cd32c00`}
+        image={
+          weddingsCmsContent?.hero.image?.url ||
+          "https://firebasestorage.googleapis.com/v0/b/le-mirage-ea3d7.firebasestorage.app/o/wedding%2Fweddings-hero5.jpg?alt=media&token=7abd0497-480d-45cb-98b3-34775cd32c00"
+        }
       />
       <section className="relative h-screen flex items-center overflow-hidden">
         <div className="container mx-auto px-4 z-20 text-center">
           <AnimatedSection delay={0.2}>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 font-serif drop-shadow-lg">
-              Le Mirage <span className="italic">Weddings</span>
+              {weddingsCmsContent?.hero.title || "Le Mirage Weddings"}
             </h1>
             <p className="text-white text-xl max-w-3xl mx-auto mt-6 drop-shadow-lg">
-              Where dreams become memories to cherish forever.
+              {weddingsCmsContent?.hero.description ||
+                "Where dreams become memories to cherish forever."}
             </p>
           </AnimatedSection>
         </div>
@@ -40,36 +68,33 @@ async function WeddingPage() {
           <div className="text-center md:mb-16 mb-8 max-w-4xl mx-auto">
             <AnimatedSection>
               <Typography variant="h2" className="capitalize text-white mb-8">
-                Your Perfect Day Awaits
+                {weddingsCmsContent?.hero.subtitle || "Your Perfect Day Awaits"}
               </Typography>
             </AnimatedSection>
             <AnimatedSection>
               <p className="text-white/90 text-lg leading-relaxed">
-                Imagine saying &ldquo;I do&rdquo; with the Caribbean Sea and Sunset as your
-                backdrop. Nature is one of the best decorators and the panoramic view from the
-                cliffs of Le Mirage Resort is perfect to complement your wedding. Come take
-                God&apos;s creation and make it into your own, let Le Mirage be the foundation on
-                which you build your dream wedding.
+                {weddingsCmsContent?.hero.description ||
+                  "Imagine saying \"I do\" with the Caribbean Sea and Sunset as your backdrop."}
               </p>
             </AnimatedSection>
           </div>
 
           <WeddingCards weddingCards={weddingCardsData} />
 
-          {/* Gallery Title */}
           <div className="text-center mt-20 mb-8">
             <AnimatedSection>
-              <h2 className="text-3xl lg:text-4xl font-serif text-white">Moments to Remember</h2>
-              <p className="text-gray-300 mt-2">
-                Browse our gallery of unforgettable wedding moments
-              </p>
+              <h2 className="text-3xl lg:text-4xl font-serif text-white">
+                {weddingsCmsContent?.gallery.title || "Moments to Remember"}
+              </h2>
               <small className="text-gray-300">*Click on the images to view the full gallery</small>
             </AnimatedSection>
           </div>
 
-          {/* Gallery */}
           <div className="mb-20 space-y-5">
-            <ImageMasonDisplay images={weddingGalleryData} title="Wedding Gallery" />
+            <ImageMasonDisplay
+              images={weddingGalleryData}
+              title={weddingsCmsContent?.gallery.title || "Wedding Gallery"}
+            />
           </div>
           <hr className="my-12 border-t border-gray-200" />
 
@@ -78,34 +103,20 @@ async function WeddingPage() {
               <Card className="p-6 bg-transparent border-none shadow-none">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-2xl lg:text-3xl text-cyan-900 font-serif flex items-center">
-                    <span className="mr-2">✨</span> Things to know
+                    <span className="mr-2">✨</span>
+                    {weddingsCmsContent?.cta.title || "Things to know"}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <ul className="space-y-4">
-                    <li className="flex items-start">
-                      <span className="text-amber-600 mr-3 text-xl">•</span>
-                      <span>Wedding guests are offered a 30% discount on Room Rates.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-amber-600 mr-3 text-xl">•</span>
-                      <span>Venue Access from as early as 8:00 am until reception is over.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-amber-600 mr-3 text-xl">•</span>
-                      <span>Free WiFi throughout the property.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-amber-600 mr-3 text-xl">•</span>
-                      <span>Free Parking for wedding guests.</span>
-                    </li>
-                  </ul>
+                  <p className="text-cyan-900">
+                    {weddingsCmsContent?.cta.description ||
+                      "Ready to make your dream wedding happen at Le Mirage? Reach out to our team to start planning."}
+                  </p>
 
-                  <div className=" p-4 ">
+                  <div className="p-4 ">
                     <p className="italic text-cyan-900 text-center font-serif text-lg">
-                      &ldquo;Ready to Make It Official? Your dream wedding deserves a dream
-                      location. Book your date at Le Mirage Resort and let&apos;s bring your love
-                      story to life—beautiful, bold, and bathed in sunset light.&rdquo;
+                      {weddingsCmsContent?.hero.subtitle ||
+                        "Your wedding deserves a stunning Caribbean backdrop."}
                     </p>
                   </div>
                 </CardContent>
@@ -116,29 +127,33 @@ async function WeddingPage() {
               <Card className="p-6  bg-transparent border-none shadow-none">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-2xl lg:text-3xl text-cyan-900 font-serif flex items-center">
-                    <span className="mr-2">💍</span> Pricing
+                    <span className="mr-2">💍</span>
+                    {weddingsCmsContent?.pricing.title || "Pricing"}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <div className="flex justify-between items-center p-4">
-                      <span className="font-medium">10-20 persons</span>
-                      <span className="text-xl font-bold text-cyan-900">US$250.00</span>
-                    </div>
-                    <div className="flex justify-between items-center p-4 rounded-md  shadow-sm hover:shadow-md transition-shadow">
-                      <span className="font-medium">21-40 persons</span>
-                      <span className="text-xl font-bold text-cyan-900">US$350.00</span>
-                    </div>
-                    <div className="flex justify-between items-center p-4 rounded-md  shadow-sm hover:shadow-md transition-shadow">
-                      <span className="font-medium">41-80 persons</span>
-                      <span className="text-xl font-bold text-cyan-900">US$450.00</span>
-                    </div>
-                  </div>
-                  <div className=" p-4  mt-6  ">
-                    <p className="text-gray-700">
-                      <span className="font-semibold">Security Deposit:</span> US$50.00 is refunded
-                      if the property is returned in its original condition.
-                    </p>
+                    {pricingPackages.map((pkg) => (
+                      <div
+                        key={`${pkg.name}-${pkg.guests}`}
+                        className="p-4 rounded-md shadow-sm hover:shadow-md transition-shadow"
+                      >
+                        <div className="flex justify-between items-center gap-4">
+                          <div>
+                            <p className="font-medium">{pkg.name}</p>
+                            {pkg.guests && <p className="text-sm text-gray-600">Guests: {pkg.guests}</p>}
+                          </div>
+                          <span className="text-xl font-bold text-cyan-900">{pkg.price}</span>
+                        </div>
+                        {pkg.features.length > 0 && (
+                          <ul className="mt-2 text-sm text-gray-700 list-disc pl-4">
+                            {pkg.features.map((feature) => (
+                              <li key={`${pkg.name}-${feature}`}>{feature}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
                   </div>
                   <div className="flex items-center justify-center mt-6">
                     <Calendar className="text-cyan-700 mr-2 h-5 w-5" />
@@ -153,8 +168,11 @@ async function WeddingPage() {
 
           <div className="p-8" id="contact">
             <ContactForm
-              title="Begin Your Forever"
-              description="Ready to start planning your perfect day at Le Mirage Resort? Reach out to our wedding specialists."
+              title={weddingsCmsContent?.cta.title || "Begin Your Forever"}
+              description={
+                weddingsCmsContent?.cta.description ||
+                "Ready to start planning your perfect day at Le Mirage Resort? Reach out to our wedding specialists."
+              }
               isWeddingForm={true}
             />
           </div>
