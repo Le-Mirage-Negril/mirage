@@ -7,7 +7,14 @@ import RoomSection from "@/components/rooms/RoomSection";
 import Typography from "@/components/ui/Typography";
 import { getRoomsForSite } from "@/lib/cms/content";
 import { RoomData } from "@/types";
+import type { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Rooms & Suites",
+  description:
+    "Explore the 12 rooms and suites at Le Mirage, a luxury boutique resort in Negril, Jamaica. Spacious accommodations with no overcrowding.",
+};
 
 async function Page() {
   const rooms = await getRoomsForSite();

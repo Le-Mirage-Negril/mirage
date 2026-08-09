@@ -6,6 +6,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
+import { SITE_URL } from "@/lib/constants";
 import emailjs from "@emailjs/browser";
 import TransparentHoverMenu from "@/components/layout/TransparentHoverMenu";
 import { Toaster } from "@/components/ui/sonner";
@@ -17,8 +18,19 @@ emailjs.init({
 });
 
 export const metadata: Metadata = {
-  title: "Le Mirage - Negril Jamaica",
-  description: "Le Mirage is a luxury boutique resort in Negril Jamaica",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Le Mirage - Negril Jamaica",
+    template: "%s | Le Mirage Negril",
+  },
+  description:
+    "Le Mirage is a luxury boutique resort in Negril, Jamaica — 12 rooms, a swimming pool, and personalized service steps from Negril's famous beach.",
+  openGraph: {
+    type: "website",
+    siteName: "Le Mirage Negril",
+    locale: "en_US",
+    url: SITE_URL,
+  },
 };
 
 export default function RootLayout({
