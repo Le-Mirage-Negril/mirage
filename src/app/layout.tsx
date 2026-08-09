@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
+      <GoogleTagManager gtmId="GTM-T7LGG2X8" />
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         className={cn("min-h-screen font-sans antialiased", inter.variable)}
