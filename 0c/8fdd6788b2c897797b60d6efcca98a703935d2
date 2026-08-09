@@ -1,0 +1,24 @@
+package.json
+  s_8dc0252337e531::t_6dcb3d7d5910b6 18
+src/app/layout.tsx
+  s_8dc0252337e531::t_eda5c8fb31ad81 32
+  s_8dc0252337e531::t_5a48d5cc37c743 2
+package-lock.json
+  s_8dc0252337e531::t_fc25b9069754c0 17,1859-1871,9837-9842
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "0c8fdd6788b2c897797b60d6efcca98a703935d2",
+  "prompts": {},
+  "sessions": {
+    "s_8dc0252337e531": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6ecd076-aa21-4af0-a9bf-8a75bbca3681",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Tonia John <tonia@chariotmove.com>"
+    }
+  }
+}
