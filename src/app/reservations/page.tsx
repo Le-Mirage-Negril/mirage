@@ -6,7 +6,14 @@ import { Button } from "@/components/ui/button";
 import Typography from "@/components/ui/Typography";
 import { getRoomsForSite } from "@/lib/cms/content";
 import { ArrowBigDownDash } from "lucide-react";
+import type { Metadata } from "next";
 import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: "Reservations",
+  description:
+    "Book your stay at Le Mirage, a luxury boutique resort in Negril, Jamaica. Check availability and reserve one of our 12 rooms.",
+};
 
 async function ReservationPage() {
   const rooms = await getRoomsForSite();

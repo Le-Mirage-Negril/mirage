@@ -19,6 +19,7 @@ import type { BasicImage, RoomData } from "@/types";
 import Typography from "@/components/ui/Typography";
 import { ArrowDown } from "lucide-react";
 import ImageMasonDisplay from "@/components/features/ImageMasonDisplay";
+import ResortJsonLd from "@/components/seo/ResortJsonLd";
 import { ROOM_TAX_BLURB } from "@/lib/constants";
 import type { CSSProperties } from "react";
 
@@ -106,6 +107,7 @@ export default async function Home() {
 
   return (
     <LightTheme>
+      <ResortJsonLd />
       <div className="mx-auto w-screen  bg-white">
         <section className="relative h-screen flex items-center overflow-hidden">
           <Hero image={heroImage && heroImage.length > 0 ? heroImage : undefined} />

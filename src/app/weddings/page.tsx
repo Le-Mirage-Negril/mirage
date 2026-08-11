@@ -14,8 +14,15 @@ import {
   getWeddingsCmsContent,
 } from "@/lib/cms/content";
 import { Calendar } from "lucide-react";
+import type { Metadata } from "next";
 
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Weddings & Events",
+  description:
+    "Host your destination wedding at Le Mirage in Negril, Jamaica. Intimate ceremonies and events for 10 to 80 guests at our boutique resort.",
+};
 
 const defaultPricingPackages = [
   { name: "10-20 persons", guests: "10-20", price: "US$250.00", features: [] },
